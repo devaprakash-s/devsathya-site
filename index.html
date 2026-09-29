@@ -1,0 +1,969 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dev Sathya - One architect who also ships</title>
+<meta name="description" content="Dev Sathya designs and builds complete enterprise platforms on his own. Strategy, architecture, AI systems and the code, delivered by one architect who also ships.">
+<meta property="og:title" content="Dev Sathya - One architect who also ships">
+<meta property="og:description" content="Enterprise platform architecture, strategy and AI systems. Two live enterprise platforms, each built solo, each the size of an eighteen month team effort.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.devsathya.com/">
+<meta name="theme-color" content="#01040d">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* ---------- tokens ---------- */
+:root {
+  color-scheme: dark;
+  --bg: #01040d;
+  --bg-2: #040b24;
+  --ink: #e8eeff;
+  --ink-2: #b7c4ec;
+  --muted: #8391b8;
+  --line: rgba(140,170,255,0.16);
+  --line-2: rgba(140,170,255,0.28);
+  --glass: rgba(5,12,36,0.46);
+  --glass-2: rgba(8,20,58,0.6);
+  --blue: #2f5fe0;
+  --blue-2: #6f97f0;
+  --glow: #8fc0ff;
+  --green: #35d39a;
+  --display: "Sora", "Segoe UI", system-ui, sans-serif;
+  --sans: "DM Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+  --max: 1160px;
+  --gutter: clamp(20px, 5vw, 56px);
+  --ease: cubic-bezier(.2,.7,.2,1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--bg); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--sans); font-size: 17px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: hidden;
+}
+img, svg { max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+p a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line-2); }
+::selection { background: var(--blue); color: #fff; }
+:focus-visible { outline: 2px solid var(--glow); outline-offset: 3px; }
+
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 600; letter-spacing: -0.03em; line-height: 1.02; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(44px, 5.8vw, 78px); }
+h2 { font-size: clamp(32px, 4vw, 52px); }
+h3 { font-size: clamp(20px, 1.8vw, 24px); line-height: 1.2; letter-spacing: -0.015em; }
+p { margin: 0 0 1em; }
+.lede { font-size: clamp(17px, 1.45vw, 20px); line-height: 1.55; color: var(--ink-2); max-width: 56ch; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue-2); margin: 0 0 22px; display: flex; align-items: center; gap: 12px; }
+.eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--blue); box-shadow: 0 0 12px var(--blue); flex: none; }
+.muted { color: var(--muted); }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); position: relative; box-sizing: border-box; width: 100%; }
+section { padding: clamp(80px, 10vw, 140px) 0; position: relative; }
+.sec-head { max-width: 760px; margin-bottom: clamp(36px, 5vw, 64px); }
+.sec-head h2 { margin-bottom: 20px; }
+.sec-head .lede { margin: 0; }
+.grad { background: linear-gradient(90deg, #7fa3f5, #3d6ff0 60%, #8fc0ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* ---------- ambient background ---------- */
+.bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+  background: radial-gradient(120% 80% at 70% 10%, #04102e 0%, #020616 45%, #01040d 100%); }
+.orb { position: absolute; border-radius: 50%; filter: blur(60px); mix-blend-mode: screen; will-change: transform; }
+.o1 { width: 520px; height: 520px; right: -160px; top: -140px; background: radial-gradient(circle, #1a49d6 0%, #0b2494 35%, transparent 70%); opacity: 0.55; animation: drift 24s ease-in-out infinite alternate; }
+.o2 { width: 340px; height: 340px; right: 24%; top: 40%; background: radial-gradient(circle, #2f63e6 0%, #123bc4 40%, transparent 70%); opacity: 0.22; animation: drift 30s ease-in-out infinite alternate-reverse; }
+.o3 { width: 300px; height: 300px; left: -120px; bottom: 4%; background: radial-gradient(circle, #1231b8 0%, transparent 70%); opacity: 0.3; animation: drift 20s ease-in-out infinite alternate; }
+.dots { position: absolute; inset: 0; background-image: radial-gradient(rgba(120,160,255,0.28) 1px, transparent 1.5px); background-size: 34px 34px;
+  mask-image: radial-gradient(60% 50% at 75% 25%, #000, transparent); -webkit-mask-image: radial-gradient(60% 50% at 75% 25%, #000, transparent); }
+@keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(-60px, 40px) scale(1.12); } }
+/* small screens: keep the ground dark, glows stay at the edges */
+@media (max-width: 900px) {
+  .o1 { width: 300px; height: 300px; right: -150px; top: -150px; opacity: 0.4; }
+  .o2 { width: 200px; height: 200px; right: -110px; top: 46%; opacity: 0.18; }
+  .o3 { width: 220px; height: 220px; left: -130px; bottom: -80px; opacity: 0.24; }
+  .dots { mask-image: radial-gradient(70% 30% at 80% 10%, #000, transparent); -webkit-mask-image: radial-gradient(70% 30% at 80% 10%, #000, transparent); }
+}
+@media (prefers-reduced-motion: reduce) { .orb { animation: none !important; } }
+main, .nav { position: relative; z-index: 1; }
+
+/* ---------- glass ---------- */
+.glass { position: relative; min-width: 0; border-radius: 22px; background: var(--glass); border: 1px solid var(--line);
+  backdrop-filter: blur(22px) saturate(140%); -webkit-backdrop-filter: blur(22px) saturate(140%);
+  box-shadow: 0 30px 80px -30px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.08); }
+.glass::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; padding: 1px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0.02) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.06));
+  mask: linear-gradient(#000,#000) content-box, linear-gradient(#000,#000); -webkit-mask: linear-gradient(#000,#000) content-box, linear-gradient(#000,#000);
+  mask-composite: exclude; -webkit-mask-composite: xor; }
+
+/* buttons */
+.btn { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-family: var(--sans); font-weight: 600; font-size: 15px; line-height: 1;
+  padding: 15px 22px; border-radius: 999px; border: 1px solid transparent; transition: transform 200ms var(--ease), box-shadow 200ms, background 200ms, border-color 200ms; }
+.btn:hover { transform: translateY(-1px); }
+.btn.p { background: var(--blue); color: #fff; box-shadow: 0 0 0 1px rgba(255,255,255,0.15) inset, 0 12px 40px -10px var(--blue); }
+.btn.p:hover { box-shadow: 0 0 0 1px rgba(255,255,255,0.25) inset, 0 16px 50px -8px var(--blue); }
+.btn.g { background: rgba(255,255,255,0.05); border-color: rgba(150,180,255,0.3); color: #dfe7ff; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.btn.g:hover { background: rgba(255,255,255,0.09); border-color: rgba(150,180,255,0.5); }
+.btn .arrow { display: inline-block; transition: transform 200ms var(--ease); }
+.btn:hover .arrow { transform: translateX(4px); }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+/* reveal */
+.rv { opacity: 0; transform: translateY(18px); transition: opacity 700ms var(--ease), transform 700ms var(--ease); }
+.rv.in { opacity: 1; transform: none; }
+.rv.d1 { transition-delay: 90ms; } .rv.d2 { transition-delay: 180ms; } .rv.d3 { transition-delay: 270ms; } .rv.d4 { transition-delay: 360ms; }
+@media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } }
+
+/* ---------- nav ---------- */
+.nav { position: sticky; top: 0; z-index: 40; border-bottom: 1px solid transparent; transition: background 300ms, border-color 300ms; }
+.nav.solid { background: rgba(2,6,20,0.75); backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%); border-bottom-color: var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 74px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
+.brand i { width: 10px; height: 10px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 16px var(--blue), 0 0 4px var(--glow); }
+.navlinks { display: flex; gap: 26px; font-size: 14px; }
+.navlinks a { color: var(--ink-2); position: relative; padding: 6px 0; }
+.navlinks a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 0; height: 1px; background: var(--blue-2); box-shadow: 0 0 8px var(--blue-2); transition: right 240ms var(--ease); }
+.navlinks a:hover::after, .navlinks a.active::after { right: 0; }
+.navlinks a.active, .navlinks a:hover { color: #fff; }
+.navcta { padding: 11px 16px; font-size: 14px; }
+@media (max-width: 860px) { .navlinks { display: none; } }
+
+/* ---------- hero ---------- */
+.hero { padding: clamp(50px, 8vw, 110px) 0 clamp(50px, 7vw, 90px); }
+.hero .wrap { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,0.9fr); gap: clamp(30px, 5vw, 70px); align-items: center; }
+.hero h1 { margin: 0 0 24px; }
+.hero h1 em { font-style: normal; font-weight: 300; }
+.hero .lede { margin-bottom: 32px; }
+.hero-meta { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 8px 26px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; color: var(--muted); text-transform: uppercase; }
+@media (max-width: 960px) { .hero .wrap { grid-template-columns: minmax(0,1fr); } }
+
+/* handoff figure */
+.fig { margin: 0; padding: 22px 22px 16px; min-width: 0; max-width: 100%; }
+.fig-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 8px; flex-wrap: wrap; }
+.fig-head strong { font-family: var(--display); font-weight: 600; font-size: 15px; letter-spacing: -0.01em; }
+.fig-head span { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); display: inline-flex; align-items: center; gap: 6px; }
+.fig-head span::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px var(--green); animation: blink 1.6s infinite; }
+@keyframes blink { 50% { opacity: 0.25; } }
+.figscroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.fig svg { display: block; width: 100%; height: auto; }
+@media (max-width: 600px) { .fig svg { min-width: 520px; } .fig { padding: 18px 16px 14px; } }
+.fig .lane-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; fill: var(--muted); }
+.fig .node rect { fill: rgba(255,255,255,0.04); stroke: var(--line-2); stroke-width: 1; rx: 8; transition: stroke 300ms, fill 300ms; }
+.fig .node text { font-family: var(--sans); font-size: 12.5px; fill: var(--ink-2); font-weight: 600; }
+.fig .node.on rect { stroke: var(--blue-2); fill: rgba(61,123,255,0.22); }
+.fig .node.on text { fill: #fff; }
+.fig .node.done rect { stroke: var(--line); fill: rgba(255,255,255,0.02); }
+.fig .node.done text { fill: var(--muted); }
+.fig .track { stroke: var(--line-2); stroke-width: 1.5; stroke-dasharray: 3 5; }
+.fig .dot { fill: var(--glow); filter: drop-shadow(0 0 6px var(--blue-2)); }
+.fig .dot-halo { fill: var(--blue); opacity: 0.25; }
+.fig .status { font-family: var(--mono); font-size: 11px; fill: var(--ink-2); }
+.fig .days { font-family: var(--mono); font-size: 13px; font-weight: 500; fill: #fff; }
+.fig .queue { font-family: var(--mono); font-size: 10px; fill: var(--blue-2); letter-spacing: 0.04em; }
+.fig .solo-ring { fill: none; stroke: var(--line-2); stroke-width: 1.5; }
+.fig .solo-ring.live { stroke: var(--green); filter: drop-shadow(0 0 6px var(--green)); }
+.fig .solo-core { fill: #fff; }
+.fig .solo-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; fill: var(--muted); }
+.fig .solo-label.on { fill: #fff; font-weight: 500; }
+.fig .live-badge rect { fill: var(--green); rx: 4; }
+.fig .live-badge text { font-family: var(--mono); font-size: 10px; fill: #06203f; letter-spacing: 0.12em; font-weight: 500; }
+.fig .divider { stroke: var(--line); }
+.fig-foot { margin-top: 10px; font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.fig-foot button { background: none; border: 0; padding: 0; font: inherit; color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+/* ---------- thesis ---------- */
+.three { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+.three .glass { padding: 30px 28px; }
+.three .n { font-family: var(--mono); font-size: 11px; color: var(--blue-2); letter-spacing: 0.16em; margin-bottom: 18px; }
+.three h3 { margin-bottom: 12px; }
+.three p { color: var(--ink-2); margin: 0; font-size: 15.5px; }
+@media (max-width: 820px) { .three { grid-template-columns: minmax(0,1fr); } }
+
+/* ---------- proof ---------- */
+.plats { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }
+.plat { padding: clamp(24px, 3vw, 36px); }
+.plat .k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blue-2); margin-bottom: 14px; }
+.plat h3 { margin-bottom: 14px; font-size: clamp(22px, 2vw, 27px); }
+.plat p { color: var(--ink-2); margin-bottom: 24px; font-size: 15.5px; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px 14px; border-top: 1px solid var(--line); padding-top: 22px; }
+.stat b { display: block; font-family: var(--display); font-weight: 600; font-size: clamp(28px, 2.6vw, 38px); line-height: 1; letter-spacing: -0.03em; color: #fff; }
+.stat span { display: block; font-size: 12.5px; color: var(--muted); margin-top: 6px; line-height: 1.3; }
+@media (max-width: 900px) { .plats { grid-template-columns: minmax(0,1fr); } }
+.more { margin-top: 56px; }
+.more h3 { margin-bottom: 8px; }
+.more > p { color: var(--ink-2); max-width: 64ch; }
+.tablewrap { overflow-x: auto; }
+table.ledger { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 15px; min-width: 640px; }
+table.ledger th, table.ledger td { text-align: left; padding: 14px 16px 14px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+table.ledger th { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+table.ledger td:first-child { font-weight: 600; width: 30%; color: #fff; }
+table.ledger td:nth-child(2) { color: var(--muted); width: 24%; }
+table.ledger td:nth-child(3) { color: var(--ink-2); }
+.nda { margin-top: 24px; font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: 0.02em; }
+
+/* ---------- method ---------- */
+.halves { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }
+.half { padding: 28px; }
+.half .k { font-family: var(--display); font-weight: 600; font-size: 18px; color: var(--blue-2); margin-bottom: 8px; letter-spacing: -0.01em; }
+.rule { border-top: 1px solid var(--line); padding: 20px 0; display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.rule:last-child { padding-bottom: 4px; }
+.rule .i { font-family: var(--mono); font-size: 11px; color: var(--muted); padding-top: 6px; }
+.rule h4 { margin: 0 0 6px; font-size: 17px; line-height: 1.25; color: #fff; }
+.rule p { margin: 0; color: var(--ink-2); font-size: 15px; }
+@media (max-width: 820px) { .halves { grid-template-columns: minmax(0,1fr); } }
+
+/* ---------- governed AI ---------- */
+.chain { margin-top: 36px; display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,0.9fr); gap: 18px; align-items: start; }
+.steps { list-style: none; margin: 0; padding: 22px 22px; position: relative; }
+.steps::before { content: ""; position: absolute; left: 39px; top: 40px; bottom: 40px; width: 1px; background: var(--line-2); }
+.step { display: grid; grid-template-columns: 36px 1fr; gap: 16px; align-items: center; padding: 10px 12px 10px 0; cursor: pointer; border-radius: 12px; transition: background 200ms; position: relative; }
+.step:hover { background: rgba(255,255,255,0.03); }
+.step .b { width: 36px; height: 36px; border-radius: 50%; background: var(--bg-2); border: 1px solid var(--line-2); display: grid; place-items: center; font-family: var(--mono); font-size: 11px; transition: all 200ms; }
+.step.on .b { background: var(--blue); color: #fff; border-color: var(--blue-2); box-shadow: 0 0 18px var(--blue); }
+.step .t { font-weight: 600; color: var(--ink-2); }
+.step.on .t { color: #fff; }
+.step .t small { display: block; font-weight: 400; color: var(--muted); font-size: 13.5px; }
+.panel { padding: 28px; position: sticky; top: 92px; min-height: 240px; }
+.panel .k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blue-2); margin-bottom: 10px; }
+.panel h4 { font-size: 24px; margin: 0 0 12px; color: #fff; }
+.panel p { color: var(--ink-2); margin: 0; }
+.panel .why { margin-top: 18px; padding-top: 16px; border-top: 1px dashed var(--line-2); font-size: 14.5px; color: var(--muted); }
+@media (max-width: 860px) { .chain { grid-template-columns: minmax(0,1fr); } .panel { position: static; } }
+.claims { margin-top: 70px; }
+.claims h3 { margin-bottom: 8px; }
+.claims > p { color: var(--ink-2); max-width: 62ch; }
+table.claim { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 15px; min-width: 620px; }
+table.claim th { text-align: left; font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 0 16px 12px 0; border-bottom: 1px solid var(--line-2); }
+table.claim td { padding: 14px 16px 14px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+table.claim td:first-child { font-weight: 600; width: 22%; color: #fff; }
+table.claim td:nth-child(2) { color: var(--ink-2); }
+table.claim td:nth-child(3) { color: var(--muted); text-decoration: line-through; text-decoration-color: rgba(127,166,255,0.6); }
+
+/* ---------- engagements ---------- */
+.formats { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+.fmt { padding: 30px 28px 28px; display: flex; flex-direction: column; min-height: 100%; transition: transform 260ms var(--ease), box-shadow 260ms, border-color 200ms; }
+.fmt:hover { transform: translateY(-5px); box-shadow: 0 40px 80px -30px rgba(61,123,255,0.45); border-color: rgba(140,170,255,0.45); }
+.fmt .dur { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blue-2); margin-bottom: 16px; }
+.fmt h3 { margin-bottom: 10px; }
+.fmt .when { color: var(--ink-2); margin-bottom: 18px; font-size: 15.5px; }
+.fmt ul { margin: auto 0 0; padding: 0; list-style: none; color: var(--ink-2); font-size: 14.5px; }
+.fmt li { padding: 8px 0 8px 16px; border-top: 1px solid var(--line); position: relative; }
+.fmt li::before { content: ""; position: absolute; left: 0; top: 17px; width: 5px; height: 5px; border-radius: 50%; background: var(--blue-2); box-shadow: 0 0 8px var(--blue-2); }
+@media (max-width: 900px) { .formats { grid-template-columns: minmax(0,1fr); } }
+.includes { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 8px 22px; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.includes span::before { content: ""; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--blue-2); margin-right: 10px; vertical-align: 2px; box-shadow: 0 0 8px var(--blue-2); }
+
+/* ten days */
+.ten { margin-top: 70px; }
+.ten h3 { margin-bottom: 8px; }
+.ten > p { color: var(--ink-2); }
+.track { margin-top: 24px; display: grid; grid-template-columns: repeat(10, minmax(0,1fr)); gap: 6px; }
+.day { border: 1px solid var(--line); background: rgba(255,255,255,0.03); border-radius: 12px; padding: 12px 8px; text-align: center; cursor: pointer; font-family: var(--mono); font-size: 11px; color: var(--muted); transition: all 180ms; user-select: none; }
+.day b { display: block; font-family: var(--display); font-weight: 600; font-size: 20px; color: var(--ink-2); line-height: 1; margin-bottom: 5px; }
+.day.on { background: var(--blue); border-color: var(--blue-2); color: #fff; box-shadow: 0 10px 30px -10px var(--blue); }
+.day.on b { color: #fff; }
+.day.gate { border-style: dashed; border-color: var(--line-2); }
+.dayout { margin-top: 18px; display: grid; grid-template-columns: 180px minmax(0,1fr); gap: 20px; padding: 24px 26px; min-height: 120px; align-items: start; }
+.dayout .k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blue-2); }
+.dayout .k b { display: block; font-family: var(--display); font-weight: 600; font-size: 34px; color: #fff; text-transform: none; letter-spacing: -0.03em; margin-top: 6px; }
+.dayout h4 { margin: 0 0 6px; font-size: 20px; color: #fff; }
+.dayout p { margin: 0; color: var(--ink-2); }
+.gate-tag[hidden] { display: none; }
+.gate-tag { display: inline-block; margin-top: 10px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); border: 1px solid rgba(53,211,154,0.5); border-radius: 6px; padding: 3px 8px; }
+@media (max-width: 760px) { .track { grid-template-columns: repeat(5, minmax(0,1fr)); } .dayout { grid-template-columns: minmax(0,1fr); } }
+
+/* ---------- fit ---------- */
+.fitgrid { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,0.9fr); gap: 18px; align-items: start; }
+.signals { display: grid; gap: 12px; }
+.sig { text-align: left; cursor: pointer; width: 100%; color: var(--ink); padding: 22px 22px 22px 66px; font: inherit; transition: background 200ms, border-color 200ms, box-shadow 200ms; }
+.sig:hover { background: var(--glass-2); border-color: var(--line-2); }
+.sig .box { position: absolute; left: 22px; top: 24px; width: 26px; height: 26px; border-radius: 8px; border: 1.5px solid rgba(200,215,255,0.4); display: grid; place-items: center; transition: all 200ms; z-index: 1; }
+.sig .box svg { width: 14px; height: 14px; opacity: 0; transform: scale(0.6); transition: all 200ms var(--ease); }
+.sig[aria-pressed="true"] { border-color: var(--blue-2); background: rgba(61,123,255,0.18); box-shadow: 0 0 40px -10px var(--blue); }
+.sig[aria-pressed="true"] .box { background: var(--blue); border-color: var(--blue-2); box-shadow: 0 0 14px var(--blue); }
+.sig[aria-pressed="true"] .box svg { opacity: 1; transform: none; }
+.sig strong { display: block; font-family: var(--display); font-weight: 600; font-size: 19px; line-height: 1.2; margin-bottom: 6px; letter-spacing: -0.015em; color: #fff; }
+.sig span.sub { display: block; color: var(--ink-2); font-size: 15px; }
+.verdict { padding: 30px; position: sticky; top: 92px; }
+.verdict .meter { display: flex; gap: 6px; margin-bottom: 22px; }
+.verdict .meter i { flex: 1; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.1); transition: all 300ms; }
+.verdict .meter i.on { background: var(--blue-2); box-shadow: 0 0 10px var(--blue-2); }
+.verdict .k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+.verdict h3 { font-size: clamp(26px, 2.6vw, 34px); margin-bottom: 12px; transition: opacity 200ms; color: #fff; }
+.verdict p { color: var(--ink-2); margin-bottom: 22px; transition: opacity 200ms; }
+.verdict .fade { opacity: 0; }
+@media (max-width: 860px) { .fitgrid { grid-template-columns: minmax(0,1fr); } .verdict { position: static; } }
+
+/* ---------- rhythm ---------- */
+.clocks { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; margin: 30px 0 24px; }
+.clock { padding: 26px 28px; }
+.clock .k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.clock b { display: block; font-family: var(--display); font-weight: 300; font-size: clamp(44px, 5vw, 64px); letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; color: #fff; }
+.clock span { display: block; color: var(--ink-2); margin-top: 8px; font-size: 15px; }
+.overnight { border-left: 2px solid var(--blue-2); box-shadow: -1px 0 12px -4px var(--blue); padding: 4px 0 4px 22px; font-family: var(--display); font-weight: 400; font-size: clamp(19px, 2vw, 25px); line-height: 1.35; letter-spacing: -0.015em; max-width: 40ch; color: #fff; }
+.overnight em { font-style: normal; color: var(--blue-2); }
+@media (max-width: 700px) { .clocks { grid-template-columns: minmax(0,1fr); } }
+
+/* ---------- about ---------- */
+.about .wrap { display: grid; grid-template-columns: minmax(0,0.9fr) minmax(0,1.1fr); gap: clamp(28px, 5vw, 70px); align-items: start; }
+.about p { color: var(--ink-2); font-size: 16.5px; }
+.about .arc { margin-top: 26px; border-top: 1px solid var(--line); }
+.about .arc div { display: grid; grid-template-columns: 96px 1fr; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+.about .arc div span:first-child { font-family: var(--mono); font-size: 11px; color: var(--muted); padding-top: 4px; }
+@media (max-width: 820px) { .about .wrap { grid-template-columns: minmax(0,1fr); } }
+
+/* ---------- contact ---------- */
+.contact { padding-bottom: 0; }
+.contact .glass { padding: clamp(36px, 6vw, 72px); overflow: hidden; }
+.contact .glass .glow { position: absolute; right: -140px; top: -180px; width: 440px; height: 440px; border-radius: 50%; background: radial-gradient(circle, #2653d6 0%, #0b2494 30%, transparent 68%); filter: blur(50px); opacity: 0.4; pointer-events: none; mix-blend-mode: screen; }
+@media (max-width: 900px) { .contact .glass .glow { width: 260px; height: 260px; right: -120px; top: -140px; opacity: 0.35; } }
+.contact h2 { font-size: clamp(36px, 5.4vw, 68px); margin-bottom: 18px; position: relative; }
+.contact .lede { position: relative; }
+.contact .ctas { margin-top: 28px; position: relative; }
+.contact .email { font-family: var(--mono); font-size: 14px; margin-top: 22px; color: var(--ink-2); position: relative; }
+.contact .email a { color: #fff; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--line-2); }
+footer { margin-top: clamp(50px, 7vw, 90px); border-top: 1px solid var(--line); padding: 26px 0 34px; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; }
+footer a { color: var(--ink-2); }
+footer a:hover { color: #fff; }
+
+/* guards against host page CSS (Zoho template) recoloring or relaying our elements */
+#top, #nav { color: var(--ink); font-family: var(--sans); }
+#top h1, #top h2, #top h3, #top h4 { color: #fff; font-family: var(--display); }
+#nav .brand { color: #fff; }
+#top .grad { color: transparent; }
+#top .sig { display: block; width: 100%; }
+#top .sig strong, #top .sig .sub { display: block; }
+#top table { border-spacing: 0; }
+#top ul, #top ol { list-style: none; }
+
+@media print {
+  .bg, .nav, .fig-foot, .ctas, footer { display: none !important; }
+  body { background: #fff; color: #000; }
+  .glass { background: none; border-color: #ccc; box-shadow: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg" id="bg" aria-hidden="true"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="dots"></div></div>
+
+<div class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Dev Sathya, home"><i aria-hidden="true"></i>Dev Sathya</a>
+    <nav class="navlinks" aria-label="Sections">
+      <a href="#thesis">Thesis</a>
+      <a href="#proof">Proof</a>
+      <a href="#method">Method</a>
+      <a href="#engage">Engagements</a>
+      <a href="#fit">Fit</a>
+      <a href="#about">About</a>
+    </nav>
+    <a class="btn g navcta" href="#contact">Talk to me</a>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow rv">Enterprise platform architecture &middot; strategy &middot; AI systems</p>
+      <h1 class="rv d1">One architect<br>who <em class="grad">also ships.</em></h1>
+      <p class="lede rv d2">I design and build complete enterprise platforms on my own. The strategic thesis, the data model, the AI pipelines, the code, and the operations that keep it running. The proof is two live platforms that would normally take a team of fifteen to thirty people and eighteen months.</p>
+      <div class="ctas rv d3">
+        <a class="btn p" href="#fit">Bring me a problem <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="btn g" href="#engage">How an engagement works</a>
+      </div>
+      <div class="hero-meta rv d4">
+        <span>Working with the US, the UK and Europe</span>
+        <span>Since 1998</span>
+      </div>
+    </div>
+
+    <figure class="fig glass rv d2" aria-label="Animated comparison: a conventional team versus one architect">
+      <div class="fig-head"><strong>Why one person is faster than a team</strong><span>live</span></div>
+      <div class="figscroll"><svg viewBox="0 0 600 300" id="handoff" role="img" aria-hidden="true">
+        <text class="lane-label" x="20" y="24">A conventional team</text>
+        <text class="days" id="aDays" x="580" y="24" text-anchor="end">Day 0</text>
+        <line class="track" x1="70" y1="72" x2="530" y2="72"/>
+        <g class="node" id="an0"><rect x="20" y="52" width="100" height="40"/><text x="70" y="77" text-anchor="middle">Strategist</text></g>
+        <g class="node" id="an1"><rect x="170" y="52" width="100" height="40"/><text x="220" y="77" text-anchor="middle">Architect</text></g>
+        <g class="node" id="an2"><rect x="320" y="52" width="100" height="40"/><text x="370" y="77" text-anchor="middle">Team of 20</text></g>
+        <g class="node" id="an3"><rect x="470" y="52" width="110" height="40"/><text x="525" y="77" text-anchor="middle">Operations</text></g>
+        <circle class="dot-halo" id="aHalo" cx="70" cy="72" r="12"/>
+        <circle class="dot" id="aDot" cx="70" cy="72" r="5"/>
+        <text class="status" id="aStatus" x="20" y="118">Writing the requirement</text>
+        <text class="queue" id="aQueue" x="580" y="118" text-anchor="end"></text>
+        <line class="divider" x1="20" y1="146" x2="580" y2="146" stroke-width="1"/>
+        <text class="lane-label" x="20" y="176">One architect</text>
+        <text class="days" id="bDays" x="580" y="176" text-anchor="end">Day 0</text>
+        <circle class="solo-ring" id="bRing" cx="70" cy="240" r="30"/>
+        <circle class="solo-core" cx="70" cy="240" r="6"/>
+        <circle class="dot" id="bDot" cx="70" cy="210" r="5"/>
+        <text class="solo-label" id="bl0" x="130" y="222">Thesis</text>
+        <text class="solo-label" id="bl1" x="190" y="222">Architecture</text>
+        <text class="solo-label" id="bl2" x="290" y="222">Build</text>
+        <text class="solo-label" id="bl3" x="340" y="222">Run</text>
+        <text class="status" id="bStatus" x="130" y="252">Pushing on the premise</text>
+        <g class="live-badge" id="bLive" opacity="0"><rect x="480" y="226" width="100" height="24"/><text x="530" y="242" text-anchor="middle">LIVE</text></g>
+      </svg></div>
+      <figcaption class="fig-foot"><span>Same problem. Same day counter. Handoffs are the difference.</span><button type="button" id="replay">Replay</button></figcaption>
+    </figure>
+  </div>
+</header>
+
+<!-- ================= THESIS ================= -->
+<section id="thesis">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow rv">The thesis</p>
+      <h2 class="rv d1">Enterprise software is slow because of handoffs, not because of typing.</h2>
+      <p class="lede rv d2">A strategist writes a requirement. An architect turns it into a design. A team writes the code. Another team runs it. Every handoff loses information and adds a queue. I remove the handoffs by being all four.</p>
+    </div>
+    <div class="three">
+      <div class="glass rv"><div class="n">01</div><h3>Remove the handoffs</h3><p>One person owns the thesis, the architecture, the build and the operations. Nothing gets lost between people, because there is no between.</p></div>
+      <div class="glass rv d1"><div class="n">02</div><h3>Replace them with rules</h3><p>Locked contracts and enforced boundaries instead of coordination meetings. The build itself refuses anything that breaks the rules.</p></div>
+      <div class="glass rv d2"><div class="n">03</div><h3>Keep the discipline</h3><p>Phase gates, written records and honest scope, so nothing is lost to speed. Every decision survives after I am gone.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROOF ================= -->
+<section id="proof">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow rv">The proof</p>
+      <h2 class="rv d1">Two enterprise platforms. <span class="grad">One person.</span></h2>
+      <p class="lede rv d2">Each would conventionally need a product team of fifteen to thirty people and eighteen months. I designed, built and operate both as the sole architect and engineer. Both are in use today.</p>
+    </div>
+    <div class="plats">
+      <article class="plat glass rv">
+        <div class="k">Platform one</div>
+        <h3>Cognitive crisis rehearsal</h3>
+        <p>A text prompt becomes a branching, AI-driven crisis exercise in about ninety seconds. It runs live against an executive team, scores decision quality with plain arithmetic, and seals the evidence. There is no language model anywhere in the scoring path.</p>
+        <div class="stats">
+          <div class="stat"><b data-count="22">0</b><span>backend services</span></div>
+          <div class="stat"><b data-count="4">0</b><span>applications</span></div>
+          <div class="stat"><b data-count="1100" data-prefix="~">0</b><span>source files</span></div>
+          <div class="stat"><b data-count="28">0</b><span>governed AI agents</span></div>
+          <div class="stat"><b data-count="6">0</b><span>exercise delivery modes</span></div>
+          <div class="stat"><b data-count="12">0</b><span>compliance frameworks mapped</span></div>
+        </div>
+      </article>
+      <article class="plat glass rv d1">
+        <div class="k">Platform two</div>
+        <h3>Incident command and defensibility</h3>
+        <p>One governed picture for the commander, security operations, legal, communications and the executive team during a live incident. Board, regulator and insurer evidence is produced as a byproduct of the work, not written afterwards.</p>
+        <div class="stats">
+          <div class="stat"><b data-count="89">0</b><span>backend modules</span></div>
+          <div class="stat"><b data-count="126">0</b><span>data models, six domains</span></div>
+          <div class="stat"><b data-count="58">0</b><span>role-gated capability modules</span></div>
+          <div class="stat"><b data-count="41">0</b><span>permissions across 12 roles</span></div>
+          <div class="stat"><b data-count="11">0</b><span>live connectors</span></div>
+          <div class="stat"><b data-count="3">0</b><span>sealed export types</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="more rv">
+      <h3>And five more systems, in five other domains</h3>
+      <p>The core is not about cyber security. Scenario synthesis, decision capture, deterministic scoring and an evidence chain apply just as well to finance, compliance, construction and sales.</p>
+      <div class="tablewrap">
+      <table class="ledger">
+        <thead><tr><th>System</th><th>Domain</th><th>What it proves</th></tr></thead>
+        <tbody>
+          <tr><td>Messaging-first compliance co-pilot</td><td>SME regulation</td><td>20 feature modules, 564 passing tests, 12 languages, any messaging channel</td></tr>
+          <tr><td>Document-to-register extraction</td><td>Construction specifications</td><td>A seven layer self-improving AI pipeline with a measured autonomy rate</td></tr>
+          <tr><td>Revenue reconciliation and ledger control</td><td>Short-stay rental finance</td><td>Money math centralized and unit-tested, every financial action audited</td></tr>
+          <tr><td>Vertical marketplace</td><td>Specialist recruitment</td><td>Programmatic search architecture and real billing, end to end, with no vendor keys</td></tr>
+          <tr><td>Agentic outbound engine</td><td>Sales operations</td><td>A multi-agent research and drafting pipeline, with a human approval before anything sends</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="nda">Platform names and clients are withheld here on purpose. Full architecture walkthroughs are available on a call, under NDA.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= METHOD ================= -->
+<section id="method">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow rv">The method</p>
+      <h2 class="rv d1">Strategic and hands-on, in the same week.</h2>
+      <p class="lede rv d2">Most enterprises have to pick. They hire a strategist who cannot ship, or a builder who needs to be told what to build. Here is what both halves look like in practice. None of it is proprietary. All of it is applied without exception.</p>
+    </div>
+    <div class="halves">
+      <div class="half glass rv">
+        <div class="k">The strategic half</div>
+        <div class="rule"><div class="i">S1</div><div><h4>Start from the competitive gap, not a feature list.</h4><p>On one platform I mapped eight competitors across two cohorts, found the five capabilities none of them combined, and made those five the build plan.</p></div></div>
+        <div class="rule"><div class="i">S2</div><div><h4>Design for the objection that kills the deal.</h4><p>A regulated buyer will not accept "your data is safe with us." So data residency became a tier ladder in the architecture, enforced at one chokepoint, with an attestation the buyer can call.</p></div></div>
+        <div class="rule"><div class="i">S3</div><div><h4>Write down what you will not claim.</h4><p>Every platform carries a claim discipline table separating what the code does from what marketing would like to say. That table has closed more technical reviews than any demo.</p></div></div>
+        <div class="rule"><div class="i">S4</div><div><h4>Plan the scope cuts, and say so.</h4><p>Four frameworks fully built, eight structured and pending. Three connectors wired, five stubbed. Written into the build report on the day, with a path back.</p></div></div>
+      </div>
+      <div class="half glass rv d1">
+        <div class="k">The execution half</div>
+        <div class="rule"><div class="i">E1</div><div><h4>Contracts before code.</h4><p>Shared API contracts, an event envelope, an error model and a permission list are locked before any service is written. Nothing downstream may edit them.</p></div></div>
+        <div class="rule"><div class="i">E2</div><div><h4>One publisher per event topic.</h4><p>Enforced by a build check. If a service publishes a topic it does not own, the build fails. It is the most useful debugging property in the system.</p></div></div>
+        <div class="rule"><div class="i">E3</div><div><h4>Prove isolation with a test, not a policy.</h4><p>A golden test tries a cross-tenant read and requires the database to refuse it. That test is the artifact an auditor asks for.</p></div></div>
+        <div class="rule"><div class="i">E4</div><div><h4>Gate every phase, in writing.</h4><p>Every score a board or an insurer will read is checked against a number worked out by hand. Every gate leaves a record of what was fixed, what was deferred, and why.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GOVERNED AI ================= -->
+<section id="governed">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow rv">Governed AI</p>
+      <h2 class="rv d1">One gate, and no side doors.</h2>
+      <p class="lede rv d2">Every model call in the codebase passes through the same funnel. A conformance test fails the build if any path bypasses it. Model output can only propose a typed action. A human with the right permission executes it. Injection can propose. It can never act.</p>
+    </div>
+
+    <h3 class="rv">How a request is governed</h3>
+    <p class="muted rv d1" style="margin:6px 0 0">Every request passes the same six layers. Deliberately boring, and that is the point. Click a layer.</p>
+    <div class="chain">
+      <ol class="steps glass rv" id="steps">
+        <li class="step on" data-i="0"><span class="b">1</span><span class="t">Environment<small>Demonstration or live. The two never share data.</small></span></li>
+        <li class="step" data-i="1"><span class="b">2</span><span class="t">Request context<small>Tenant, organization, user and roles from the token.</small></span></li>
+        <li class="step" data-i="2"><span class="b">3</span><span class="t">Correlation<small>One identifier follows the request everywhere.</small></span></li>
+        <li class="step" data-i="3"><span class="b">4</span><span class="t">Tenancy guard<small>Rejects anything ambiguous.</small></span></li>
+        <li class="step" data-i="4"><span class="b">5</span><span class="t">Access control<small>Permission on the route against resolved grants.</small></span></li>
+        <li class="step" data-i="5"><span class="b">6</span><span class="t">Row-level security<small>The database itself refuses unscoped queries.</small></span></li>
+      </ol>
+      <div class="panel glass rv d1" id="panel" aria-live="polite">
+        <div class="k" id="pk">Layer 1 of 6</div>
+        <h4 id="ph">Environment</h4>
+        <p id="pp">Sets demonstration or live context. The two never share data, so a demo tenant can never leak into a real one.</p>
+        <div class="why" id="pw">Why it matters: a prospect can play with a full copy of the system with no risk to a live customer.</div>
+      </div>
+    </div>
+
+    <div class="claims rv">
+      <h3>What I will not say</h3>
+      <p>This table is written during the build, not after. It separates what the system does from what would sell better. It is yours to use in your own reviews.</p>
+      <div class="tablewrap">
+      <table class="claim">
+        <thead><tr><th>Capability</th><th>What I will say</th><th>What I will not say</th></tr></thead>
+        <tbody>
+          <tr><td>Evidence chain</td><td>Every action produces a hash-chained record</td><td>Blockchain-verified</td></tr>
+          <tr><td>Sealed exports</td><td>Sealed documents with fingerprints and a page where you can check them</td><td>Digitally signed, or notarized</td></tr>
+          <tr><td>Custody ledger</td><td>Chain of custody for every access</td><td>Tamper-proof</td></tr>
+          <tr><td>Retention</td><td>Enforced by code, with legal hold</td><td>Storage-layer immutability</td></tr>
+          <tr><td>Integrations</td><td>Connectors built, credentials needed to run live</td><td>Automated integration, unqualified</td></tr>
+          <tr><td>AI role</td><td>Assists with briefing and drafting</td><td>AI-powered detection</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ENGAGEMENTS ================= -->
+<section id="engage">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow rv">Working together</p>
+      <h2 class="rv d1">Three formats. Fixed price, agreed before we start.</h2>
+      <p class="lede rv d2">Most proposals are vague about what actually arrives. That vagueness protects the consultant and costs the client. Here it is the other way round. If something is not listed, it is not in scope, and you should ask for it.</p>
+    </div>
+    <div class="formats">
+      <article class="fmt glass rv">
+        <div class="dur">5 to 10 working days</div>
+        <h3>Problem conversion sprint</h3>
+        <p class="when">When you are not yet sure the problem is solvable, or worth solving.</p>
+        <ul>
+          <li>A one page written thesis</li>
+          <li>A target architecture, with the reasoning</li>
+          <li>A working output you can put in front of a person</li>
+          <li>Decision records and an honest scope statement</li>
+          <li>A go or stop recommendation, including the case against</li>
+        </ul>
+      </article>
+      <article class="fmt glass rv d1">
+        <div class="dur">3 to 8 weeks</div>
+        <h3>Build engagement</h3>
+        <p class="when">When the problem is shaped and you want the working system.</p>
+        <ul>
+          <li>Six phases, each with a written gate condition</li>
+          <li>A working increment at every gate</li>
+          <li>The end-to-end test passes on your infrastructure, not mine</li>
+          <li>A nine document handover set</li>
+          <li>A confidence rating on every workflow: high, medium or low</li>
+        </ul>
+      </article>
+      <article class="fmt glass rv d2">
+        <div class="dur">Monthly</div>
+        <h3>Advisory or retained capacity</h3>
+        <p class="when">When you have a team, and what you are short of is someone senior to argue with.</p>
+        <ul>
+          <li>Working sessions in your morning</li>
+          <li>Written architecture review, every month</li>
+          <li>Decision records for every significant choice</li>
+          <li>Target architectures and interface contracts as needed</li>
+          <li>Challenge, from someone with no stake in the last decision</li>
+        </ul>
+      </article>
+    </div>
+    <div class="includes rv">
+      <span>Plain language</span><span>No status theater</span><span>Honest scope</span><span>Decision records</span><span>Claim discipline</span>
+    </div>
+
+    <div class="ten rv">
+      <h3>How the ten days run</h3>
+      <p>A problem conversion sprint, day by day. Hover or tap a day.</p>
+      <div class="track" id="track" role="tablist" aria-label="Days of the sprint"></div>
+      <div class="dayout glass" id="dayout">
+        <div class="k">Day<b id="dNum">1</b></div>
+        <div><h4 id="dTitle"></h4><p id="dBody"></p><span class="gate-tag" id="dGate" hidden></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FIT ================= -->
+<section id="fit">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow rv">Bring me a problem</p>
+      <h2 class="rv d1">Three signals that a problem fits.</h2>
+      <p class="lede rv d2">If a problem has all three, bring it. If it has two, it is still a good fit. If it has none, someone cheaper can do it and I will say so. Tick the ones that are true for you.</p>
+    </div>
+    <div class="fitgrid">
+      <div class="signals rv">
+        <button class="sig glass" type="button" aria-pressed="false" data-sig="scrutiny">
+          <span class="box"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>
+          <strong>The output has to survive scrutiny.</strong>
+          <span class="sub">A regulator, an insurer, a court or an auditor will eventually read it. Getting the answer right is not enough. You have to be able to show your work.</span>
+        </button>
+        <button class="sig glass" type="button" aria-pressed="false" data-sig="ai">
+          <span class="box"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>
+          <strong>AI is in the loop, and that worries someone.</strong>
+          <span class="sub">A data protection officer, a risk officer or your general counsel has asked what happens to the data and who is accountable for the answer.</span>
+        </button>
+        <button class="sig glass" type="button" aria-pressed="false" data-sig="year">
+          <span class="box"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>
+          <strong>A conventional team would take a year.</strong>
+          <span class="sub">The problem is real and shaped, but the business case will not survive a twelve month build and a fifteen person team.</span>
+        </button>
+      </div>
+      <div class="verdict glass rv d1" id="verdict">
+        <div class="meter" aria-hidden="true"><i id="m0"></i><i id="m1"></i><i id="m2"></i></div>
+        <div class="k" id="vk">0 of 3 signals</div>
+        <h3 id="vh">Tick what is true.</h3>
+        <p id="vp">Be honest. The verdict is only useful if the inputs are.</p>
+        <a class="btn p" id="vcta" href="mailto:hello@devsathya.com?subject=A%20problem%20for%20you">Write to me <span class="arrow" aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RHYTHM ================= -->
+<section id="rhythm">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow rv">The delivery rhythm</p>
+      <h2 class="rv d1">I build while you sleep.</h2>
+      <p class="lede rv d2">I work from India. Working sessions happen in your morning. Deliverables are turned around overnight, your time. Most clients find that is an advantage rather than a compromise.</p>
+    </div>
+    <div class="clocks rv">
+      <div class="clock glass"><div class="k">Where you are</div><b id="cYou">--:--</b><span id="cYouZ">Detecting your timezone</span></div>
+      <div class="clock glass"><div class="k">India</div><b id="cInd">--:--</b><span>India Standard Time, where the building happens</span></div>
+    </div>
+    <p class="overnight rv d1" id="overnight">You go home with an open question. It is answered before you open your laptop.</p>
+    <p class="muted rv d2" style="max-width:62ch; margin-top:22px; font-size:15px;">For UK clients, a UK based point of contact handles introductions, scoping and the commercial relationship, so there is always someone in your timezone. A thirty minute scoping call is enough to say whether a problem can be turned around, and how quickly.</p>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="about">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow rv">The person</p>
+      <h2 class="rv d1">Entrepreneur since 1998. Builder every day since.</h2>
+    </div>
+    <div class="rv d2">
+      <p>I founded my first company in 1998 and have been building ever since. Before that I was part of the team that launched India's first GSM mobile service with Tata. Later I ran Dell's four billion dollar UK consumer business from India. Between 2012 and 2016 I built image recognition products, long before it was fashionable.</p>
+      <p>By day I lead strategy for a cyber incident readiness company. The rest of the time I take on a small number of engagements each quarter, the kind where you need a working system, not a report.</p>
+      <p>Different fields on the surface. Underneath, the same question every time: how do you build something that holds up under pressure and can prove what happened?</p>
+      <div class="arc">
+        <div><span>Now</span><span>Enterprise platform architecture, strategy and governed AI systems</span></div>
+        <div><span>2012 to 2016</span><span>Image AI products, founder</span></div>
+        <div><span>2000s</span><span>Dell, UK consumer operations, run from India</span></div>
+        <div><span>1998</span><span>First company founded</span></div>
+        <div><span>1990s</span><span>Tata, India's first GSM launch team</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="glass rv">
+      <div class="glow" aria-hidden="true"></div>
+      <p class="eyebrow">Next step</p>
+      <h2>A thirty minute call<br>is <span class="grad">enough.</span></h2>
+      <p class="lede">Enough to say whether your problem can be turned around, and how quickly. No deck. If it is not a fit, I will tell you who to call instead.</p>
+      <div class="ctas">
+        <a class="btn p" href="mailto:hello@devsathya.com?subject=A%20thirty%20minute%20call">Email me <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="btn g" href="https://www.linkedin.com/in/devaprakash/" rel="me noopener">LinkedIn</a>
+      </div>
+      <p class="email"><a href="mailto:hello@devsathya.com">hello@devsathya.com</a></p>
+    </div>
+  </div>
+  <footer>
+    <div class="wrap">
+      <span>Dev Sathya</span>
+      <span><a href="https://www.linkedin.com/in/devaprakash/" rel="me noopener">LinkedIn</a></span>
+      <span>&copy; 2026 &middot; devsathya.com</span>
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function () {
+  var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function $(id) { return document.getElementById(id); }
+
+  /* ---------- nav ---------- */
+  var nav = $("nav");
+  function onScroll() { nav.classList.toggle("solid", window.scrollY > 24); }
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+  var links = Array.prototype.slice.call(document.querySelectorAll(".navlinks a"));
+  var secs = links.map(function (a) { return document.querySelector(a.getAttribute("href")); });
+  if ("IntersectionObserver" in window) {
+    var spy = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (a) { a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id); });
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    secs.forEach(function (s) { if (s) spy.observe(s); });
+  }
+
+  /* ---------- reveal ---------- */
+  var rv = document.querySelectorAll(".rv");
+  if (reduced || !("IntersectionObserver" in window)) { rv.forEach(function (n) { n.classList.add("in"); }); }
+  else {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    rv.forEach(function (n) { io.observe(n); });
+    var vh = window.innerHeight || 800;
+    rv.forEach(function (n) { if (n.getBoundingClientRect().top < vh) { n.classList.add("in"); io.unobserve(n); } });
+  }
+
+  /* ---------- count-ups ---------- */
+  var counters = document.querySelectorAll("[data-count]");
+  function fmt(n) { return n.toLocaleString("en-US"); }
+  function runCount(el) {
+    var target = +el.getAttribute("data-count"), prefix = el.getAttribute("data-prefix") || "";
+    if (reduced) { el.textContent = prefix + fmt(target); return; }
+    var t0 = null, dur = 1200 + Math.min(target, 400);
+    function tick(t) {
+      if (!t0) t0 = t;
+      var p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = prefix + fmt(Math.round(target * e));
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  if ("IntersectionObserver" in window) {
+    var co = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { runCount(e.target); co.unobserve(e.target); } });
+    }, { threshold: 0.6 });
+    counters.forEach(function (c) { co.observe(c); });
+  } else { counters.forEach(runCount); }
+
+  /* ---------- handoff animation ---------- */
+  var A = [
+    { n: 0, from: 0,   to: 90,  s: "Writing the requirement" },
+    { q: 1, from: 90,  to: 150, s: "Waiting for a design slot", qtxt: "queue: 60 days" },
+    { n: 1, from: 150, to: 240, s: "Design, then design review" },
+    { q: 2, from: 240, to: 300, s: "Waiting for a team to free up", qtxt: "queue: 60 days" },
+    { n: 2, from: 300, to: 480, s: "Sprint 1 of 24" },
+    { q: 3, from: 480, to: 510, s: "Release train, change board", qtxt: "queue: 30 days" },
+    { n: 3, from: 510, to: 540, s: "Handover and hypercare" }
+  ];
+  var B = [
+    { l: 0, from: 0,  to: 4,  s: "Pushing on the premise" },
+    { l: 1, from: 4,  to: 10, s: "Contracts locked before code" },
+    { l: 2, from: 10, to: 45, s: "Working increments, visible as they land" },
+    { l: 3, from: 45, to: 56, s: "Hardening the parts that matter" }
+  ];
+  var NX = [70, 220, 370, 525], TOTAL = 540, MS_PER_DAY = 26, HOLD = 3200;
+  var raf = null, start = null;
+  function setNode(i, cls) { var n = $("an" + i); n.setAttribute("class", "node" + (cls ? " " + cls : "")); }
+  function frame(t) {
+    if (!start) start = t;
+    var day = (t - start) / MS_PER_DAY;
+    if (day > TOTAL + HOLD / MS_PER_DAY) { start = t; day = 0; }
+    var d = Math.min(day, TOTAL);
+    $("aDays").textContent = "Day " + Math.floor(d);
+    var seg = A[A.length - 1];
+    for (var i = 0; i < A.length; i++) { if (d < A[i].to) { seg = A[i]; break; } }
+    var p = (d - seg.from) / (seg.to - seg.from);
+    var x, st = seg.s;
+    if (seg.n !== undefined) {
+      x = NX[seg.n];
+      for (var k = 0; k < 4; k++) setNode(k, k < seg.n ? "done" : (k === seg.n ? "on" : ""));
+      if (seg.n === 2) st = "Sprint " + (1 + Math.floor(p * 24)) + " of 24";
+      $("aQueue").textContent = "";
+    } else {
+      x = NX[seg.q - 1] + (NX[seg.q] - NX[seg.q - 1]) * p;
+      for (var k2 = 0; k2 < 4; k2++) setNode(k2, k2 < seg.q ? "done" : "");
+      $("aQueue").textContent = seg.qtxt;
+    }
+    if (d >= TOTAL) { st = "Live on day 540"; for (var k3 = 0; k3 < 4; k3++) setNode(k3, "done"); x = NX[3]; }
+    $("aDot").setAttribute("cx", x); $("aHalo").setAttribute("cx", x);
+    $("aHalo").setAttribute("r", 9 + 4 * Math.sin(t / 220));
+    $("aStatus").textContent = st;
+    var bd = Math.min(d, 56);
+    $("bDays").textContent = "Day " + Math.floor(bd);
+    var bseg = B[B.length - 1];
+    for (var j = 0; j < B.length; j++) { if (bd < B[j].to) { bseg = B[j]; break; } }
+    for (var m = 0; m < 4; m++) $("bl" + m).setAttribute("class", "solo-label" + (bd >= 56 || m === bseg.l ? " on" : ""));
+    var ang = (bd / 56) * Math.PI * 2 - Math.PI / 2;
+    $("bDot").setAttribute("cx", 70 + 30 * Math.cos(ang)); $("bDot").setAttribute("cy", 240 + 30 * Math.sin(ang));
+    if (bd < 56) { $("bStatus").textContent = bseg.s; $("bRing").setAttribute("class", "solo-ring"); $("bLive").setAttribute("opacity", "0"); }
+    else {
+      var since = Math.floor(d) - 56;
+      $("bStatus").textContent = since > 0 ? "In production for " + since + " days while the team is still building" : "Live on day 56";
+      $("bRing").setAttribute("class", "solo-ring live"); $("bLive").setAttribute("opacity", "1");
+    }
+    raf = requestAnimationFrame(frame);
+  }
+  function startAnim() { if (raf) cancelAnimationFrame(raf); start = null; raf = requestAnimationFrame(frame); }
+  if (reduced) {
+    $("aDays").textContent = "Day 540"; $("bDays").textContent = "Day 56"; $("aStatus").textContent = "Live on day 540";
+    $("bStatus").textContent = "Live on day 56, in production for 484 days"; $("bLive").setAttribute("opacity", "1");
+    $("aDot").setAttribute("cx", NX[3]); $("aHalo").setAttribute("cx", NX[3]);
+  } else { startAnim(); }
+  $("replay").addEventListener("click", startAnim);
+
+  /* ---------- governed request chain ---------- */
+  var LAYERS = [
+    ["Environment", "Sets demonstration or live context. The two never share data, so a demo tenant can never leak into a real one.", "A prospect can play with a full copy of the system with no risk to a live customer."],
+    ["Request context", "Extracts the tenant, organization, user and roles from the bearer token. Nothing downstream trusts anything the client sent in the body.", "Identity is decided once, at the edge, and every later layer reads the same answer."],
+    ["Correlation", "Attaches an identifier that follows the request across every service and into the logs.", "When something goes wrong, one search finds every hop the request took."],
+    ["Tenancy guard", "Validates tenant and organization scoping. Rejects anything ambiguous rather than guessing.", "Ambiguity is where cross-tenant leaks come from. Refusing is cheaper than being clever."],
+    ["Access control", "Checks the permission on the route against the user's resolved grants. Twelve roles, forty one permissions, one place to look.", "A reviewer can read the permission matrix and see exactly who can do what."],
+    ["Row-level security", "The database itself refuses any query that is missing the tenant session variable.", "Layer six does not depend on layer four. If application code forgets to scope a query, the database refuses it anyway."]
+  ];
+  var steps = document.querySelectorAll("#steps .step");
+  function pick(i) {
+    steps.forEach(function (s) { s.classList.toggle("on", +s.getAttribute("data-i") === i); });
+    $("pk").textContent = "Layer " + (i + 1) + " of 6"; $("ph").textContent = LAYERS[i][0]; $("pp").textContent = LAYERS[i][1]; $("pw").textContent = "Why it matters: " + LAYERS[i][2];
+  }
+  steps.forEach(function (s) {
+    s.setAttribute("tabindex", "0");
+    var go = function () { pick(+s.getAttribute("data-i")); };
+    s.addEventListener("click", go); s.addEventListener("mouseenter", go); s.addEventListener("focus", go);
+    s.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+  });
+
+  /* ---------- ten days ---------- */
+  var DAYS = [
+    ["Problem interrogation", "I push on the premise before accepting it. What is the problem behind the problem, who owns it, and what would make you stop?", false],
+    ["The thesis, in writing", "One page. Who the buyer is, what the alternatives fail to combine, and the objection that kills the deal. You have it by the end of today.", true],
+    ["Target architecture and the phase plan", "The service topology, the data model and the key decisions, with the reasoning. This is the checkpoint where you can stop cheaply.", true],
+    ["Build begins", "Contracts locked, repository and pipeline up. The first thin slice runs end to end before anything is made pretty.", false],
+    ["Working increment", "Real input, real output. You see it land, on a machine that is not mine.", false],
+    ["Working increment", "The main workflow is wired. Decision records written as the choices are made, not reconstructed later.", false],
+    ["Working increment", "Integrations and the parts that touch your data. Anything partial is named as partial.", false],
+    ["Working increment", "The last build day. What is real, what is partial and what is not built gets written down as it stands.", false],
+    ["Hardening and the honest scope statement", "The parts that matter get hardened. The scope statement says exactly what you could verify yourself.", false],
+    ["Walkthrough, handover, go or stop", "The recommendation includes the argument against it, not just for it. Then it is yours.", true]
+  ];
+  var track = $("track"), auto = null, cur = 0;
+  DAYS.forEach(function (d, i) {
+    var b = document.createElement("button"); b.type = "button"; b.className = "day" + (d[2] ? " gate" : ""); b.setAttribute("role", "tab");
+    b.innerHTML = "<b>" + (i + 1) + "</b>" + (d[2] ? "gate" : "day");
+    var go = function () { showDay(i); stopAuto(); };
+    b.addEventListener("mouseenter", go); b.addEventListener("click", go); b.addEventListener("focus", go);
+    track.appendChild(b);
+  });
+  function showDay(i) {
+    cur = i;
+    track.querySelectorAll(".day").forEach(function (b, j) { b.classList.toggle("on", j === i); b.setAttribute("aria-selected", j === i ? "true" : "false"); });
+    $("dNum").textContent = i + 1; $("dTitle").textContent = DAYS[i][0]; $("dBody").textContent = DAYS[i][1];
+    var g = $("dGate"); g.hidden = !DAYS[i][2]; g.textContent = i === 9 ? "Handover gate" : i === 1 ? "Thesis gate" : "Stop cheaply here";
+  }
+  function stopAuto() { if (auto) { clearInterval(auto); auto = null; } }
+  showDay(0);
+  if (!reduced) auto = setInterval(function () { showDay((cur + 1) % 10); }, 2600);
+
+  /* ---------- fit ---------- */
+  var sigs = document.querySelectorAll(".sig");
+  var VERD = [
+    ["Someone cheaper can probably do it.", "And I will say so. But if you think I am wrong about your problem, write to me anyway and tell me why."],
+    ["Maybe, and I will tell you straight.", "With one signal, someone cheaper may do it well. If that is true I will say so on the call, and point you at them."],
+    ["Still a good fit.", "Two of three is enough. A thirty minute call is enough to say how quickly it can be turned around."],
+    ["Bring it.", "This is exactly the kind of problem I am for. Scrutiny, governed AI, and a timeline a conventional team cannot meet."]
+  ];
+  var NAMES = { scrutiny: "the output has to survive scrutiny", ai: "AI is in the loop and it worries someone", year: "a conventional team would take a year" };
+  function updateFit() {
+    var on = [];
+    sigs.forEach(function (s) { if (s.getAttribute("aria-pressed") === "true") on.push(s.getAttribute("data-sig")); });
+    var n = on.length;
+    for (var i = 0; i < 3; i++) $("m" + i).classList.toggle("on", i < n);
+    $("vk").textContent = n + " of 3 signals";
+    var h = $("vh"), p = $("vp");
+    h.classList.add("fade"); p.classList.add("fade");
+    setTimeout(function () {
+      h.textContent = VERD[n][0]; p.textContent = VERD[n][1];
+      h.classList.remove("fade"); p.classList.remove("fade");
+    }, 160);
+    var subject = n ? "A problem with " + n + " of 3 signals" : "A problem for you";
+    var body = "Hi Dev,%0A%0A" + (n ? "My problem has these signals: " + on.map(function (k) { return NAMES[k]; }).join("; ") + ".%0A%0A" : "") + "Here is the problem in two sentences:%0A%0A";
+    $("vcta").href = "mailto:hello@devsathya.com?subject=" + encodeURIComponent(subject) + "&body=" + body;
+  }
+  sigs.forEach(function (s) {
+    s.addEventListener("click", function () {
+      s.setAttribute("aria-pressed", s.getAttribute("aria-pressed") === "true" ? "false" : "true");
+      updateFit();
+    });
+  });
+
+  /* ---------- clocks ---------- */
+  function two(n) { return (n < 10 ? "0" : "") + n; }
+  function offsetMin(tz, d) {
+    var s = new Intl.DateTimeFormat("en-US", { timeZone: tz, hour12: false, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit" }).formatToParts(d);
+    var o = {}; s.forEach(function (p) { o[p.type] = p.value; });
+    var asUTC = Date.UTC(+o.year, +o.month - 1, +o.day, +o.hour % 24, +o.minute, +o.second);
+    return Math.round((asUTC - d.getTime()) / 60000);
+  }
+  var youTZ; try { youTZ = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch (e) { youTZ = null; }
+  function tickClocks() {
+    var d = new Date();
+    try {
+      $("cInd").textContent = new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", hour12: false }).format(d);
+    } catch (e) { $("cInd").textContent = "--:--"; }
+    $("cYou").textContent = two(d.getHours()) + ":" + two(d.getMinutes());
+    if (youTZ) {
+      var diff = (offsetMin("Asia/Kolkata", d) - offsetMin(youTZ, d)) / 60;
+      var nice = youTZ.replace(/_/g, " ");
+      if (Math.abs(diff) < 0.5) { $("cYouZ").textContent = nice + ". We share a timezone."; $("overnight").innerHTML = "We share a timezone. Working sessions any time, and deliverables the same day."; }
+      else {
+        var ahead = diff > 0, h = Math.abs(diff), hs = (h % 1 ? h.toFixed(1) : h) + " hour" + (h === 1 ? "" : "s");
+        $("cYouZ").textContent = nice + ". India is " + hs + " " + (ahead ? "ahead" : "behind") + ".";
+        var my9 = 9 + diff, wh = Math.floor(my9), wm = Math.round((my9 - wh) * 60);
+        var endM = two(wh) + ":" + two(wm);
+        $("overnight").innerHTML = ahead
+          ? "Your <em>9:00</em> is my <em>" + endM + "</em>. You go home with an open question. It is answered before you open your laptop."
+          : "You finish your day while mine is beginning. Your evening question is <em>answered by your morning</em>.";
+      }
+    } else { $("cYouZ").textContent = "Your local time"; }
+  }
+  tickClocks(); setInterval(tickClocks, 15000);
+})();
+</script>
+</body>
+</html>

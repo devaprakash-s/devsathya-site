@@ -1,0 +1,6 @@
+# Local only, not part of the published site
+*.bak
+dist/
+ops/
+build_snippet.py
+.claude/
