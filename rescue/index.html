@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>App rescue - Dev Sathya</title>
+<!-- Unlisted page: not in the site menu, not in any sitemap, kept out of search engines. -->
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="description" content="Fixing and finishing apps built with Lovable, Bolt, Replit and similar tools. A $600 rescue audit in three days, credited in full to the fix.">
+<meta property="og:title" content="App rescue - Dev Sathya">
+<meta property="og:description" content="Your AI-built app is almost there. A $600 audit in three days, then a fixed-price fix. Credited in full if you go ahead.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.devsathya.com/rescue/">
+<meta name="theme-color" content="#01040d">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* ---------- tokens (same as the main site) ---------- */
+:root {
+  color-scheme: dark;
+  --bg: #01040d;
+  --bg-2: #040b24;
+  --ink: #e8eeff;
+  --ink-2: #b7c4ec;
+  --muted: #8391b8;
+  --line: rgba(140,170,255,0.16);
+  --line-2: rgba(140,170,255,0.28);
+  --glass: rgba(5,12,36,0.46);
+  --glass-2: rgba(8,20,58,0.6);
+  --blue: #2f5fe0;
+  --blue-2: #6f97f0;
+  --glow: #8fc0ff;
+  --green: #35d39a;
+  --red: #ff9b9b;
+  --amber: #ffd08a;
+  --display: "Sora", "Segoe UI", system-ui, sans-serif;
+  --sans: "DM Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+  --max: 1160px;
+  --gutter: clamp(16px, 5vw, 56px);
+  --ease: cubic-bezier(.2,.7,.2,1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--bg); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--sans); font-size: 17px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: hidden;
+}
+img, svg { max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+p a, .faq a, .src a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line-2); }
+::selection { background: var(--blue); color: #fff; }
+:focus-visible { outline: 2px solid var(--glow); outline-offset: 3px; }
+
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 600; letter-spacing: -0.03em; line-height: 1.02; margin: 0; text-wrap: balance; color: #fff; }
+h1 { font-size: clamp(40px, 5.4vw, 72px); }
+h2 { font-size: clamp(30px, 4vw, 50px); }
+h3 { font-size: clamp(20px, 1.8vw, 24px); line-height: 1.2; letter-spacing: -0.015em; }
+p { margin: 0 0 1em; }
+.lede { font-size: clamp(17px, 1.45vw, 20px); line-height: 1.55; color: var(--ink-2); max-width: 58ch; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue-2); margin: 0 0 22px; display: flex; align-items: center; gap: 12px; }
+.eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--blue); box-shadow: 0 0 12px var(--blue); flex: none; }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); position: relative; width: 100%; }
+section { padding: clamp(72px, 9vw, 128px) 0; position: relative; }
+.sec-head { max-width: 760px; margin-bottom: clamp(32px, 5vw, 60px); }
+.sec-head h2 { margin-bottom: 20px; }
+.sec-head .lede { margin: 0; }
+.grad { background: linear-gradient(90deg, #7fa3f5, #3d6ff0 60%, #8fc0ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* ---------- ambient background ---------- */
+.bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+  background: radial-gradient(120% 80% at 70% 10%, #04102e 0%, #020616 45%, #01040d 100%); }
+.orb { position: absolute; border-radius: 50%; filter: blur(60px); mix-blend-mode: screen; will-change: transform; }
+.o1 { width: 520px; height: 520px; right: -160px; top: -140px; background: radial-gradient(circle, #1a49d6 0%, #0b2494 35%, transparent 70%); opacity: 0.55; animation: drift 24s ease-in-out infinite alternate; }
+.o2 { width: 340px; height: 340px; right: 24%; top: 40%; background: radial-gradient(circle, #2f63e6 0%, #123bc4 40%, transparent 70%); opacity: 0.22; animation: drift 30s ease-in-out infinite alternate-reverse; }
+.o3 { width: 300px; height: 300px; left: -120px; bottom: 4%; background: radial-gradient(circle, #1231b8 0%, transparent 70%); opacity: 0.3; animation: drift 20s ease-in-out infinite alternate; }
+.dots { position: absolute; inset: 0; background-image: radial-gradient(rgba(120,160,255,0.28) 1px, transparent 1.5px); background-size: 34px 34px;
+  mask-image: radial-gradient(60% 50% at 75% 25%, #000, transparent); -webkit-mask-image: radial-gradient(60% 50% at 75% 25%, #000, transparent); }
+@keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(-60px, 40px) scale(1.12); } }
+@media (max-width: 900px) {
+  .o1 { width: 300px; height: 300px; right: -150px; top: -150px; opacity: 0.4; }
+  .o2 { width: 200px; height: 200px; right: -110px; top: 46%; opacity: 0.18; }
+  .o3 { width: 220px; height: 220px; left: -130px; bottom: -80px; opacity: 0.24; }
+  .dots { mask-image: radial-gradient(70% 30% at 80% 10%, #000, transparent); -webkit-mask-image: radial-gradient(70% 30% at 80% 10%, #000, transparent); }
+}
+@media (prefers-reduced-motion: reduce) { .orb { animation: none !important; } }
+main, .nav { position: relative; z-index: 1; }
+
+/* ---------- glass ---------- */
+.glass { position: relative; min-width: 0; border-radius: 22px; background: var(--glass); border: 1px solid var(--line);
+  backdrop-filter: blur(22px) saturate(140%); -webkit-backdrop-filter: blur(22px) saturate(140%);
+  box-shadow: 0 30px 80px -30px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.08); }
+.glass::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; padding: 1px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0.02) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.06));
+  mask: linear-gradient(#000,#000) content-box, linear-gradient(#000,#000); -webkit-mask: linear-gradient(#000,#000) content-box, linear-gradient(#000,#000);
+  mask-composite: exclude; -webkit-mask-composite: xor; }
+
+/* buttons */
+.btn { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-family: var(--sans); font-weight: 600; font-size: 15px; line-height: 1;
+  padding: 15px 22px; border-radius: 999px; border: 1px solid transparent; transition: transform 200ms var(--ease), box-shadow 200ms, background 200ms, border-color 200ms, opacity 200ms; }
+.btn:hover { transform: translateY(-1px); }
+.btn.p { background: var(--blue); color: #fff; box-shadow: 0 0 0 1px rgba(255,255,255,0.15) inset, 0 12px 40px -10px var(--blue); }
+.btn.p:hover { box-shadow: 0 0 0 1px rgba(255,255,255,0.25) inset, 0 16px 50px -8px var(--blue); }
+.btn.g { background: rgba(255,255,255,0.05); border-color: rgba(150,180,255,0.3); color: #dfe7ff; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.btn.g:hover { background: rgba(255,255,255,0.09); border-color: rgba(150,180,255,0.5); }
+.btn[disabled] { opacity: 0.6; cursor: progress; transform: none; }
+.btn .arrow { display: inline-block; transition: transform 200ms var(--ease); }
+.btn:hover .arrow { transform: translateX(4px); }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+/* reveal */
+.rv { opacity: 0; transform: translateY(18px); transition: opacity 700ms var(--ease), transform 700ms var(--ease); }
+.rv.in { opacity: 1; transform: none; }
+.rv.d1 { transition-delay: 90ms; } .rv.d2 { transition-delay: 180ms; } .rv.d3 { transition-delay: 270ms; } .rv.d4 { transition-delay: 360ms; }
+@media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } }
+
+/* ---------- nav ---------- */
+.nav { position: sticky; top: 0; z-index: 40; border-bottom: 1px solid transparent; transition: background 300ms, border-color 300ms; }
+.nav.solid { background: rgba(2,6,20,0.75); backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%); border-bottom-color: var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 74px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 700; font-size: 18px; letter-spacing: -0.02em; color: #fff; white-space: nowrap; }
+.brand i { width: 10px; height: 10px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 16px var(--blue), 0 0 4px var(--glow); }
+.navlinks { display: flex; gap: 26px; font-size: 14px; }
+.navlinks a { color: var(--ink-2); position: relative; padding: 6px 0; }
+.navlinks a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 0; height: 1px; background: var(--blue-2); box-shadow: 0 0 8px var(--blue-2); transition: right 240ms var(--ease); }
+.navlinks a:hover::after, .navlinks a.active::after { right: 0; }
+.navlinks a.active, .navlinks a:hover { color: #fff; }
+.navcta { padding: 11px 16px; font-size: 14px; white-space: nowrap; }
+@media (max-width: 860px) { .navlinks { display: none; } }
+
+/* ---------- hero ---------- */
+.hero { padding: clamp(46px, 7vw, 100px) 0 clamp(50px, 7vw, 90px); }
+.hero .wrap { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,0.95fr); gap: clamp(30px, 5vw, 70px); align-items: center; }
+.hero h1 { margin: 0 0 24px; }
+.hero h1 em { font-style: normal; font-weight: 300; }
+.hero .lede { margin-bottom: 32px; }
+.hero-meta { margin-top: 38px; display: flex; flex-wrap: wrap; gap: 8px 26px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; color: var(--muted); text-transform: uppercase; }
+@media (max-width: 960px) { .hero .wrap { grid-template-columns: minmax(0,1fr); } }
+
+/* sample report figure */
+.report { margin: 0; padding: 22px 22px 18px; }
+.fig-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 6px; flex-wrap: wrap; }
+.fig-head strong { font-family: var(--display); font-weight: 600; font-size: 15px; letter-spacing: -0.01em; color: #fff; }
+.fig-head span { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue-2); display: inline-flex; align-items: center; gap: 6px; }
+.fig-head span::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; box-shadow: 0 0 10px currentColor; animation: blink 1.6s infinite; }
+.fig-head span.done { color: var(--green); }
+.fig-head span.done::before { animation: none; }
+@keyframes blink { 50% { opacity: 0.25; } }
+.app-line { font-family: var(--mono); font-size: 11.5px; color: var(--muted); margin-bottom: 8px; overflow-wrap: anywhere; }
+.rows { list-style: none; margin: 0; padding: 0; }
+.row { display: grid; grid-template-columns: 76px minmax(0,1fr); gap: 3px 12px; padding: 10px 0; border-top: 1px solid var(--line); opacity: 0.16; transition: opacity 420ms var(--ease), background 420ms; }
+.row.on { opacity: 1; }
+.row.scan { opacity: 1; background: linear-gradient(90deg, rgba(47,95,224,0.16), transparent 70%); }
+.sev { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 5px; padding: 3px 0; text-align: center; align-self: start; border: 1px solid; }
+.sev.c { color: var(--red); background: rgba(255,90,90,0.12); border-color: rgba(255,120,120,0.45); }
+.sev.h { color: var(--amber); background: rgba(255,170,60,0.10); border-color: rgba(255,190,90,0.4); }
+.sev.m { color: var(--glow); background: rgba(80,140,255,0.12); border-color: rgba(120,160,255,0.4); }
+.sev.l { color: var(--muted); border-color: var(--line-2); }
+.row span { font-size: 14px; color: var(--ink); line-height: 1.35; }
+.row em { grid-column: 2; font-style: normal; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+.sum { margin-top: 4px; border-top: 1px solid var(--line-2); padding-top: 12px; display: grid; gap: 5px; font-size: 14px; color: var(--ink-2); opacity: 0.16; transition: opacity 500ms; }
+.sum.on { opacity: 1; }
+.sum div { display: flex; justify-content: space-between; gap: 12px; }
+.sum b { font-family: var(--display); font-weight: 600; color: #fff; font-variant-numeric: tabular-nums; }
+.sum .pay b { font-size: 20px; }
+.fig-foot { margin-top: 12px; font-size: 12.5px; color: var(--muted); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.fig-foot button { background: none; border: 0; padding: 0; font: inherit; color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+/* ---------- symptoms ---------- */
+.symptoms { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+.sig { display: block; text-align: left; cursor: pointer; width: 100%; color: var(--ink); padding: 22px 22px 22px 64px; font: inherit; transition: background 200ms, border-color 200ms, box-shadow 200ms; }
+.sig:hover { background: var(--glass-2); border-color: var(--line-2); }
+.sig .box { position: absolute; left: 22px; top: 24px; width: 24px; height: 24px; border-radius: 7px; border: 1.5px solid rgba(200,215,255,0.4); display: grid; place-items: center; transition: all 200ms; z-index: 1; }
+.sig .box svg { width: 13px; height: 13px; opacity: 0; transform: scale(0.6); transition: all 200ms var(--ease); }
+.sig[aria-pressed="true"] { border-color: var(--blue-2); background: rgba(61,123,255,0.18); box-shadow: 0 0 40px -10px var(--blue); }
+.sig[aria-pressed="true"] .box { background: var(--blue); border-color: var(--blue-2); box-shadow: 0 0 14px var(--blue); }
+.sig[aria-pressed="true"] .box svg { opacity: 1; transform: none; }
+.sig strong { display: block; font-family: var(--display); font-weight: 600; font-size: 18px; line-height: 1.25; margin-bottom: 6px; letter-spacing: -0.015em; color: #fff; }
+.sig .sub { display: block; color: var(--ink-2); font-size: 15px; line-height: 1.5; }
+.pickline { margin-top: 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; color: var(--muted); }
+.pickline a { color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 960px) { .symptoms { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 620px) { .symptoms { grid-template-columns: minmax(0,1fr); } }
+
+/* ---------- evidence ---------- */
+.evid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+.ev { padding: clamp(26px, 3.4vw, 40px); }
+.ev b { display: block; font-family: var(--display); font-weight: 300; font-size: clamp(56px, 7vw, 92px); line-height: 0.95; letter-spacing: -0.05em; color: #fff; font-variant-numeric: tabular-nums; margin-bottom: 16px; }
+.ev p { color: var(--ink-2); margin-bottom: 18px; }
+.src { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.04em; color: var(--muted); }
+.trade { margin-top: 40px; border-left: 2px solid var(--blue-2); box-shadow: -1px 0 12px -4px var(--blue); padding: 4px 0 4px 22px; font-family: var(--display); font-weight: 400; font-size: clamp(19px, 2vw, 25px); line-height: 1.35; letter-spacing: -0.015em; max-width: 44ch; color: #fff; }
+.trade em { font-style: normal; color: var(--blue-2); }
+@media (max-width: 820px) { .evid { grid-template-columns: minmax(0,1fr); } }
+
+/* ---------- prices ---------- */
+.formats { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+.fmt { padding: 30px 28px 28px; display: flex; flex-direction: column; transition: transform 260ms var(--ease), box-shadow 260ms, border-color 200ms; }
+.fmt:hover { transform: translateY(-5px); box-shadow: 0 40px 80px -30px rgba(61,123,255,0.45); border-color: rgba(140,170,255,0.45); }
+.fmt.lead { border-color: rgba(140,170,255,0.42); }
+.fmt .dur { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blue-2); margin-bottom: 14px; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.fmt .tag { color: var(--green); }
+.fmt h3 { margin-bottom: 8px; }
+.price { font-family: var(--display); font-weight: 600; font-size: clamp(32px, 3.1vw, 42px); letter-spacing: -0.035em; line-height: 1.05; color: #fff; margin-bottom: 14px; white-space: nowrap; }
+.price small { font-family: var(--sans); font-weight: 400; font-size: 15px; letter-spacing: 0; color: var(--muted); }
+.fmt .when { color: var(--ink-2); margin-bottom: 18px; font-size: 15.5px; }
+.fmt ul { margin: auto 0 0; padding: 0; list-style: none; color: var(--ink-2); font-size: 14.5px; }
+.fmt li { padding: 8px 0 8px 16px; border-top: 1px solid var(--line); position: relative; }
+.fmt li::before { content: ""; position: absolute; left: 0; top: 17px; width: 5px; height: 5px; border-radius: 50%; background: var(--blue-2); box-shadow: 0 0 8px var(--blue-2); }
+@media (max-width: 900px) { .formats { grid-template-columns: minmax(0,1fr); } }
+.includes { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 8px 22px; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.includes span::before { content: ""; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--blue-2); margin-right: 10px; vertical-align: 2px; box-shadow: 0 0 8px var(--blue-2); }
+
+/* ---------- how it works ---------- */
+.four { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 14px; counter-reset: st; }
+.four .glass { padding: 26px 24px; }
+.four .n { font-family: var(--mono); font-size: 11px; color: var(--blue-2); letter-spacing: 0.16em; margin-bottom: 16px; text-transform: uppercase; }
+.four h3 { margin-bottom: 10px; font-size: 19px; }
+.four p { color: var(--ink-2); margin: 0; font-size: 15px; }
+@media (max-width: 960px) { .four { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 560px) { .four { grid-template-columns: minmax(0,1fr); } }
+.stack { margin-top: 44px; }
+.stack .k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pills span { padding: 7px 13px; border-radius: 999px; border: 1px solid var(--line-2); background: rgba(255,255,255,0.03); font-size: 14px; color: var(--ink-2); }
+
+/* ---------- about ---------- */
+.about .wrap { display: grid; grid-template-columns: minmax(0,0.9fr) minmax(0,1.1fr); gap: clamp(28px, 5vw, 70px); align-items: start; }
+.about p { color: var(--ink-2); font-size: 16.5px; }
+@media (max-width: 820px) { .about .wrap { grid-template-columns: minmax(0,1fr); } }
+
+/* ---------- faq ---------- */
+.faq { max-width: 860px; }
+.faq details { border-top: 1px solid var(--line); padding: 18px 0; }
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; font-family: var(--display); font-weight: 600; font-size: clamp(17px, 1.6vw, 20px); letter-spacing: -0.015em; color: #fff; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--mono); font-weight: 400; color: var(--blue-2); transition: transform 200ms var(--ease); flex: none; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { margin: 12px 0 0; color: var(--ink-2); max-width: 68ch; }
+
+/* ---------- form ---------- */
+.formgrid { display: grid; grid-template-columns: minmax(0,0.8fr) minmax(0,1.2fr); gap: clamp(20px, 4vw, 48px); align-items: start; }
+#form h2 { margin-bottom: 20px; }
+.next { list-style: none; margin: 28px 0 0; padding: 0; counter-reset: nx; }
+.next li { counter-increment: nx; display: grid; grid-template-columns: 34px minmax(0,1fr); gap: 12px; padding: 14px 0; border-top: 1px solid var(--line); color: var(--ink-2); font-size: 15.5px; }
+.next li::before { content: "0" counter(nx); font-family: var(--mono); font-size: 11px; color: var(--blue-2); padding-top: 4px; }
+.formcard { padding: clamp(22px, 3.4vw, 40px); overflow: hidden; }
+.formcard .glow { position: absolute; right: -140px; top: -180px; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, #2653d6 0%, #0b2494 30%, transparent 68%); filter: blur(50px); opacity: 0.35; pointer-events: none; mix-blend-mode: screen; }
+form { position: relative; }
+.field { display: grid; gap: 7px; margin: 0 0 18px; min-width: 0; }
+.lab, .field legend { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); padding: 0; }
+.lab i, .field legend i { font-style: normal; color: var(--muted); letter-spacing: 0.04em; text-transform: none; }
+input[type="text"], input[type="email"], input[type="url"], select, textarea {
+  width: 100%; min-width: 0; background: rgba(2,8,28,0.62); border: 1px solid var(--line-2); border-radius: 12px; color: var(--ink);
+  font: inherit; font-size: 16px; line-height: 1.4; padding: 13px 14px; transition: border-color 200ms, box-shadow 200ms; appearance: none; -webkit-appearance: none; }
+textarea { min-height: 128px; resize: vertical; }
+select { background-image: linear-gradient(45deg, transparent 50%, var(--blue-2) 50%), linear-gradient(135deg, var(--blue-2) 50%, transparent 50%);
+  background-position: calc(100% - 20px) 55%, calc(100% - 15px) 55%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 38px; }
+select option { background: #050d2a; color: var(--ink); }
+input::placeholder, textarea::placeholder { color: rgba(131,145,184,0.75); }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--blue-2); box-shadow: 0 0 0 3px rgba(47,95,224,0.35); }
+input:user-invalid, textarea:user-invalid { border-color: rgba(255,120,120,0.6); }
+.two { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0 14px; }
+@media (max-width: 620px) { .two { grid-template-columns: minmax(0,1fr); } }
+fieldset { border: 0; padding: 0; margin: 0 0 18px; min-width: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.chip { position: relative; }
+.chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.chip span { display: inline-block; padding: 9px 14px; border-radius: 999px; border: 1px solid var(--line-2); background: rgba(255,255,255,0.03); font-size: 14px; color: var(--ink-2); cursor: pointer; transition: all 180ms; user-select: none; }
+.chip span:hover { border-color: var(--blue-2); }
+.chip input:checked + span { background: var(--blue); border-color: var(--blue-2); color: #fff; box-shadow: 0 0 20px -4px var(--blue); }
+.chip input:focus-visible + span { outline: 2px solid var(--glow); outline-offset: 2px; }
+.hp { position: absolute !important; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.formnote { font-size: 13px; color: var(--muted); margin: 16px 0 0; }
+.status { margin-top: 16px; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--line-2); font-size: 15px; }
+.status[hidden] { display: none; }
+.status.ok { border-color: rgba(53,211,154,0.5); background: rgba(53,211,154,0.08); color: #dffbef; }
+.status.err { border-color: rgba(255,170,90,0.5); background: rgba(255,170,60,0.08); color: #fff0dc; }
+.status a { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 900px) { .formgrid { grid-template-columns: minmax(0,1fr); } }
+
+footer { margin-top: clamp(60px, 8vw, 100px); border-top: 1px solid var(--line); padding: 26px 0 34px; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; }
+footer a { color: var(--ink-2); text-transform: none; letter-spacing: 0.02em; }
+footer a:hover { color: #fff; }
+
+@media print {
+  .bg, .nav, .fig-foot, .ctas, footer, .formcard { display: none !important; }
+  body { background: #fff; color: #000; }
+  .glass { background: none; border-color: #ccc; box-shadow: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg" aria-hidden="true"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="dots"></div></div>
+
+<div class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Dev Sathya, back to top"><i aria-hidden="true"></i>Dev Sathya</a>
+    <nav class="navlinks" aria-label="Sections">
+      <a href="#broken">What breaks</a>
+      <a href="#prices">Prices</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">Questions</a>
+    </nav>
+    <a class="btn g navcta" href="#form">Tell me what's broken</a>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow rv">App rescue &middot; Lovable, Bolt, Replit and similar</p>
+      <h1 class="rv d1">Your AI-built app is almost there. <em class="grad">I get it over the line.</em></h1>
+      <p class="lede rv d2">You built it with Lovable, Bolt, Replit or another AI tool. Now logins misbehave, payments fail, the database is open, or every new prompt breaks something that worked yesterday. I find what is wrong, fix it at a fixed price, and keep it running.</p>
+      <div class="ctas rv d3">
+        <a class="btn p" href="#form">Tell me what's broken <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="btn g" href="#prices">See the prices</a>
+      </div>
+      <div class="hero-meta rv d4">
+        <span>Fixed prices in US dollars</span>
+        <span>The US, the UK and Europe</span>
+        <span>Shipping software since 1998</span>
+      </div>
+    </div>
+
+    <figure class="report glass rv d2" aria-label="Illustration of an audit summary: six issues ranked by risk, a fixed price, and the audit fee credited">
+      <div class="fig-head"><strong>Sample audit summary</strong><span id="rState">Reviewing</span></div>
+      <div class="app-line">An example booking app, built with an AI tool</div>
+      <ol class="rows" id="rows">
+        <li class="row"><b class="sev c">Critical</b><span>Customer table readable by anyone with the public key</span><em>Database access rules</em></li>
+        <li class="row"><b class="sev c">Critical</b><span>Payment secret key shipped inside the browser code</span><em>Move to a server function, rotate key</em></li>
+        <li class="row"><b class="sev h">High</b><span>Payment webhook accepts events nobody signed</span><em>Verify the signature</em></li>
+        <li class="row"><b class="sev h">High</b><span>Admin page checks the role only in the browser</span><em>Check on the server</em></li>
+        <li class="row"><b class="sev m">Medium</b><span>Password reset email links to the preview address</span><em>Auth settings</em></li>
+        <li class="row"><b class="sev l">Low</b><span>No error tracking, so failures go unnoticed</span><em>Add monitoring</em></li>
+      </ol>
+      <div class="sum" id="rSum">
+        <div><span>Fix sprint, fixed price, 7 working days</span><b>$3,200</b></div>
+        <div><span>Audit fee credited</span><b>&minus;$600</b></div>
+        <div class="pay"><span>Left to pay for the fix</span><b>$2,600</b></div>
+      </div>
+      <figcaption class="fig-foot"><span>An illustration. Your report covers your app, ranked the same way.</span><button type="button" id="replay">Replay</button></figcaption>
+    </figure>
+  </div>
+</header>
+
+<!-- ================= SYMPTOMS ================= -->
+<section id="broken">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow rv">Sound familiar?</p>
+      <h2 class="rv d1">The last part is where AI-built apps get stuck.</h2>
+      <p class="lede rv d2">The idea works and the screens look right. What breaks is underneath: who can see which data, money moving correctly, accounts, and getting it to run reliably for real people. Tap the ones that apply and they are ticked in the form for you.</p>
+    </div>
+    <div class="symptoms" id="symptoms">
+      <button type="button" class="sig glass rv" data-sym="Every fix breaks something else" aria-pressed="false"><span class="box" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><strong>Every fix breaks something else</strong><span class="sub">The AI rewrites code that worked. You go in circles and burn credits.</span></button>
+      <button type="button" class="sig glass rv d1" data-sym="Login and accounts" aria-pressed="false"><span class="box" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><strong>Login and accounts misbehave</strong><span class="sub">Users get logged out, see each other's data, or cannot reset a password.</span></button>
+      <button type="button" class="sig glass rv d2" data-sym="Payments" aria-pressed="false"><span class="box" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><strong>Payments do not hold up</strong><span class="sub">Checkout works in test mode, then subscriptions, webhooks or refunds fall apart.</span></button>
+      <button type="button" class="sig glass rv" data-sym="Data may be exposed" aria-pressed="false"><span class="box" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><strong>Your data may be open</strong><span class="sub">Access rules are missing or too loose, or a secret key sits in the browser code.</span></button>
+      <button type="button" class="sig glass rv d1" data-sym="Deploys, speed or limits" aria-pressed="false"><span class="box" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><strong>It will not deploy, or it is slow</strong><span class="sub">Builds fail, pages crawl, or it falls over once real people use it.</span></button>
+      <button type="button" class="sig glass rv d2" data-sym="Needs a developer to take over" aria-pressed="false"><span class="box" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><strong>It needs a proper owner</strong><span class="sub">You want the code clean and documented enough for a developer to carry it.</span></button>
+    </div>
+    <p class="pickline rv" id="pickline" aria-live="polite"><span id="pickcount">Nothing picked yet.</span><a href="#form">Go to the form</a></p>
+  </div>
+</section>
+
+<!-- ================= EVIDENCE ================= -->
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow rv">Why it matters</p>
+      <h2 class="rv d1">Most AI-built apps ship with <span class="grad">a hole in them.</span></h2>
+      <p class="lede rv d2">Two independent studies this year looked at apps built with these tools. The problems they found are the ones I fix.</p>
+    </div>
+    <div class="evid">
+      <article class="ev glass rv">
+        <b>98%</b>
+        <p>of 1,072 AI-built apps scanned had at least one security flaw. 172 of them let anyone delete records from the database, without logging in.</p>
+        <p class="src">Symbiotic Security, 2 June 2026 &middot; <a href="https://symbioticsec.ai/blog/we-scanned-1-072-vibe-coded-apps-98-had-security-flaws" rel="noopener noreferrer" target="_blank">read the study</a></p>
+      </article>
+      <article class="ev glass rv d1">
+        <b>16,326</b>
+        <p>Supabase databases found with tables anyone could read. Over half showed signs of personal data.</p>
+        <p class="src">UpGuard, 25 September 2026 &middot; <a href="https://www.upguard.com/blog/everything-everywhere-systemic-data-exposure-in-supabase-apps" rel="noopener noreferrer" target="_blank">read the study</a></p>
+      </article>
+    </div>
+    <p class="trade rv">It is rarely the idea that fails. It is the last part: <em>access rules, payments, accounts and deploys.</em> That part is my trade.</p>
+  </div>
+</section>
+
+<!-- ================= PRICES ================= -->
+<section id="prices">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow rv">Prices</p>
+      <h2 class="rv d1">Start with the audit. <span class="grad">It pays for itself.</span></h2>
+      <p class="lede rv d2">Three fixed prices. The audit tells you exactly what is wrong and what it costs to fix, and its fee comes off the fix if you go ahead.</p>
+    </div>
+    <div class="formats">
+      <article class="fmt glass lead rv">
+        <div class="dur"><span>3 days</span><span class="tag">Start here</span></div>
+        <h3>Rescue audit</h3>
+        <div class="price">$600</div>
+        <p class="when">I read the code and test the running app, with your written go-ahead. You get a plain-English report with every issue ranked by risk and a fixed price to fix it. The $600 is credited in full if you go ahead with the fix.</p>
+        <ul>
+          <li>Security: database rules, keys, logins</li>
+          <li>Payments, accounts and data flows</li>
+          <li>Code health, builds and deploys</li>
+          <li>Ranked report and a fixed-price quote</li>
+          <li>A 30 minute call to walk you through it</li>
+        </ul>
+      </article>
+      <article class="fmt glass rv d1">
+        <div class="dur"><span>1 to 2 weeks</span></div>
+        <h3>Fix sprint</h3>
+        <div class="price">$2,500-5,000</div>
+        <p class="when">The fixes from the audit, at the fixed price agreed in the report. Then it is live, tested and handed back to you.</p>
+        <ul>
+          <li>Price fixed before I start</li>
+          <li>Work in your own code, every change explained</li>
+          <li>Tested before it goes live</li>
+          <li>Handover notes, so you or the next developer can carry on</li>
+          <li>Audit fee taken off the price</li>
+        </ul>
+      </article>
+      <article class="fmt glass rv d2">
+        <div class="dur"><span>Monthly</span></div>
+        <h3>Care plan</h3>
+        <div class="price">$1,500 <small>a month</small></div>
+        <p class="when">For apps with real users. I watch it, fix what breaks, and add small features, so you can get on with the business.</p>
+        <ul>
+          <li>Uptime and error monitoring</li>
+          <li>Fixes first, small features next</li>
+          <li>A security check every month</li>
+          <li>One person who knows your app</li>
+        </ul>
+      </article>
+    </div>
+    <div class="includes rv">
+      <span>Fixed prices</span>
+      <span>You own all the code</span>
+      <span>No passwords needed</span>
+      <span>NDA on request</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW ================= -->
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow rv">How it works</p>
+      <h2 class="rv d1">From stuck to shipped, <span class="grad">in four steps.</span></h2>
+      <p class="lede rv d2">One person, not an agency. The person who reads your code is the person who fixes it.</p>
+    </div>
+    <div class="four">
+      <div class="glass rv"><div class="n">Step 01</div><h3>Tell me what's broken</h3><p>Use the form below. I read every message myself and reply within one working day.</p></div>
+      <div class="glass rv d1"><div class="n">Step 02</div><h3>Give access, not passwords</h3><p>Invite me to your code and make me a test login. You also add a one-line file to your app, which proves it is yours. I only ever test apps whose owners have asked.</p></div>
+      <div class="glass rv d2"><div class="n">Step 03</div><h3>The report, in three days</h3><p>Every issue ranked by risk, in plain English, with a fixed price to fix it. We go through it on a 30 minute call.</p></div>
+      <div class="glass rv d3"><div class="n">Step 04</div><h3>Fix, then care</h3><p>If you go ahead, I fix it at the agreed price with the audit fee taken off. A care plan keeps it healthy after that.</p></div>
+    </div>
+    <div class="stack rv">
+      <p class="k">Apps I work on</p>
+      <div class="pills">
+        <span>Lovable</span><span>Bolt</span><span>Replit</span><span>Cursor</span><span>v0</span><span>Base44</span><span>Emergent</span><span>Windsurf</span>
+        <span>Supabase</span><span>Stripe</span><span>React</span><span>Next.js</span><span>Node</span><span>Postgres</span><span>Vercel</span><span>Netlify</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="about">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow rv">Who you would work with</p>
+      <h2 class="rv d1">A builder since 1998.</h2>
+    </div>
+    <div class="rv d2">
+      <p>I am Dev Sathya. I founded my first software company in 1998 and have been building ever since, up to complete platforms that I designed, built and run on my own, from the data model to production.</p>
+      <p>AI tools are very good at the first ninety percent of an app. I work on the rest: making the data safe, the money correct, the accounts solid, and the whole thing simple enough for someone to own.</p>
+      <p>I work from India with founders in the US, the UK and Europe. You send the problem at the end of your day, and the work moves while you sleep.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow rv">Questions</p>
+      <h2 class="rv d1">Before you write.</h2>
+    </div>
+    <div class="faq rv">
+      <details><summary>Will you need my passwords?</summary><p>No. You invite me to your code (GitHub, or the project in your AI tool) and create a test login for me. You can remove my access the moment the job is done.</p></details>
+      <details><summary>Do I have to go ahead with the fix?</summary><p>No. The report is yours to keep. Fix it yourself, with another developer, or with me. The $600 only comes off the price if I do the fix.</p></details>
+      <details><summary>What if the app cannot be saved?</summary><p>The audit says so plainly, and compares the cost of fixing it with the cost of rebuilding the weak parts. Most apps are worth saving, because the hard part, knowing what to build, is already done.</p></details>
+      <details><summary>Will you change my app while you audit it?</summary><p>No. The audit reads and tests, it does not change anything, and it never touches your real customers' data. Before I test the live app I ask you to add a small verification file, so I only ever test an app whose owner has said yes in writing.</p></details>
+      <details><summary>Can I keep building with Lovable or Bolt afterwards?</summary><p>Yes. I work in your own project and explain every change, so you can carry on prompting. The handover notes tell you which parts to leave alone.</p></details>
+      <details><summary>Is my code safe with you?</summary><p>I sign an NDA if you want one, work on a copy wherever I can, and delete what I hold when the job ends. The code is yours throughout.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FORM ================= -->
+<section id="form">
+  <div class="wrap formgrid">
+    <div>
+      <p class="eyebrow rv">Tell me what's broken</p>
+      <h2 class="rv d1">Describe it in your own words.</h2>
+      <p class="lede rv d2">No technical language needed. Tell me what you built, what goes wrong, and when you need it working.</p>
+      <ol class="next rv d3">
+        <li>I read it myself and reply within one working day.</li>
+        <li>If it is a fit, I send the audit agreement and a short access checklist.</li>
+        <li>Three days after access, you have the report.</li>
+      </ol>
+    </div>
+
+    <div class="formcard glass rv d2">
+      <div class="glow" aria-hidden="true"></div>
+      <form id="rescueForm" action="https://formsubmit.co/dev@devsathya.com" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="App rescue request">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://www.devsathya.com/rescue/?sent=1#form">
+        <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+
+        <div class="two">
+          <div class="field"><label class="lab" for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+          <div class="field"><label class="lab" for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        </div>
+        <div class="two">
+          <div class="field"><label class="lab" for="f-url">Link to the app <i>(if it is live)</i></label><input id="f-url" name="app_link" type="url" inputmode="url" placeholder="https://"></div>
+          <div class="field"><label class="lab" for="f-tool">Built with</label>
+            <select id="f-tool" name="built_with">
+              <option value="">Choose one</option>
+              <option>Lovable</option><option>Bolt</option><option>Replit</option><option>Cursor</option><option>v0</option><option>Base44</option><option>Emergent</option><option>Windsurf</option><option>Something else</option>
+            </select>
+          </div>
+        </div>
+
+        <fieldset class="field" id="f-syms">
+          <legend>What is going wrong <i>(pick any)</i></legend>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="problems" value="Every fix breaks something else"><span>Fixes break other things</span></label>
+            <label class="chip"><input type="checkbox" name="problems" value="Login and accounts"><span>Login and accounts</span></label>
+            <label class="chip"><input type="checkbox" name="problems" value="Payments"><span>Payments</span></label>
+            <label class="chip"><input type="checkbox" name="problems" value="Data may be exposed"><span>Data may be exposed</span></label>
+            <label class="chip"><input type="checkbox" name="problems" value="Deploys, speed or limits"><span>Deploys or speed</span></label>
+            <label class="chip"><input type="checkbox" name="problems" value="Needs a developer to take over"><span>Needs a proper owner</span></label>
+          </div>
+        </fieldset>
+
+        <div class="field"><label class="lab" for="f-what">What happens, in your words</label><textarea id="f-what" name="description" required placeholder="For example: customers can sign up, but after paying they are sent back to the free plan."></textarea></div>
+
+        <div class="two">
+          <div class="field"><label class="lab" for="f-users">Real users yet?</label>
+            <select id="f-users" name="users">
+              <option value="">Choose one</option><option>Not yet, launching soon</option><option>Yes, some users</option><option>Yes, paying customers</option>
+            </select>
+          </div>
+          <div class="field"><label class="lab" for="f-when">Needed working by</label>
+            <select id="f-when" name="timing">
+              <option value="">Choose one</option><option>This week</option><option>This month</option><option>No fixed date</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="ctas"><button class="btn p" type="submit" id="sendBtn">Send it to me <span class="arrow" aria-hidden="true">&rarr;</span></button></div>
+        <div class="status" id="formStatus" role="status" aria-live="polite" hidden></div>
+        <p class="formnote">Your message reaches my inbox through a form-forwarding service. I use it only to reply to you. Prefer email? Write to <a href="mailto:dev@devsathya.com?subject=App%20rescue">dev@devsathya.com</a>.</p>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <span>Dev Sathya &middot; App rescue</span>
+      <span><a href="mailto:dev@devsathya.com">dev@devsathya.com</a></span>
+      <span>&copy; 2026</span>
+    </div>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(function () {
+  /* Where the form goes. After FormSubmit is activated, swap the address for the random alias it emails you. */
+  var FORM_ENDPOINT = "https://formsubmit.co/ajax/dev@devsathya.com";
+  var FALLBACK_EMAIL = "dev@devsathya.com";
+
+  var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function $(id) { return document.getElementById(id); }
+
+  /* ---------- nav ---------- */
+  var nav = $("nav");
+  function onScroll() { nav.classList.toggle("solid", window.scrollY > 24); }
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+  var links = Array.prototype.slice.call(document.querySelectorAll(".navlinks a"));
+  var secs = links.map(function (a) { return document.querySelector(a.getAttribute("href")); });
+  if ("IntersectionObserver" in window) {
+    var spy = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (a) { a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id); });
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    secs.forEach(function (s) { if (s) spy.observe(s); });
+  }
+
+  /* ---------- reveal ---------- */
+  var rv = document.querySelectorAll(".rv");
+  if (reduced || !("IntersectionObserver" in window)) { rv.forEach(function (n) { n.classList.add("in"); }); }
+  else {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    rv.forEach(function (n) { io.observe(n); });
+    var vh = window.innerHeight || 800;
+    rv.forEach(function (n) { if (n.getBoundingClientRect().top < vh) { n.classList.add("in"); io.unobserve(n); } });
+  }
+
+  /* ---------- sample report ---------- */
+  var rows = Array.prototype.slice.call(document.querySelectorAll("#rows .row"));
+  var sum = $("rSum"), state = $("rState"), timers = [];
+  function playReport() {
+    timers.forEach(clearTimeout); timers = [];
+    rows.forEach(function (r) { r.classList.remove("on", "scan"); });
+    sum.classList.remove("on"); state.textContent = "Reviewing"; state.classList.remove("done");
+    if (reduced) {
+      rows.forEach(function (r) { r.classList.add("on"); });
+      sum.classList.add("on"); state.textContent = "Report ready"; state.classList.add("done");
+      return;
+    }
+    rows.forEach(function (r, i) {
+      timers.push(setTimeout(function () { r.classList.add("scan"); }, 600 + i * 900));
+      timers.push(setTimeout(function () { r.classList.remove("scan"); r.classList.add("on"); }, 600 + i * 900 + 700));
+    });
+    var end = 600 + rows.length * 900 + 300;
+    timers.push(setTimeout(function () { sum.classList.add("on"); state.textContent = "Report ready"; state.classList.add("done"); }, end));
+  }
+  $("replay").addEventListener("click", playReport);
+  playReport();
+
+  /* ---------- symptoms sync with the form ---------- */
+  var cards = Array.prototype.slice.call(document.querySelectorAll("#symptoms .sig"));
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('#f-syms input[name="problems"]'));
+  function boxFor(v) { for (var i = 0; i < boxes.length; i++) if (boxes[i].value === v) return boxes[i]; return null; }
+  function cardFor(v) { for (var i = 0; i < cards.length; i++) if (cards[i].getAttribute("data-sym") === v) return cards[i]; return null; }
+  function updateCount() {
+    var n = boxes.filter(function (b) { return b.checked; }).length;
+    $("pickcount").textContent = n === 0 ? "Nothing picked yet." : (n === 1 ? "1 problem picked, ticked in the form." : n + " problems picked, ticked in the form.");
+  }
+  cards.forEach(function (c) {
+    c.addEventListener("click", function () {
+      var on = c.getAttribute("aria-pressed") !== "true";
+      c.setAttribute("aria-pressed", on ? "true" : "false");
+      var b = boxFor(c.getAttribute("data-sym")); if (b) b.checked = on;
+      updateCount();
+    });
+  });
+  boxes.forEach(function (b) {
+    b.addEventListener("change", function () {
+      var c = cardFor(b.value); if (c) c.setAttribute("aria-pressed", b.checked ? "true" : "false");
+      updateCount();
+    });
+  });
+
+  /* ---------- form ---------- */
+  var form = $("rescueForm"), status = $("formStatus"), btn = $("sendBtn");
+  function show(kind, html) { status.className = "status " + kind; status.innerHTML = html; status.hidden = false; }
+  function collect() {
+    var data = {}, problems = [];
+    Array.prototype.forEach.call(form.elements, function (el) {
+      if (!el.name || el.type === "submit") return;
+      if (el.type === "checkbox") { if (el.checked) problems.push(el.value); return; }
+      data[el.name] = el.value.trim();
+    });
+    data.problems = problems.join(", ");
+    var app = data.app_link || data.built_with || "an app";
+    data._subject = "App rescue request: " + app;
+    data._replyto = data.email;
+    delete data._next;
+    return data;
+  }
+  function mailtoFrom(d) {
+    var body = "Name: " + d.name + "\nApp: " + (d.app_link || "-") + "\nBuilt with: " + (d.built_with || "-") +
+      "\nProblems: " + (d.problems || "-") + "\nUsers: " + (d.users || "-") + "\nNeeded by: " + (d.timing || "-") + "\n\n" + d.description;
+    return "mailto:" + FALLBACK_EMAIL + "?subject=" + encodeURIComponent(d._subject) + "&body=" + encodeURIComponent(body);
+  }
+  if (/[?&]sent=1/.test(location.search)) {
+    show("ok", "Thank you. Your message is on its way to me, and I will reply within one working day.");
+  }
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    var d = collect();
+    if (d._honey) { show("ok", "Thank you."); return; }
+    btn.disabled = true; btn.firstChild.textContent = "Sending ";
+    fetch(FORM_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(d)
+    }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (res) {
+        var good = res.ok && (res.j.success === true || res.j.success === "true");
+        if (!good) throw new Error((res.j && res.j.message) || "not sent");
+        form.reset(); cards.forEach(function (c) { c.setAttribute("aria-pressed", "false"); }); updateCount();
+        show("ok", "Thank you, " + (d.name.split(" ")[0] || "") + ". Your message is with me, and I will reply within one working day.");
+      })
+      .catch(function () {
+        show("err", 'The form did not go through. Your words are still in the boxes above. Could you <a href="' + mailtoFrom(d).replace(/"/g, "&quot;") + '">send them by email instead</a>? It opens your mail app with everything filled in.');
+      })
+      .then(function () { btn.disabled = false; btn.firstChild.textContent = "Send it to me "; });
+  });
+})();
+</script>
+</body>
+</html>
