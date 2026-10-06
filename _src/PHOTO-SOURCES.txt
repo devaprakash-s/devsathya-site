@@ -1,0 +1,33 @@
+Photographs on www.devsathya.com
+================================
+
+All photographs are from Unsplash and used under the Unsplash License
+(https://unsplash.com/license): free for commercial and non-commercial use,
+no permission or credit required. None is an Unsplash+ (paid) image.
+Selected and downloaded on 6 October 2026.
+
+Credit is not required, but is kept here so every image can be traced.
+
+File            Photographer          Unsplash page
+--------------  --------------------  ---------------------------------------
+hero-city.jpg   Himmel S              https://unsplash.com/photos/Io1lz5bZ0as
+london.jpg      Andrea De Santis      https://unsplash.com/photos/mGMHB_K4aP0
+bridge.jpg      Jonathan Pease        https://unsplash.com/photos/1nlhZy86uPU
+new-york.jpg    Diane Picchiottino    https://unsplash.com/photos/EZ_SHxykcgw
+tower.jpg       Khara Woods           https://unsplash.com/photos/mklT0zc47PI
+facade.jpg      Alessandro Matonti    https://unsplash.com/photos/Gs8UKNggcF0
+corridor.jpg    Paul Hanaoka          https://unsplash.com/photos/s0XabTAKvak
+fibre.jpg       Compare Fibre         https://unsplash.com/photos/INNsF0Zz_kQ
+spiral.jpg      Arturo Castaneyra     https://unsplash.com/photos/o-dkYSvidB4
+offices.jpg     Jerry Wei             https://unsplash.com/photos/BhRa-qppO7Q
+
+Treatment: each photo was resized for the web and colour graded to the site's
+navy palette (saturation 0.72, a 38 percent blend with a navy-to-silver
+colourise, contrast 1.06), with camera metadata removed. og.jpg (the link
+preview card) is made from type only, with no photograph.
+
+Rules the Unsplash License sets: do not sell the photos unaltered, do not
+compile them into a competing photo service, and do not imply that a person
+or brand in a photo endorses this practice. None of the ten shows an
+identifiable person; hero-city.jpg shows a lit sign on one tower, which is
+incidental to the skyline.

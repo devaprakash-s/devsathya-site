@@ -1,0 +1,132 @@
+[
+ {
+  "date": "1 Jul 2026",
+  "acquirer": "Velosio",
+  "target": "Kopis and Acuitas",
+  "segment": "Microsoft partners",
+  "market": "US",
+  "url": "https://www.prnewswire.com/news-releases/velosio-deepens-its-investment-as-a-top-microsoft-partner-with-acquisitions-of-kopis-and-acuitas-302812060.html",
+  "src_date": "1 July 2026",
+  "src_target": "Kopis (Greenville SC, software and Azure) and Acuitas (Dynamics consultancy, sup"
+ },
+ {
+  "date": "28 Oct 2025",
+  "acquirer": "Transparity",
+  "target": "Xpedition",
+  "segment": "Dynamics partner",
+  "market": "UK",
+  "url": "https://www.transparity.com/news/transparity-announces-acquisition-of-xpedition-combining-two-of-the-uks-leading-microsoft-partners-strategically-placed-to-lead-in-the-ai-era/",
+  "src_date": "28 October 2025",
+  "src_target": "Xpedition (Microsoft Dynamics partner)"
+ },
+ {
+  "date": "6 Jul 2026",
+  "acquirer": "TSG",
+  "target": "Creative Computing Solutions",
+  "segment": "Business Central partner",
+  "market": "UK",
+  "url": "https://www.tsg.com/insights/news/tsg-completes-acquisition-of-creative-computing-solutions",
+  "src_date": "6 July 2026",
+  "src_target": "Creative Computing Solutions (Business Central partner, Maidenhead)"
+ },
+ {
+  "date": "Jul 2026",
+  "acquirer": "Pine Services Group (Evergreen)",
+  "target": "Datel",
+  "segment": "Sage partner",
+  "market": "UK",
+  "url": "https://pineservicesgroup.com/2026/07/20/datel-begins-its-next-chapter-of-growth-with-evergreens-pine-services-group/",
+  "src_date": "20 July 2026 (release URL date; page text shows 5 August 2026)",
+  "src_target": "Datel (UK's largest and longest-established Sage business partner)"
+ },
+ {
+  "date": "2 Oct 2026",
+  "acquirer": "Pinnacle (K3 Advisory Group)",
+  "target": "Qmulus Solutions",
+  "segment": "Sage partner",
+  "market": "UK",
+  "url": "https://k3advisorygroup.com/insights/pinnacle-completes-third-acquisition-since-joining-k3-advisory-group/",
+  "src_date": "2 October 2026 (K3 page); a trade report is dated 5 October 2026",
+  "src_target": "Qmulus Solutions Ltd (Sage customer base: Sage 200, Sage Intacct, Sage CRM)"
+ },
+ {
+  "date": "1 Oct 2026",
+  "acquirer": "Elliott Davis",
+  "target": "Equify Advisors",
+  "segment": "NetSuite partner",
+  "market": "US",
+  "url": "https://www.elliottdavis.com/insights/elliott-davis-strengthens-digital-consulting-capabilities-with-addition-of-equify-advisors",
+  "src_date": "1 October 2026 (effective date)",
+  "src_target": "Equify Advisors (NetSuite Alliance Partner)"
+ },
+ {
+  "date": "19 Aug 2026",
+  "acquirer": "Nexus IT",
+  "target": "Loyal IT",
+  "segment": "Managed IT services",
+  "market": "US",
+  "url": "https://www.prnewswire.com/news-releases/nexus-it-completes-acquisition-of-loyal-it-expanding-national-platform-into-the-texas-market-302855221.html",
+  "src_date": "19 Aug 2026",
+  "src_target": "Loyal IT"
+ },
+ {
+  "date": "21 Apr 2026",
+  "acquirer": "New Charter Technologies",
+  "target": "ICG",
+  "segment": "Managed IT services",
+  "market": "US",
+  "url": "https://www.prnewswire.com/news-releases/new-charter-technologies-expands-with-icg-to-advance-ai-security-and-cloud-capabilities-for-smb-clients-302748787.html",
+  "src_date": "21 Apr 2026",
+  "src_target": "ICG"
+ },
+ {
+  "date": "25 Sep 2026",
+  "acquirer": "Focus Group",
+  "target": "Prime Networks",
+  "segment": "Managed IT services",
+  "market": "UK",
+  "url": "https://focusgroup.co.uk/company/news/",
+  "src_date": "25 Sep 2026",
+  "src_target": "Prime Networks"
+ },
+ {
+  "date": "1 Sep 2026",
+  "acquirer": "Banyan Software",
+  "target": "10x People",
+  "segment": "Telecom software",
+  "market": "US",
+  "url": "https://banyansoftware.com/2026/09/01/10x-people",
+  "src_date": "1 September 2026",
+  "src_target": "10x People (telecom platform)"
+ },
+ {
+  "date": "30 Sep 2026",
+  "acquirer": "Elevare Software Group",
+  "target": "Rubixx and Voicescape",
+  "segment": "Housing software",
+  "market": "UK",
+  "url": "https://prnewswire.co.uk/news-releases/industry-veterans-launch-elevare-software-group-with-two-acquisitions-in-housing-302893543.html",
+  "src_date": "30 September 2026",
+  "src_target": "Rubixx (housing management platform) and Voicescape (resident engagement)"
+ },
+ {
+  "date": "8 Sep 2026",
+  "acquirer": "Valsoft (TAG Software Group)",
+  "target": "Square 9",
+  "segment": "Document processing software",
+  "market": "US",
+  "url": "https://www.valsoftcorp.com/news/valsoft-s-tag-software-group-acquires-square-9-a-provider-of-ai-powered-intelligent-document-processing-solutions",
+  "src_date": "8 September 2026",
+  "src_target": "Square 9 (document processing software, via TAG Software Group)"
+ },
+ {
+  "date": "11 Aug 2026",
+  "acquirer": "Recur Software",
+  "target": "FLAGS Software",
+  "segment": "Manufacturing software",
+  "market": "UK",
+  "url": "https://uk.finance.yahoo.com/news/recur-software-acquires-flags-software-154400141.html",
+  "src_date": "11 August 2026",
+  "src_target": "FLAGS Software (quality management and production control software)"
+ }
+]
