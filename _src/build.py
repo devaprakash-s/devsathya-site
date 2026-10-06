@@ -197,7 +197,7 @@ FOOTER = f"""<footer class="site-footer">
       </div>
       <div><h4>Advisory</h4><ul><li><a href="/advisory/">Sell-side advisory</a></li><li><a href="/advisory/#process">The process</a></li><li><a href="/advisory/#readiness">Sale readiness</a></li><li><a href="/advisory/#activity">Market activity</a></li></ul></div>
       <div><h4>Acquirers</h4><ul><li><a href="/acquirers/">For acquirers</a></li><li><a href="/acquirers/#criteria">Share your criteria</a></li><li><a href="/platforms/">Enterprise platforms</a></li></ul></div>
-      <div><h4>Contact</h4><ul><li><a href="mailto:{MAIL}">{MAIL}</a></li><li><a href="/about/">About</a></li><li><a href="https://www.linkedin.com/in/devaprakash/" rel="me noopener" target="_blank">LinkedIn</a></li><li><a href="/disclosures/">Disclosures and privacy</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="mailto:{MAIL}">{MAIL}</a></li><li><a href="/about/">About</a></li><li><a href="/disclosures/">Disclosures and privacy</a></li></ul></div>
     </div>
     <div class="foot-legal">
       <p>&copy; <span id="year">2026</span> Dev Sathya, the trading name of Devaprakash Sathyanarayanan. Independent M&amp;A adviser: not a registered broker-dealer and not authorised by the Financial Conduct Authority. Nothing on this site is an offer of securities or investment advice. <a class="link" href="/disclosures/">Disclosures</a>.</p>
@@ -215,8 +215,7 @@ def page(out, frag, nav_key, title, desc, b):
     canonical = f"{SITE}/{path}"
     ld = {"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Dev Sathya",
           "description": PAGES[0][4], "url": SITE + "/", "email": MAIL, "areaServed": ["GB", "US"],
-          "founder": {"@type": "Person", "name": "Dev Sathya", "jobTitle": "Independent M&A adviser",
-                      "sameAs": ["https://www.linkedin.com/in/devaprakash/"]}}
+          "founder": {"@type": "Person", "name": "Dev Sathya", "jobTitle": "Independent M&A adviser"}}
     robots = '\n<meta name="robots" content="noindex">' if frag == "404" else ""
     doc = f"""<!doctype html>
 <html lang="en-GB">
