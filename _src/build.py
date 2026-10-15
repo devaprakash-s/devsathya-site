@@ -64,27 +64,32 @@ SECTORS = [
 ]
 
 BUY_BOXES = [
-    ("US Managed IT Services (MSPs)",
+    ("US-MSP-01", "ACTIVE &middot; CAPITAL ALLOCATED",
+     "US Managed IT Services (MSPs)",
      "Permanent-hold US platform (PE-backed)",
      "$3.0M - $15.0M rev &middot; $500k+ EBITDA &middot; 12+ staff &middot; &gt;50% recurring",
      "United States (Midwest, Mid-Atlantic, South, Mountain West, Northeast)",
-     "Acquirer-paid (0% cost to seller)"),
-    ("Enterprise ERP &amp; Accounting Partners",
+     "Acquirer-paid (0% seller fee)"),
+    ("NA-ERP-02", "ACTIVE &middot; PERMANENT HOLD",
+     "Enterprise ERP &amp; Accounting Partners",
      "Dedicated ERP holding company (Permanent-hold)",
      "$3.0M - $15.0M rev &middot; $500k+ EBITDA &middot; Sage, Acumatica, NetSuite, Epicor",
      "United States, Canada &amp; United Kingdom",
-     "Acquirer-paid (0% cost to seller)"),
-    ("Microsoft Dynamics 365 Consultancies",
+     "Acquirer-paid (0% seller fee)"),
+    ("UK-DYN-03", "ACTIVE &middot; CONSOLIDATION",
+     "Microsoft Dynamics 365 Consultancies",
      "PE-backed Microsoft cloud consolidators",
      "&pound;500k - &pound;5.0M (UK) / $2.0M - $12.0M (US) &middot; Business Central, F&amp;O, CE",
      "United Kingdom, Ireland &amp; United States",
      "Acquirer-paid or Sell-side"),
-    ("Vertical Market B2B Software (SaaS)",
+    ("GL-VMS-04", "ACTIVE &middot; PERMANENT HOLD",
+     "Vertical Market B2B Software (SaaS)",
      "Permanent buy-and-hold software groups",
      "$1.5M - $8.0M ARR &middot; High gross retention &middot; Proprietary IP",
      "North America, United Kingdom &amp; Europe",
      "Acquirer-paid or Sell-side"),
-    ("Logistics &amp; Supply Chain Integration",
+    ("GL-LOG-05", "ACTIVE &middot; STRATEGIC",
+     "Logistics &amp; Supply Chain Integration",
      "Strategic logistics &amp; enterprise IT acquirers",
      "$500k - $5.0M rev &middot; CargoWise partners, customs &amp; ERP integration",
      "United States &amp; Global delivery",
@@ -92,7 +97,7 @@ BUY_BOXES = [
 ]
 
 PRINCIPLES = [
-    ("Single-side fee alignment", "I am compensated by one side only, never both. On a sell-side mandate the owner pays the success fee; on a buy-side origination mandate the acquiring platform pays our introduction fee at zero cost to the seller."),
+    ("Single-side fee alignment", "The practice is compensated by one side only, never both. On a sell-side mandate the owner pays the success fee; on a buy-side origination mandate the acquiring platform pays the introduction fee at zero cost to the seller."),
     ("Paid on completion only", "There is no upfront retainer, no monthly maintenance fee, and no charge for an initial valuation or buy-box qualification. Compensation is earned exclusively when a transaction closes."),
     ("100% written-first &amp; confidential", "Every qualification step, conflict check, and NDA runs asynchronously in writing by email, without calendar friction or preliminary phone calls. No target identity is ever disclosed without prior written consent."),
     ("Evidence before narrative", "Every figure in a buyer summary or information memorandum traces to a primary financial or technical record that confirmatory diligence can verify."),
@@ -100,15 +105,15 @@ PRINCIPLES = [
 
 PHASES = [
     ("Written qualification and NDA", "Days 1 to 5",
-     "Everything starts asynchronously in writing by email. We confirm four headline metrics (revenue, adjusted EBITDA, recurring mix, and concentration) under a one-page mutual NDA, with zero calendar friction.",
+     "Everything starts asynchronously in writing by email. Four headline metrics (revenue, adjusted EBITDA, recurring mix, and concentration) are confirmed under a one-page mutual NDA, with zero calendar friction.",
      ["1-page Mutual Confidentiality Agreement", "Four-point written qualification check", "Selection of path: zero-fee buyer fast-track or competitive sell-side process", "Normalized EBITDA and add-back review"],
      "Signed NDA and written confirmation of mandate path."),
     ("Materials and target clearance", "Weeks 1 to 3",
-     "For a direct platform introduction, we run a 3-business-day blind conflict check with the acquirer before disclosing your company name. For a competitive sale, we build the anonymous teaser and financial summary.",
+     "For a direct platform introduction, a 3-business-day blind conflict check runs with the acquirer before disclosing your company name. For a competitive sale, the anonymous teaser and normalized financial schedule are prepared.",
      ["Anonymous two-page investment teaser", "Normalized financial summary and recurring revenue schedule", "3-day buyer conflict-clearance protocol (on fast-track intros)", "Virtual data room index"],
      "Written owner approval of materials or target clearance confirmation."),
     ("Introductions and marketing", "Weeks 3 to 8",
-     "On the fast-track path, we make a direct double opt-in written introduction with a dedicated first-look window. On a competitive mandate, approved acquirers are approached in a coordinated wave.",
+     "On the fast-track path, a direct double opt-in written introduction is made with a dedicated first-look window. On a competitive mandate, approved acquirers are approached in a coordinated wave.",
      ["Double opt-in email introduction or coordinated outreach wave", "Mutual NDAs executed before identity disclosure", "Financial summary and memorandum released", "Asynchronous written management Q&amp;A"],
      "Qualified buyer engagement and Q&amp;A completion."),
     ("Indications of interest and LOI", "Weeks 6 to 12",
@@ -153,13 +158,13 @@ CTAS = {
                          "Everything is handled in writing by email, with zero obligation and no preliminary phone calls. Send four rough numbers by email to see whether your practice qualifies for a zero-fee institutional introduction or a competitive sale process.",
                          MAIL_OWNER, "Write in confidence", "offices.jpg", "A modern office building at dusk, every floor lit",
                          "100% written-first &middot; strict confidentiality under NDA"),
-    "{{CTA_BUYER}}": cta("Tell me what you would buy next.",
-                         "Two lines by email are enough to register your buy-box. We originate off-market MSP, ERP/CRM, and vertical software targets with normalized financials and a 3-day conflict-clearance protocol.",
+    "{{CTA_BUYER}}": cta("Register your acquisition criteria.",
+                         "Two lines by email are enough to register your buy-box. The practice originates off-market MSP, ERP/CRM, and vertical software targets with normalized financials and a 3-day conflict-clearance protocol.",
                          MAIL_BUYER, "Send your criteria", "hero-city.jpg", "A dense city skyline at night",
                          "success fee at completion only &middot; 24-month introduction protection"),
-    "{{CTA_PLATFORM}}": cta("Bring me a problem.",
+    "{{CTA_PLATFORM}}": cta("Bring a platform problem.",
                             "A short description by email is enough. You get a written answer on whether it can be solved, how, and how quickly. If it is not a fit, I will say who is.",
-                            MAIL_PLATFORM, "Write to me", "corridor.jpg", "A long corridor of glass and steel",
+                            MAIL_PLATFORM, "Write in confidence", "corridor.jpg", "A long corridor of glass and steel",
                             "fixed price, agreed before we start"),
 }
 
@@ -177,13 +182,14 @@ def market_rows(rows, with_source):
 
 def buy_box_rows():
     out = []
-    for sector, buyer, criteria, geo, fee in BUY_BOXES:
+    for code, status, sector, buyer, criteria, geo, fee in BUY_BOXES:
+        fee_cls = "fee-badge fee-zero" if "0%" in fee else "fee-badge"
         cells = [
-            f"<td><strong>{sector}</strong></td>",
-            f"<td>{buyer}</td>",
+            f'<td><span class="mandate-code">{code}</span><span class="status-pill"><span class="dot" aria-hidden="true"></span>{status}</span></td>',
+            f"<td><strong>{sector}</strong><span class=\"cell-sub\">{buyer}</span></td>",
             f"<td>{criteria}</td>",
             f"<td>{geo}</td>",
-            f"<td>{fee}</td>",
+            f'<td><span class="{fee_cls}">{fee}</span></td>',
         ]
         out.append("          <tr>" + "".join(cells) + "</tr>")
     return "\n".join(out)
@@ -221,7 +227,7 @@ def header(nav_key):
         f'      <a href="{href}"{cur if key == nav_key else ""}>{label}</a>' for key, href, label in NAV)
     return f"""<header class="site-header">
   <div class="wrap">
-    <a class="brand" href="/" aria-label="Dev Sathya, home"><span class="brand-name">Dev Sathya</span><span class="brand-sub">M&amp;A advisory &middot; Enterprise platforms</span></a>
+    <a class="brand" href="/" aria-label="Dev Sathya, home"><span class="brand-name">Dev Sathya</span><span class="brand-sub">M&amp;A Advisory &amp; Origination &middot; New York &amp; London</span></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="nav" id="nav" aria-label="Main">
 {links}
@@ -235,8 +241,8 @@ FOOTER = f"""<footer class="site-footer">
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <a class="brand" href="/"><span class="brand-name">Dev Sathya</span><span class="brand-sub">M&amp;A advisory &middot; Enterprise platforms</span></a>
-        <p class="foot-about">Independent M&amp;A adviser for enterprise technology firms in the United States and the United Kingdom, and an architect of enterprise platforms.<br><span style="display:inline-block;margin-top:8px;font-size:13.5px;color:var(--ink-2)">Commercial office: 1178 Broadway, 3rd Floor #3433, New York, NY 10001, USA</span></p>
+        <a class="brand" href="/"><span class="brand-name">Dev Sathya</span><span class="brand-sub">M&amp;A Advisory &amp; Origination &middot; New York &amp; London</span></a>
+        <p class="foot-about">Independent M&amp;A advisory and buy-side origination practice for enterprise technology firms in the United States and the United Kingdom, and an architecture practice for enterprise platforms.<br><span style="display:inline-block;margin-top:8px;font-size:13.5px;color:var(--ink-2)">Commercial office: 1178 Broadway, 3rd Floor #3433, New York, NY 10001, USA</span></p>
       </div>
       <div><h4>For Owners</h4><ul><li><a href="/advisory/">Advisory &amp; Fast-Track</a></li><li><a href="/#mandates">Active buyer mandates</a></li><li><a href="/advisory/#process">The process</a></li><li><a href="/advisory/#readiness">Sale readiness</a></li></ul></div>
       <div><h4>For Acquirers</h4><ul><li><a href="/acquirers/">Buy-side origination</a></li><li><a href="/acquirers/#criteria">Share your criteria</a></li><li><a href="/advisory/#activity">Market activity</a></li><li><a href="/platforms/">Enterprise platforms</a></li></ul></div>
@@ -255,6 +261,7 @@ def page(out, frag, nav_key, title, desc, b):
         body = body.replace(k, v)
     assert "{{" not in body, f"unfilled block in {frag}"
     path = "" if out == "index.html" else out.replace("index.html", "")
+    rel_prefix = "../" if "/" in out else ""
     canonical = f"{SITE}/{path}"
     ld = {
         "@context": "https://schema.org",
@@ -275,6 +282,7 @@ def page(out, frag, nav_key, title, desc, b):
         "founder": {"@type": "Person", "name": "Dev Sathya", "jobTitle": "Independent M&A Adviser"}
     }
     robots = '\n<meta name="robots" content="noindex">' if frag == "404" else ""
+    body_rel = body.replace('"/assets/', f'"{rel_prefix}assets/')
     doc = f"""<!doctype html>
 <html lang="en-GB">
 <head>
@@ -291,21 +299,21 @@ def page(out, frag, nav_key, title, desc, b):
 <meta property="og:url" content="{canonical}">
 <meta property="og:image" content="{SITE}/assets/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="{rel_prefix}favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;600&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="{rel_prefix}assets/site.css">
 <script type="application/ld+json">{json.dumps(ld)}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 {header(nav_key)}
 <main id="main">
-{body}
+{body_rel}
 </main>
 {FOOTER}
-<script src="/assets/site.js" defer></script>
+<script src="{rel_prefix}assets/site.js" defer></script>
 </body>
 </html>
 """
