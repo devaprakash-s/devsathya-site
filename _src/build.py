@@ -22,88 +22,116 @@ def mailto(subject, body=""):
     return html.escape(f"mailto:{MAIL}?{q}", quote=True)
 
 
-MAIL_OWNER = mailto("A private read", "A few lines about the firm (what it does, where, roughly how many people) are enough to start.\n\n")
-MAIL_BUYER = mailto("Acquisition criteria",
-                    "The firms we buy (platform, service line or software category):\n\n"
-                    "Geography and size (regions, headcount or revenue range):\n\n"
-                    "Structure (full or majority, earn-out, rollover):\n\n"
-                    "Who decides, and the best address for a confidential profile:\n\n")
+MAIL_OWNER = mailto("Confidential M&A inquiry", "A few lines by email about the firm (approximate revenue and EBITDA, headcount, recurring revenue mix, and ecosystem) are enough to confirm fit.\n\n")
+MAIL_BUYER = mailto("Acquisition criteria & buy-side mandate",
+                    "The firms we acquire (MSP, ERP/CRM ecosystem, or vertical software category):\n\n"
+                    "Geography and size floor (regions, minimum revenue and EBITDA):\n\n"
+                    "Structure (full buyout, majority recap, permanent-hold vs sponsor cycle):\n\n"
+                    "Decision-maker and conflict-check contact email:\n\n")
 MAIL_PLATFORM = mailto("A platform problem")
 
 PAGES = [
     # out path, fragment, nav key, title, description
-    ("index.html", "home", "", "Dev Sathya | Sell-side M&A advisory for enterprise technology firms",
-     "Independent sell-side M&A adviser to owners of Microsoft Dynamics, Sage, NetSuite and Salesforce partners, managed IT service providers and vertical software firms in the UK and the US. Success fee only."),
-    ("advisory/index.html", "advisory", "advisory", "Sell-side M&A advisory | Dev Sathya",
-     "How the sale of an enterprise technology firm is run: valuation and positioning, sale readiness, buyer universe, a competitive process, negotiation and completion. Owner-side only, success fee only."),
-    ("acquirers/index.html", "acquirers", "acquirers", "For acquirers | Dev Sathya",
-     "Owner-led ERP and CRM partners, managed service providers and vertical software firms in the UK and the US, brought to market in a defined process. Share your acquisition criteria."),
+    ("index.html", "home", "", "Dev Sathya | M&A advisory & origination for enterprise technology firms",
+     "Independent M&A adviser to founders and institutional acquirers of Microsoft Dynamics, Sage, Acumatica, NetSuite and Salesforce partners, managed IT service providers and vertical software firms in the US and the UK. Success fee only."),
+    ("advisory/index.html", "advisory", "advisory", "M&A advisory & fast-track introductions | Dev Sathya",
+     "Two paths to an exit for enterprise technology founders: a zero-fee direct introduction to a contracted permanent-hold buyer, or a full competitive sell-side process. Written-first, success fee only."),
+    ("acquirers/index.html", "acquirers", "acquirers", "For acquirers & PE platforms | Dev Sathya",
+     "Proprietary, off-market MSP, ERP/CRM and vertical software acquisition opportunities across the US and the UK. Structured target clearance, dedicated first-look windows, and normalized financials."),
     ("platforms/index.html", "platforms", "platforms", "Enterprise platforms | Dev Sathya",
      "Architecture, strategy and delivery of enterprise platforms and governed AI systems by one architect who owns the thesis, the design, the build and the operations."),
     ("about/index.html", "about", "about", "About | Dev Sathya",
-     "Dev Sathya, independent M&A adviser to owners of enterprise technology firms and architect of enterprise platforms, in enterprise technology since 1998."),
+     "Dev Sathya, independent M&A adviser for enterprise technology firms in the US and the UK and architect of enterprise platforms, in enterprise technology since 1998."),
     ("disclosures/index.html", "disclosures", "", "Disclosures and privacy | Dev Sathya",
      "Regulatory status, the limits of the advice given, how market information is sourced, and the privacy notice for devsathya.com."),
     ("404.html", "404", "", "Page not found | Dev Sathya", "This page does not exist."),
 ]
 
-NAV = [("advisory", "/advisory/", "Advisory"), ("acquirers", "/acquirers/", "Acquirers"),
+NAV = [("advisory", "/advisory/", "For Owners"), ("acquirers", "/acquirers/", "For Acquirers"),
        ("platforms", "/platforms/", "Platforms"), ("about", "/about/", "About")]
 
 SECTORS = [
-    ("ERP and finance platform partners", "Resellers and implementers of mid-market ERP, with support and subscription revenue.",
-     "Sage &middot; Dynamics 365 Business Central &middot; NetSuite &middot; Acumatica &middot; SAP Business One"),
-    ("CRM and workflow partners", "Consultancies built on one ecosystem, valued for certified people and repeat clients.",
-     "Salesforce &middot; Dynamics 365 CE &middot; ServiceNow &middot; Workday"),
-    ("Managed IT services", "MSPs and IT support firms with contracted monthly recurring revenue.",
-     "Managed services &middot; Microsoft 365 and cloud &middot; Security &middot; Connectivity"),
-    ("Vertical and niche software", "Founder-owned software vendors with a loyal installed base in one industry.",
-     "Public sector &middot; Housing &middot; Professional services &middot; Manufacturing"),
-    ("Technology-enabled B2B services", "Service firms whose margins depend on their own systems and data.",
-     "Outsourced finance &middot; Document processing &middot; Data services"),
+    ("ERP and finance platform partners", "Resellers and implementers of mid-market ERP, with recurring support and subscription revenue.",
+     "Sage &middot; Acumatica &middot; NetSuite &middot; Dynamics 365 Business Central &middot; Epicor &middot; SAP Business One"),
+    ("CRM and cloud consultancies", "Consultancies built on enterprise cloud ecosystems, valued for certified bench depth and repeat clients.",
+     "Salesforce &middot; Dynamics 365 CE &amp; F&amp;O &middot; ServiceNow &middot; Workday &middot; AWS"),
+    ("Managed IT services (MSPs)", "Regional and national MSPs and cybersecurity firms with contracted monthly recurring revenue.",
+     "Managed IT &middot; Microsoft 365 &amp; Azure &middot; Cybersecurity &middot; Compliance"),
+    ("Vertical and niche B2B software", "Founder-owned software vendors with high gross retention and mission-critical domain workflows.",
+     "Industry SaaS &middot; Supply chain &amp; CargoWise &middot; Legal &amp; accounting tech &middot; Manufacturing ERP"),
+    ("Technology-enabled B2B services", "Specialized service firms whose margins and retention rest on proprietary workflows and recurring contracts.",
+     "Document automation &middot; Compliance &amp; billing &middot; Data &amp; integration services"),
+]
+
+BUY_BOXES = [
+    ("US Managed IT Services (MSPs)",
+     "Permanent-hold US platform (PE-backed)",
+     "$3.0M - $15.0M rev &middot; $500k+ EBITDA &middot; 12+ staff &middot; &gt;50% recurring",
+     "United States (Midwest, Mid-Atlantic, South, Mountain West, Northeast)",
+     "Acquirer-paid (0% cost to seller)"),
+    ("Enterprise ERP &amp; Accounting Partners",
+     "Dedicated ERP holding company (Permanent-hold)",
+     "$3.0M - $15.0M rev &middot; $500k+ EBITDA &middot; Sage, Acumatica, NetSuite, Epicor",
+     "United States, Canada &amp; United Kingdom",
+     "Acquirer-paid (0% cost to seller)"),
+    ("Microsoft Dynamics 365 Consultancies",
+     "PE-backed Microsoft cloud consolidators",
+     "&pound;500k - &pound;5.0M (UK) / $2.0M - $12.0M (US) &middot; Business Central, F&amp;O, CE",
+     "United Kingdom, Ireland &amp; United States",
+     "Acquirer-paid or Sell-side"),
+    ("Vertical Market B2B Software (SaaS)",
+     "Permanent buy-and-hold software groups",
+     "$1.5M - $8.0M ARR &middot; High gross retention &middot; Proprietary IP",
+     "North America, United Kingdom &amp; Europe",
+     "Acquirer-paid or Sell-side"),
+    ("Logistics &amp; Supply Chain Integration",
+     "Strategic logistics &amp; enterprise IT acquirers",
+     "$500k - $5.0M rev &middot; CargoWise partners, customs &amp; ERP integration",
+     "United States &amp; Global delivery",
+     "Active sell-side &amp; strategic"),
 ]
 
 PRINCIPLES = [
-    ("Owner-side only", "I act for the seller on every mandate and take no fee from acquirers, so advice on price and terms is not conflicted."),
-    ("Paid on completion", "A success fee agreed in writing before any buyer is approached, paid from the proceeds at completion. No retainer."),
-    ("Confidential by design", "Your firm's name reaches an acquirer only after a signed non-disclosure agreement. Staff, clients and vendors hear when you decide."),
-    ("Evidence before narrative", "Every figure in a buyer document traces to a record a buyer can check. Acquirers pay for what diligence confirms."),
+    ("Single-side fee alignment", "I am compensated by one side only, never both. On a sell-side mandate the owner pays the success fee; on a buy-side origination mandate the acquiring platform pays our introduction fee at zero cost to the seller."),
+    ("Paid on completion only", "There is no upfront retainer, no monthly maintenance fee, and no charge for an initial valuation or buy-box qualification. Compensation is earned exclusively when a transaction closes."),
+    ("100% written-first &amp; confidential", "Every qualification step, conflict check, and NDA runs asynchronously in writing by email, without calendar friction or preliminary phone calls. No target identity is ever disclosed without prior written consent."),
+    ("Evidence before narrative", "Every figure in a buyer summary or information memorandum traces to a primary financial or technical record that confirmatory diligence can verify."),
 ]
 
 PHASES = [
-    ("Engagement and preparation", "Weeks 1 to 4",
-     "We agree the objectives, the fee and the scope in an engagement letter. I take in the records and build the financial picture a buyer will test.",
-     ["Engagement letter and data request", "Normalised earnings and add-back schedule", "Valuation range and value ladder", "Diligence issues list"],
-     "Your floor price, agreed in writing and supported by the evidence."),
-    ("Materials and buyer universe", "Weeks 3 to 6",
-     "The firm is presented in the terms acquirers use to price it, and the buyer list is built on dated evidence.",
-     ["Anonymous teaser and NDA", "Confidential information memorandum", "Buyer universe, with a reason for each", "Data room index"],
-     "The materials and the buyer list."),
-    ("Marketing", "Weeks 6 to 12",
-     "Every approved acquirer is approached at once, so no buyer gets a head start.",
-     ["Single-wave outreach", "NDAs signed before the name is shared", "CIM released", "Written management Q&amp;A"],
-     "Which buyers go forward."),
-    ("Offers and selection", "Weeks 10 to 16",
-     "Indications of interest narrow the field. Management meetings and letters of intent decide it.",
-     ["IOIs compared on price and structure", "Management meetings", "LOIs pressed on cash at completion, escrow, earn-out and conditions"],
-     "A signed letter of intent with one buyer."),
-    ("Exclusivity and confirmatory diligence", "Weeks 16 to 24",
-     "One buyer confirms what the CIM said. A complete data room and a prepared seller keep the price where the LOI set it.",
-     ["A complete data room", "Diligence questions managed to the timetable", "Re-trade defence from the evidence", "Disclosure schedules with your counsel"],
-     "Final terms."),
+    ("Written qualification and NDA", "Days 1 to 5",
+     "Everything starts asynchronously in writing by email. We confirm four headline metrics (revenue, adjusted EBITDA, recurring mix, and concentration) under a one-page mutual NDA, with zero calendar friction.",
+     ["1-page Mutual Confidentiality Agreement", "Four-point written qualification check", "Selection of path: zero-fee buyer fast-track or competitive sell-side process", "Normalized EBITDA and add-back review"],
+     "Signed NDA and written confirmation of mandate path."),
+    ("Materials and target clearance", "Weeks 1 to 3",
+     "For a direct platform introduction, we run a 3-business-day blind conflict check with the acquirer before disclosing your company name. For a competitive sale, we build the anonymous teaser and financial summary.",
+     ["Anonymous two-page investment teaser", "Normalized financial summary and recurring revenue schedule", "3-day buyer conflict-clearance protocol (on fast-track intros)", "Virtual data room index"],
+     "Written owner approval of materials or target clearance confirmation."),
+    ("Introductions and marketing", "Weeks 3 to 8",
+     "On the fast-track path, we make a direct double opt-in written introduction with a dedicated first-look window. On a competitive mandate, approved acquirers are approached in a coordinated wave.",
+     ["Double opt-in email introduction or coordinated outreach wave", "Mutual NDAs executed before identity disclosure", "Financial summary and memorandum released", "Asynchronous written management Q&amp;A"],
+     "Qualified buyer engagement and Q&amp;A completion."),
+    ("Indications of interest and LOI", "Weeks 6 to 12",
+     "Buyers submit written indications of interest (IOIs) followed by focused leadership discussions and binding letters of intent (LOIs) detailing price, cash at close, working capital, and transition terms.",
+     ["Written IOIs evaluated on headline price and net cash at close", "Focused executive alignment sessions", "LOIs negotiated on cash at completion, escrow, earn-out and rollover equity"],
+     "Countersigned Letter of Intent with one buyer."),
+    ("Exclusivity and confirmatory diligence", "Weeks 10 to 18",
+     "The selected acquirer conducts financial, tax, legal, and technical diligence against a pre-organized virtual data room, keeping the price anchored to what the LOI set.",
+     ["Structured Virtual Data Room (VDR) management", "Quality of earnings (QoE) and technical diligence coordination", "Re-trade defense grounded in pre-disclosed records", "Disclosure schedules prepared with your counsel"],
+     "Confirmatory diligence sign-off and final purchase agreement."),
     ("Signing and completion", "At the close",
-     "Your counsel drafts and negotiates the purchase agreement. I hold the terms to what was agreed and the timetable to its dates.",
-     ["Share or asset purchase agreement", "Customer, landlord and partner programme consents", "Funds flow and completion statement", "Handover and transition plan"],
-     "Signed agreements and funds received."),
+     "Legal counsel finalizes the definitive purchase agreement, third-party consents are completed, and closing funds are wired directly through escrow.",
+     ["Definitive Share or Asset Purchase Agreement", "Partner programme and key contract consents", "Closing funds flow and escrow distribution", "Structured founder and team transition"],
+     "Executed closing documents and wire settlement."),
 ]
 
 SHORT_PROCESS = [
-    ("Preparation", "Weeks 1 to 4", "Normalised earnings, a valuation range, and the issues diligence would find."),
-    ("Positioning", "Weeks 3 to 6", "Anonymous teaser, confidential information memorandum and a defined buyer universe."),
-    ("Marketing", "Weeks 6 to 12", "One wave of approaches, NDAs, the CIM released and written management Q&amp;A."),
-    ("Offers", "Weeks 10 to 16", "Indications of interest, management meetings, then letters of intent compared and improved."),
-    ("Diligence", "Weeks 16 to 24", "Exclusivity with one buyer, a complete data room and confirmatory diligence."),
-    ("Completion", "At the close", "Purchase agreement by your counsel, consents, funds flow and an orderly handover."),
+    ("Written Check", "Days 1 to 5", "Four headline numbers confirmed by email under a 1-page Mutual NDA. Zero call friction."),
+    ("Clearance", "Weeks 1 to 3", "Normalized earnings schedule, blind profile, and 3-day buyer conflict clearance."),
+    ("Introduction", "Weeks 3 to 8", "Direct double opt-in introduction (first-look) or coordinated multi-buyer wave."),
+    ("Offers (IOI/LOI)", "Weeks 6 to 12", "Written valuation ranges compared and negotiated into a signed Letter of Intent."),
+    ("Diligence", "Weeks 10 to 18", "Exclusivity with the winning buyer, VDR management, and confirmatory diligence."),
+    ("Completion", "At the close", "Purchase agreement execution, funds wired at closing, and orderly handover."),
 ]
 
 
@@ -121,14 +149,14 @@ def cta(title, lede, href, label, image, alt, line):
 
 
 CTAS = {
-    "{{CTA_OWNER}}": cta("Considering a sale, now or in a few years?",
-                         "Begin with a private read: five questions by email, then a written view of what the firm could be worth, to whom, and what would raise the figure. No charge and no obligation.",
+    "{{CTA_OWNER}}": cta("Considering a sale, or curious if your firm fits a live buyer mandate?",
+                         "Everything is handled in writing by email, with zero obligation and no preliminary phone calls. Send four rough numbers by email to see whether your practice qualifies for a zero-fee institutional introduction or a competitive sale process.",
                          MAIL_OWNER, "Write in confidence", "offices.jpg", "A modern office building at dusk, every floor lit",
-                         "every reply in writing, in confidence"),
+                         "100% written-first &middot; strict confidentiality under NDA"),
     "{{CTA_BUYER}}": cta("Tell me what you would buy next.",
-                         "Two lines by email are enough to start. Anonymous profiles follow when a firm fits, and the name only after a signed NDA.",
+                         "Two lines by email are enough to register your buy-box. We originate off-market MSP, ERP/CRM, and vertical software targets with normalized financials and a 3-day conflict-clearance protocol.",
                          MAIL_BUYER, "Send your criteria", "hero-city.jpg", "A dense city skyline at night",
-                         "no fee from acquirers"),
+                         "success fee at completion only &middot; 24-month introduction protection"),
     "{{CTA_PLATFORM}}": cta("Bring me a problem.",
                             "A short description by email is enough. You get a written answer on whether it can be solved, how, and how quickly. If it is not a fit, I will say who is.",
                             MAIL_PLATFORM, "Write to me", "corridor.jpg", "A long corridor of glass and steel",
@@ -147,6 +175,20 @@ def market_rows(rows, with_source):
     return "\n".join(out)
 
 
+def buy_box_rows():
+    out = []
+    for sector, buyer, criteria, geo, fee in BUY_BOXES:
+        cells = [
+            f"<td><strong>{sector}</strong></td>",
+            f"<td>{buyer}</td>",
+            f"<td>{criteria}</td>",
+            f"<td>{geo}</td>",
+            f"<td>{fee}</td>",
+        ]
+        out.append("          <tr>" + "".join(cells) + "</tr>")
+    return "\n".join(out)
+
+
 def blocks():
     market = json.loads((SRC / "market.json").read_text(encoding="utf-8"))
     order = {"Oct": 10, "Sep": 9, "Aug": 8, "Jul": 7, "Jun": 6, "May": 5, "Apr": 4, "Mar": 3, "Feb": 2, "Jan": 1, "Nov": 11, "Dec": 12}
@@ -159,6 +201,7 @@ def blocks():
     b = {
         "{{MARKET_TOP}}": market_rows(market[:5], False),
         "{{MARKET_ALL}}": market_rows(market, True),
+        "{{BUY_BOX_ROWS}}": buy_box_rows(),
         "{{SECTORS}}": "\n".join(f'      <div class="sector"><h3>{t}</h3><p>{d}</p><p class="plats">{p}</p></div>' for t, d, p in SECTORS),
         "{{PRINCIPLES}}": "\n".join(f'      <div class="principle"><h3>{t}</h3><p>{d}</p></div>' for t, d in PRINCIPLES),
         "{{PROCESS_SHORT}}": "\n".join(f'      <li><span class="when">{w}</span><h3>{t}</h3><p>{d}</p></li>' for t, w, d in SHORT_PROCESS),
@@ -193,14 +236,14 @@ FOOTER = f"""<footer class="site-footer">
     <div class="foot-grid">
       <div>
         <a class="brand" href="/"><span class="brand-name">Dev Sathya</span><span class="brand-sub">M&amp;A advisory &middot; Enterprise platforms</span></a>
-        <p class="foot-about">Independent sell-side M&amp;A adviser to owners of enterprise technology firms in the United Kingdom and the United States, and an architect of enterprise platforms.</p>
+        <p class="foot-about">Independent M&amp;A adviser for enterprise technology firms in the United States and the United Kingdom, and an architect of enterprise platforms.<br><span style="display:inline-block;margin-top:8px;font-size:13.5px;color:var(--ink-2)">Commercial office: 1178 Broadway, 3rd Floor #3433, New York, NY 10001, USA</span></p>
       </div>
-      <div><h4>Advisory</h4><ul><li><a href="/advisory/">Sell-side advisory</a></li><li><a href="/advisory/#process">The process</a></li><li><a href="/advisory/#readiness">Sale readiness</a></li><li><a href="/advisory/#activity">Market activity</a></li></ul></div>
-      <div><h4>Acquirers</h4><ul><li><a href="/acquirers/">For acquirers</a></li><li><a href="/acquirers/#criteria">Share your criteria</a></li><li><a href="/platforms/">Enterprise platforms</a></li></ul></div>
+      <div><h4>For Owners</h4><ul><li><a href="/advisory/">Advisory &amp; Fast-Track</a></li><li><a href="/#mandates">Active buyer mandates</a></li><li><a href="/advisory/#process">The process</a></li><li><a href="/advisory/#readiness">Sale readiness</a></li></ul></div>
+      <div><h4>For Acquirers</h4><ul><li><a href="/acquirers/">Buy-side origination</a></li><li><a href="/acquirers/#criteria">Share your criteria</a></li><li><a href="/advisory/#activity">Market activity</a></li><li><a href="/platforms/">Enterprise platforms</a></li></ul></div>
       <div><h4>Contact</h4><ul><li><a href="mailto:{MAIL}">{MAIL}</a></li><li><a href="/about/">About</a></li><li><a href="/disclosures/">Disclosures and privacy</a></li></ul></div>
     </div>
     <div class="foot-legal">
-      <p>&copy; <span id="year">2026</span> Dev Sathya, the trading name of Devaprakash Sathyanarayanan. Independent M&amp;A adviser: not a registered broker-dealer and not authorised by the Financial Conduct Authority. Nothing on this site is an offer of securities or investment advice. <a class="link" href="/disclosures/">Disclosures</a>.</p>
+      <p>&copy; <span id="year">2026</span> Dev Sathya, the trading name of Devaprakash Sathyanarayanan (1178 Broadway, 3rd Floor #3433, New York, NY 10001, USA). Independent M&amp;A adviser: not a registered broker-dealer and not authorised by the Financial Conduct Authority. Nothing on this site is an offer of securities or investment advice. <a class="link" href="/disclosures/">Disclosures</a>.</p>
     </div>
   </div>
 </footer>"""
@@ -213,9 +256,24 @@ def page(out, frag, nav_key, title, desc, b):
     assert "{{" not in body, f"unfilled block in {frag}"
     path = "" if out == "index.html" else out.replace("index.html", "")
     canonical = f"{SITE}/{path}"
-    ld = {"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Dev Sathya",
-          "description": PAGES[0][4], "url": SITE + "/", "email": MAIL, "areaServed": ["GB", "US"],
-          "founder": {"@type": "Person", "name": "Dev Sathya", "jobTitle": "Independent M&A adviser"}}
+    ld = {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Dev Sathya M&A Advisory",
+        "description": PAGES[0][4],
+        "url": SITE + "/",
+        "email": MAIL,
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "1178 Broadway, 3rd Floor #3433",
+            "addressLocality": "New York",
+            "addressRegion": "NY",
+            "postalCode": "10001",
+            "addressCountry": "US"
+        },
+        "areaServed": ["US", "GB"],
+        "founder": {"@type": "Person", "name": "Dev Sathya", "jobTitle": "Independent M&A Adviser"}
+    }
     robots = '\n<meta name="robots" content="noindex">' if frag == "404" else ""
     doc = f"""<!doctype html>
 <html lang="en-GB">
@@ -263,7 +321,7 @@ def main():
     urls = [u for u, p in zip(urls, PAGES) if p[1] != "404"]
     (ROOT / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        + "".join(f"  <url><loc>{u}</loc><lastmod>2026-10-06</lastmod></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
+        + "".join(f"  <url><loc>{u}</loc><lastmod>2026-10-15</lastmod></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
     (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /_src/\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
     print("built", len(PAGES), "pages")
 
