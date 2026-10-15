@@ -303,7 +303,7 @@ def page(out, frag, nav_key, title, desc, b):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;600&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="{rel_prefix}assets/site.css">
+<link rel="stylesheet" href="{rel_prefix}assets/site.css?v=20261015b">
 <script type="application/ld+json">{json.dumps(ld)}</script>
 </head>
 <body>
@@ -313,7 +313,7 @@ def page(out, frag, nav_key, title, desc, b):
 {body_rel}
 </main>
 {FOOTER}
-<script src="{rel_prefix}assets/site.js" defer></script>
+<script src="{rel_prefix}assets/site.js?v=20261015b" defer></script>
 </body>
 </html>
 """
