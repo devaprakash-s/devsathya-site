@@ -370,15 +370,28 @@ table.deals { width: 100%; border-collapse: collapse; font-size: 15px; font-vari
 .timeline .what { color: var(--ink-2); }
 
 /* ---------- footer ---------- */
-.site-footer { border-top: 1px solid var(--line); padding: 72px 0 40px; background: var(--bg); }
-.foot-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(0, 1fr)); gap: 32px; }
-.foot-grid h4 { font-family: var(--mono); font-weight: 400; font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
-.foot-grid ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-.foot-grid a { color: var(--ink-2); font-size: 15px; transition: color .2s; }
-.foot-grid a:hover { color: var(--ink); }
-.foot-about { color: var(--muted); font-size: 15px; max-width: 42ch; margin-top: 16px; }
-.foot-legal { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; font-size: 13px; color: var(--muted); }
-.foot-legal p { margin: 0; max-width: 90ch; }
+.site-footer { border-top: 1px solid var(--line-2); padding: 76px 0 44px; background: linear-gradient(180deg, rgba(4, 10, 31, 0.55) 0%, var(--bg) 100%); }
+.foot-grid { display: grid; grid-template-columns: minmax(0, 1.85fr) repeat(3, minmax(0, 1fr)); gap: clamp(28px, 3.6vw, 48px); align-items: start; }
+.site-footer .brand-name { font-size: 20px; color: var(--ink); }
+.site-footer .brand-sub { font-size: 10.5px; letter-spacing: 0.14em; color: var(--blue-2); margin-top: 6px; white-space: nowrap; }
+.foot-about { color: var(--muted); font-size: 14.5px; line-height: 1.65; max-width: 44ch; margin: 16px 0 0; }
+.foot-office { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); max-width: 44ch; display: flex; flex-direction: column; gap: 3px; }
+.foot-office-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+.foot-office-addr { font-size: 13.5px; color: var(--ink-2); line-height: 1.45; }
+.foot-col h4 { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--silver); margin: 0 0 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.foot-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; }
+.foot-col ul a { color: var(--ink-2); font-size: 14.5px; line-height: 1.4; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color .2s var(--ease), transform .2s var(--ease); }
+.foot-col ul a:hover { color: #fff; transform: translateX(2px); }
+.foot-col ul a.foot-mail { font-family: var(--mono); font-size: 13.5px; color: var(--glow); }
+.foot-col ul a.foot-mail:hover { color: #fff; }
+.foot-legal { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); display: grid; gap: 10px; font-size: 13px; color: var(--muted); }
+.foot-legal p { margin: 0; }
+.foot-legal-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; color: var(--ink-2); font-size: 13px; }
+.foot-copy { font-weight: 400; color: var(--ink-2); }
+.foot-meta { color: var(--muted); }
+.foot-meta a { color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line-2); transition: color .2s, text-decoration-color .2s; }
+.foot-meta a:hover { color: #fff; text-decoration-color: var(--glow); }
+.foot-reg { font-size: 12.5px; color: var(--muted); line-height: 1.55; max-width: none; }
 
 /* ---------- reveal ---------- */
 .js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
@@ -414,7 +427,7 @@ table.deals { width: 100%; border-collapse: collapse; font-size: 15px; font-vari
   .hero-facts > div:nth-child(3), .stats > div:nth-child(3) { padding-left: 0; border-left: 0; }
   .hero-facts > div:nth-child(n+3), .stats > div:nth-child(n+3) { border-top: 1px solid var(--line); }
   .phase { grid-template-columns: minmax(0, 1fr); gap: 10px; }
-  .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .foot-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .foot-grid > :first-child { grid-column: 1 / -1; }
   .figure img { aspect-ratio: 16 / 11; }
   .market { min-height: 360px; }
@@ -425,7 +438,8 @@ table.deals { width: 100%; border-collapse: collapse; font-size: 15px; font-vari
     background: linear-gradient(180deg, rgba(1, 4, 13, 0.62) 0%, rgba(1, 4, 13, 0.74) 35%, rgba(1, 4, 13, 0.84) 70%, var(--bg) 100%);
   }
   .cta-media::after { background: linear-gradient(180deg, var(--bg) 0%, rgba(1, 4, 13, 0.8) 20%, rgba(1, 4, 13, 0.84) 80%, var(--bg) 100%); }
-  .site-header .brand-sub { font-size: 9.5px; letter-spacing: 0.12em; white-space: nowrap; }
+  .site-header .brand-sub, .site-footer .brand-sub { font-size: 9.5px; letter-spacing: 0.12em; white-space: nowrap; }
+  .foot-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   .process, .sectors, .principles, .grid-4, .ledger-bar, .protocol-strip, .spec-metrics { grid-template-columns: minmax(0, 1fr); }
   .ledger-bar > div, .ledger-bar > div + div { padding-left: 0; border-left: 0; }
   .proto-step, .proto-step + .proto-step { border-left: 0; border-top: 1px solid var(--line); }

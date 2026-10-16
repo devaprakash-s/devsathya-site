@@ -241,16 +241,24 @@ def header(nav_key):
 FOOTER = f"""<footer class="site-footer">
   <div class="wrap">
     <div class="foot-grid">
-      <div>
+      <div class="foot-brand">
         <a class="brand" href="/"><span class="brand-name">Dev Sathya</span><span class="brand-sub">M&amp;A Advisory &amp; Origination &middot; New York &amp; London</span></a>
-        <p class="foot-about">Independent M&amp;A advisory and buy-side origination practice for enterprise technology firms in the United States and the United Kingdom, and an architecture practice for enterprise platforms.<br><span style="display:inline-block;margin-top:8px;font-size:13.5px;color:var(--ink-2)">Commercial office: 1178 Broadway, 3rd Floor #3433, New York, NY 10001, USA</span></p>
+        <p class="foot-about">Independent M&amp;A advisory and buy-side origination practice for enterprise technology firms in the United States and the United Kingdom, alongside an architecture practice for enterprise platforms.</p>
+        <div class="foot-office">
+          <span class="foot-office-label">Commercial Office</span>
+          <span class="foot-office-addr">1178 Broadway, 3rd Floor #3433 &middot; New York, NY 10001, USA</span>
+        </div>
       </div>
-      <div><h4>For Owners</h4><ul><li><a href="/advisory/">Advisory &amp; Fast-Track</a></li><li><a href="/#mandates">Active buyer mandates</a></li><li><a href="/advisory/#process">The process</a></li><li><a href="/advisory/#readiness">Sale readiness</a></li></ul></div>
-      <div><h4>For Acquirers</h4><ul><li><a href="/acquirers/">Buy-side origination</a></li><li><a href="/acquirers/#criteria">Share your criteria</a></li><li><a href="/advisory/#activity">Market activity</a></li><li><a href="/platforms/">Enterprise platforms</a></li></ul></div>
-      <div><h4>Contact</h4><ul><li><a href="mailto:{MAIL}">{MAIL}</a></li><li><a href="/about/">About</a></li><li><a href="/disclosures/">Disclosures and privacy</a></li></ul></div>
+      <div class="foot-col"><h4>For Owners</h4><ul><li><a href="/advisory/">Advisory &amp; Fast-Track</a></li><li><a href="/#mandates">Active buyer mandates</a></li><li><a href="/advisory/#process">The process</a></li><li><a href="/advisory/#readiness">Sale readiness</a></li></ul></div>
+      <div class="foot-col"><h4>For Acquirers</h4><ul><li><a href="/acquirers/">Buy-side origination</a></li><li><a href="/acquirers/#criteria">Share your criteria</a></li><li><a href="/advisory/#activity">Market activity</a></li><li><a href="/platforms/">Enterprise platforms</a></li></ul></div>
+      <div class="foot-col"><h4>Contact</h4><ul><li><a class="foot-mail" href="mailto:{MAIL}">{MAIL}</a></li><li><a href="{MAIL_OWNER}">Write in confidence</a></li><li><a href="/about/">About the practice</a></li><li><a href="/disclosures/">Disclosures &amp; privacy</a></li></ul></div>
     </div>
     <div class="foot-legal">
-      <p>&copy; <span id="year">2026</span> Dev Sathya (1178 Broadway, 3rd Floor #3433, New York, NY 10001, USA). Independent M&amp;A adviser: not a registered broker-dealer and not authorised by the Financial Conduct Authority. Nothing on this site is an offer of securities or investment advice. <a class="link" href="/disclosures/">Disclosures</a>.</p>
+      <div class="foot-legal-top">
+        <p class="foot-copy">&copy; <span id="year">2026</span> Dev Sathya &middot; New York &amp; London</p>
+        <p class="foot-meta">Written-first under NDA &middot; Single-side success fee &middot; <a href="/disclosures/">Disclosures &amp; privacy</a></p>
+      </div>
+      <p class="foot-reg">Independent M&amp;A adviser: not a registered broker-dealer and not authorised by the Financial Conduct Authority. Nothing on this site is an offer of securities or investment advice.</p>
     </div>
   </div>
 </footer>"""
@@ -304,7 +312,7 @@ def page(out, frag, nav_key, title, desc, b):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;600&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="{rel_prefix}assets/site.css?v=20261015b">
+<link rel="stylesheet" href="{rel_prefix}assets/site.css?v=20261016a">
 <script type="application/ld+json">{json.dumps(ld)}</script>
 </head>
 <body>
@@ -314,7 +322,7 @@ def page(out, frag, nav_key, title, desc, b):
 {body_rel}
 </main>
 {FOOTER}
-<script src="{rel_prefix}assets/site.js?v=20261015b" defer></script>
+<script src="{rel_prefix}assets/site.js?v=20261016a" defer></script>
 </body>
 </html>
 """
