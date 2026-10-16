@@ -4,3 +4,6 @@ dist/
 ops/
 build_snippet.py
 .claude/
+
+__pycache__/
+*.pyc
