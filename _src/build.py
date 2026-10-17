@@ -65,31 +65,31 @@ SECTORS = [
 ]
 
 BUY_BOXES = [
-    ("US-MSP-01", "ACTIVE &middot; CAPITAL ALLOCATED",
+    ("US-MSP-01", "SIGNED MANDATE",
      "US Managed IT Services (MSPs)",
      "Permanent-hold US platform (PE-backed)",
      "$3.0M - $15.0M rev &middot; $500k+ EBITDA &middot; 12+ staff &middot; &gt;50% recurring",
      "United States (Midwest, Mid-Atlantic, South, Mountain West, Northeast)",
      "Acquirer-paid (0% seller fee)"),
-    ("NA-ERP-02", "ACTIVE &middot; PERMANENT HOLD",
+    ("NA-ERP-02", "BUYER DEMAND TRACKED",
      "Enterprise ERP &amp; Accounting Partners",
-     "Dedicated ERP holding company (Permanent-hold)",
+     "ERP holding companies and permanent-hold groups",
      "$3.0M - $15.0M rev &middot; $500k+ EBITDA &middot; Sage, Acumatica, NetSuite, Epicor",
      "United States, Canada &amp; United Kingdom",
      "Acquirer-paid (0% seller fee)"),
-    ("UK-DYN-03", "ACTIVE &middot; CONSOLIDATION",
+    ("UK-DYN-03", "BUYER IN DISCUSSION",
      "Microsoft Dynamics 365 Consultancies",
      "PE-backed Microsoft cloud consolidators",
      "&pound;500k - &pound;5.0M (UK) / $2.0M - $12.0M (US) &middot; Business Central, F&amp;O, CE",
      "United Kingdom, Ireland &amp; United States",
      "Acquirer-paid or Sell-side"),
-    ("GL-VMS-04", "ACTIVE &middot; PERMANENT HOLD",
+    ("GL-VMS-04", "MANDATE IN SIGNATURE",
      "Vertical Market B2B Software (SaaS)",
      "Permanent buy-and-hold software groups",
      "$1.5M - $8.0M ARR &middot; High gross retention &middot; Proprietary IP",
      "North America, United Kingdom &amp; Europe",
      "Acquirer-paid or Sell-side"),
-    ("GL-LOG-05", "ACTIVE &middot; STRATEGIC",
+    ("GL-LOG-05", "SELL-SIDE MANDATE SIGNED",
      "Logistics &amp; Supply Chain Integration",
      "Strategic logistics &amp; enterprise IT acquirers",
      "$500k - $5.0M rev &middot; CargoWise partners, customs &amp; ERP integration",
@@ -228,7 +228,7 @@ def header(nav_key):
         f'      <a href="{href}"{cur if key == nav_key else ""}>{label}</a>' for key, href, label in NAV)
     return f"""<header class="site-header">
   <div class="wrap">
-    <a class="brand" href="/" aria-label="Dev Sathya, home"><span class="brand-name">Dev Sathya</span><span class="brand-sub">M&amp;A Advisory &amp; Origination &middot; New York &amp; London</span></a>
+    <a class="brand" href="/" aria-label="Dev Sathya, home"><span class="brand-name">Dev Sathya</span><span class="brand-sub">M&amp;A Advisory &amp; Origination &middot; US &amp; UK</span></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="nav" id="nav" aria-label="Main">
 {links}
@@ -242,10 +242,10 @@ FOOTER = f"""<footer class="site-footer">
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a class="brand" href="/"><span class="brand-name">Dev Sathya</span><span class="brand-sub">M&amp;A Advisory &amp; Origination &middot; New York &amp; London</span></a>
+        <a class="brand" href="/"><span class="brand-name">Dev Sathya</span><span class="brand-sub">M&amp;A Advisory &amp; Origination &middot; US &amp; UK</span></a>
         <p class="foot-about">Independent M&amp;A advisory and buy-side origination practice for enterprise technology firms in the United States and the United Kingdom, alongside an architecture practice for enterprise platforms.</p>
         <div class="foot-office">
-          <span class="foot-office-label">Commercial Office</span>
+          <span class="foot-office-label">US mailing address</span>
           <span class="foot-office-addr">1178 Broadway, 3rd Floor #3433 &middot; New York, NY 10001, USA</span>
         </div>
       </div>
@@ -255,7 +255,7 @@ FOOTER = f"""<footer class="site-footer">
     </div>
     <div class="foot-legal">
       <div class="foot-legal-top">
-        <p class="foot-copy">&copy; <span id="year">2026</span> Dev Sathya &middot; New York &amp; London</p>
+        <p class="foot-copy">&copy; <span id="year">2026</span> Dev Sathya &middot; US &amp; UK</p>
         <p class="foot-meta">Written-first under NDA &middot; Single-side success fee &middot; <a href="/disclosures/">Disclosures &amp; privacy</a></p>
       </div>
       <p class="foot-reg">Independent M&amp;A adviser: not a registered broker-dealer and not authorised by the Financial Conduct Authority. Nothing on this site is an offer of securities or investment advice.</p>
