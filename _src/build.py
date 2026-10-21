@@ -28,8 +28,8 @@ MAIL_BUYER = mailto("Acquisition criteria & buy-side mandate",
                     "Geography and size floor (regions, minimum revenue and EBITDA):\n\n"
                     "Structure (full buyout, majority recap, permanent-hold vs sponsor cycle):\n\n"
                     "Decision-maker and conflict-check contact email:\n\n")
-MAIL_PLATFORM = mailto("Platform portfolio brief / principal architect inquiry",
-                       "A two-line note by email is enough (whether you would like the 2-page Executive Platform Portfolio PDF, an NDA walkthrough, or to explore the Fractional Principal Architect retainer / sprint):\n\n")
+MAIL_PLATFORM = mailto("A problem to solve",
+                       "A two-line note by email is enough: the problem, and what it costs you today.\n\n")
 
 PAGES = [
     # out path, fragment, nav key, title, description
@@ -40,7 +40,7 @@ PAGES = [
     ("acquirers/index.html", "acquirers", "acquirers", "For acquirers & PE platforms | Dev Sathya",
      "Proprietary, off-market MSP, ERP/CRM and vertical software acquisition opportunities across the US and the UK. Structured target clearance, dedicated first-look windows, and normalized financials."),
     ("platforms/index.html", "platforms", "platforms", "Enterprise platforms & principal AI architecture | Dev Sathya",
-     "12 production enterprise platforms and governed AI systems designed, coded, and deployed solo. Fractional Chief of Strategy & Principal Architect retainers, interactive Try & Buy sandboxes, and turnkey builds."),
+     "12 production enterprise platforms and governed AI systems designed, coded, and deployed solo. Paid on the outcome: the result and the number agreed in writing, and half the fee due only when it is hit."),
     ("about/index.html", "about", "about", "About | Dev Sathya",
      "Dev Sathya, independent M&A adviser for enterprise technology firms in the US and the UK and architect of enterprise platforms, in enterprise technology since 1998."),
     ("disclosures/index.html", "disclosures", "", "Disclosures and privacy | Dev Sathya",
@@ -163,10 +163,10 @@ CTAS = {
                          "Two lines by email are enough to register your buy-box. The practice originates off-market MSP, ERP/CRM, and vertical software targets with normalized financials and a 3-day conflict-clearance protocol.",
                          MAIL_BUYER, "Send your criteria", "hero-city.jpg", "A dense city skyline at night",
                          "success fee at completion only &middot; 24-month introduction protection"),
-    "{{CTA_PLATFORM}}": cta("Want the 2-page platform portfolio or a senior architect in your corner?",
-                            "A two-line note by email is enough. Tell me if you would like the confidential 2-page Executive Platform Portfolio PDF, a private NDA walkthrough, or to explore the monthly partner retainer or a sprint.",
+    "{{CTA_PLATFORM}}": cta("Have a problem that is costing you money?",
+                            "A two-line note by email is enough: what the problem is and what it costs you today. I will reply in writing with how I would solve it and the number we would agree.",
                             MAIL_PLATFORM, "Write in confidence", "corridor.jpg", "A long corridor of glass and steel",
-                            "100% written-first &middot; fixed terms agreed before we start"),
+                            "100% written-first &middot; paid on the outcome"),
 }
 
 
