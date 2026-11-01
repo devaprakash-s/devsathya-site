@@ -1,0 +1,1052 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Private Institutional Mandate Gate-Check | Dev Sathya</title>
+<meta name="description" content="Unlisted 90-second self-diagnostic for owners of Managed IT, ERP, Government IT, CPA technology divisions, and vertical software firms. Zero login, zero valuation pricing, zero seller fee.">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="theme-color" content="#01040d">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;600&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../../assets/site.css?v=20261016a">
+<style>
+  .gate-hero {
+    padding: calc(var(--header) + 48px) 0 42px;
+    border-bottom: 1px solid var(--line);
+    background:
+      radial-gradient(900px 420px at 82% 8%, rgba(47, 95, 224, 0.20), transparent 70%),
+      radial-gradient(680px 380px at 14% 25%, rgba(111, 151, 240, 0.11), transparent 72%),
+      var(--bg);
+  }
+  .gate-hero h1 {
+    font-size: clamp(32px, 4.4vw, 58px);
+    max-width: 19ch;
+    margin-bottom: 18px;
+  }
+  .gate-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+  }
+  .gate-pill {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--line-2);
+    background: rgba(8, 18, 50, 0.55);
+    color: var(--silver);
+  }
+  .gate-pill.ok {
+    border-color: rgba(56, 211, 153, 0.36);
+    background: rgba(56, 211, 153, 0.10);
+    color: #9de8c8;
+  }
+
+  .sandbox-sec {
+    padding: clamp(44px, 6vw, 76px) 0;
+  }
+  .preset-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: rgba(4, 10, 31, 0.65);
+  }
+  .preset-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-right: 6px;
+  }
+  .preset-btn {
+    background: rgba(12, 26, 70, 0.45);
+    border: 1px solid var(--line-2);
+    color: var(--ink-2);
+    font-family: var(--sans);
+    font-size: 13.5px;
+    padding: 7px 13px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: border-color .2s, background .2s, color .2s;
+  }
+  .preset-btn:hover, .preset-btn.active {
+    border-color: var(--glow);
+    background: rgba(47, 95, 224, 0.26);
+    color: #fff;
+  }
+
+  .sandbox-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, 1.08fr);
+    gap: clamp(22px, 3vw, 36px);
+    align-items: start;
+  }
+  .panel-box {
+    background: linear-gradient(175deg, rgba(9, 20, 54, 0.72) 0%, rgba(3, 8, 24, 0.90) 100%);
+    border: 1px solid var(--line-2);
+    border-radius: 18px;
+    padding: clamp(22px, 2.8vw, 32px);
+    box-shadow: 0 22px 54px -26px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  .panel-kicker {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 14px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--blue-2);
+  }
+  .panel-kicker span:last-child {
+    color: var(--muted);
+  }
+
+  .ctrl-group {
+    margin-bottom: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(140, 170, 255, 0.09);
+  }
+  .ctrl-group:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+  .ctrl-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .ctrl-top label {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .ctrl-val {
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--glow);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .ctrl-hint {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 6px 0 0;
+    line-height: 1.45;
+  }
+  .ctrl-select, .ctrl-input {
+    width: 100%;
+    background: rgba(2, 8, 28, 0.72);
+    border: 1px solid var(--line-2);
+    border-radius: 10px;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    padding: 11px 13px;
+  }
+  .ctrl-select option {
+    background: #040a1f;
+    color: var(--ink);
+  }
+  .range-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 98px;
+    gap: 12px;
+    align-items: center;
+  }
+  input[type="range"] {
+    width: 100%;
+    accent-color: #3a6cf0;
+    cursor: pointer;
+    height: 6px;
+  }
+  .num-mini {
+    width: 100%;
+    background: rgba(2, 8, 28, 0.72);
+    border: 1px solid var(--line-2);
+    border-radius: 8px;
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 13.5px;
+    padding: 7px 9px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+  .conc-pair {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+  .conc-pair .sub-lab {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--ink-2);
+    margin-bottom: 6px;
+  }
+
+  /* Verdict & Scorecard */
+  .verdict-banner {
+    padding: 18px 20px;
+    border-radius: 14px;
+    border: 1px solid rgba(56, 211, 153, 0.35);
+    background: rgba(56, 211, 153, 0.08);
+    margin-bottom: 20px;
+  }
+  .verdict-banner.watch {
+    border-color: rgba(245, 185, 66, 0.42);
+    background: rgba(245, 185, 66, 0.08);
+  }
+  .verdict-banner.hold {
+    border-color: rgba(140, 170, 255, 0.28);
+    background: rgba(12, 26, 70, 0.42);
+  }
+  .verdict-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #9de8c8;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .verdict-banner.watch .verdict-tag { color: #ffd479; }
+  .verdict-banner.hold .verdict-tag { color: var(--blue-2); }
+  .verdict-title {
+    font-family: var(--display);
+    font-size: clamp(19px, 1.8vw, 23px);
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .verdict-desc {
+    font-size: 14.5px;
+    color: var(--ink-2);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .gate-rows {
+    display: grid;
+    gap: 9px;
+    margin-bottom: 20px;
+  }
+  .gate-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+    padding: 11px 14px;
+    border-radius: 10px;
+    background: rgba(1, 4, 13, 0.56);
+    border: 1px solid var(--line);
+  }
+  .gr-name {
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 500;
+    display: block;
+  }
+  .gr-detail {
+    font-size: 12.5px;
+    color: var(--muted);
+    display: block;
+    margin-top: 2px;
+  }
+  .badge-gate {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .badge-gate.pass {
+    color: #9de8c8;
+    background: rgba(56, 211, 153, 0.11);
+    border: 1px solid rgba(56, 211, 153, 0.34);
+  }
+  .badge-gate.watch {
+    color: #ffd479;
+    background: rgba(245, 185, 66, 0.12);
+    border: 1px solid rgba(245, 185, 66, 0.38);
+  }
+  .badge-gate.out {
+    color: #ffb4a8;
+    background: rgba(235, 95, 80, 0.12);
+    border: 1px solid rgba(235, 95, 80, 0.36);
+  }
+
+  .qoe-box {
+    padding: 15px 16px;
+    border-radius: 12px;
+    background: rgba(4, 10, 31, 0.72);
+    border: 1px solid var(--line);
+    margin-bottom: 18px;
+  }
+  .qoe-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--silver);
+    margin-bottom: 10px;
+    display: block;
+  }
+  .qoe-list {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 13.5px;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .qoe-list li {
+    margin: 5px 0;
+  }
+
+  .no-price-strip {
+    padding: 11px 14px;
+    border-radius: 10px;
+    border: 1px dashed rgba(140, 170, 255, 0.25);
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+  .no-price-strip strong {
+    color: var(--silver);
+    font-weight: 500;
+  }
+
+  /* Opt-in Form */
+  .optin-wrap {
+    margin-top: 32px;
+  }
+  .optin-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+    gap: clamp(22px, 3.5vw, 44px);
+    align-items: start;
+  }
+  .form-row-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+  .f-group {
+    margin-bottom: 14px;
+  }
+  .f-group label {
+    display: block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-bottom: 6px;
+  }
+  .consent-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    padding: 13px 14px;
+    border-radius: 10px;
+    background: rgba(1, 4, 13, 0.55);
+    border: 1px solid var(--line-2);
+    margin: 14px 0 18px;
+    font-size: 13.5px;
+    color: var(--ink-2);
+    line-height: 1.48;
+    cursor: pointer;
+  }
+  .consent-box input[type="checkbox"] {
+    margin-top: 3px;
+    width: 17px;
+    height: 17px;
+    accent-color: #3a6cf0;
+    flex: none;
+  }
+  .hp-trap {
+    position: absolute !important;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .submit-status {
+    margin-top: 14px;
+    padding: 13px 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    border: 1px solid var(--line-2);
+  }
+  .submit-status[hidden] { display: none; }
+  .submit-status.ok {
+    border-color: rgba(56, 211, 153, 0.45);
+    background: rgba(56, 211, 153, 0.10);
+    color: #dffbef;
+  }
+  .submit-status.err {
+    border-color: rgba(245, 185, 66, 0.45);
+    background: rgba(245, 185, 66, 0.10);
+    color: #fff2db;
+  }
+
+  @media (max-width: 960px) {
+    .sandbox-grid, .optin-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  @media (max-width: 600px) {
+    .form-row-2, .conc-pair {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .range-row {
+      grid-template-columns: minmax(0, 1fr) 86px;
+    }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header solid">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Dev Sathya, home"><span class="brand-name">Dev Sathya</span><span class="brand-sub">M&amp;A Advisory &amp; Origination &middot; US &amp; UK</span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="/advisory/">For Owners</a>
+      <a href="/acquirers/">For Acquirers</a>
+      <a href="/platforms/">Platforms</a>
+      <a href="/about/">About</a>
+      <a class="btn btn-primary" href="#optin">Request NDA in writing</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="gate-hero" aria-labelledby="gate-title">
+  <div class="wrap">
+    <p class="crumbs"><a href="/">Home</a> / <a href="/advisory/">For Owners</a> / Private Gate-Check</p>
+    <p class="eyebrow">Unlisted Owner Diagnostic &middot; Local Browser Execution</p>
+    <h1 id="gate-title">Test your firm against <span class="accent">institutional mandate gates</span> in 90 seconds.</h1>
+    <p class="lede">Adjust the six operating inputs below to verify how a permanent-hold acquirer screens your business or division before you share a single name. Every calculation runs locally in your browser with zero login and zero data recorded unless you submit the written NDA request below.</p>
+    <div class="gate-pills">
+      <span class="gate-pill ok">USD 0 / GBP 0 Seller Fee on Direct Mandates</span>
+      <span class="gate-pill">No Valuation Multiples or Pricing Estimates</span>
+      <span class="gate-pill">100% Written Email Protocol &middot; Zero Phone Calls</span>
+      <span class="gate-pill">Unlisted (Noindex)</span>
+    </div>
+  </div>
+</section>
+
+<section class="sandbox-sec" aria-label="Interactive mandate eligibility check">
+  <div class="wrap">
+    <div class="preset-bar" role="group" aria-label="Sample operating profiles">
+      <span class="preset-label">Load specimen profile:</span>
+      <button type="button" class="preset-btn active" data-preset="msp">Commercial MSP ($5.8M rev)</button>
+      <button type="button" class="preset-btn" data-preset="cpa">CPA Firm IT / ERP Carve-Out</button>
+      <button type="button" class="preset-btn" data-preset="govit">GovIT / CMMC Contractor</button>
+      <button type="button" class="preset-btn" data-preset="erp">Dynamics GP / NetSuite Partner</button>
+      <button type="button" class="preset-btn" data-preset="saas">Vertical B2B Software IP</button>
+    </div>
+
+    <div class="sandbox-grid">
+      <!-- LEFT: 6 OPERATING INPUTS -->
+      <div class="panel-box">
+        <div class="panel-kicker">
+          <span>01 &middot; Six Operating Inputs</span>
+          <span>Browser-only math</span>
+        </div>
+
+        <div class="ctrl-group">
+          <div class="ctrl-top">
+            <label for="in-profile">1. Primary Operating Profile</label>
+          </div>
+          <select id="in-profile" class="ctrl-select">
+            <option value="msp">Managed IT Services (Commercial MSP / MSSP)</option>
+            <option value="govit">Government IT / CMMC / State &amp; Municipal MSP</option>
+            <option value="cpa">CPA or Advisory Firm IT / ERP Division Carve-Out</option>
+            <option value="erp">ERP Practice (Microsoft Dynamics GP / BC, NetSuite, Sage, Acumatica)</option>
+            <option value="saas">Vertical B2B Software (Proprietary IP / SaaS)</option>
+            <option value="uk">UK Managed IT, Cyber, ERP or Vertical Software</option>
+          </select>
+          <p class="ctrl-hint" id="profile-hint">Evaluated against contracted US permanent-hold IT services criteria.</p>
+        </div>
+
+        <div class="ctrl-group">
+          <div class="ctrl-top">
+            <label for="in-rev">2. Trailing 12-Month Revenue</label>
+            <span class="ctrl-val" id="lbl-rev">$5.8M</span>
+          </div>
+          <div class="range-row">
+            <input type="range" id="in-rev" min="1.0" max="30.0" step="0.1" value="5.8">
+            <input type="number" id="num-rev" class="num-mini" min="0.5" max="100" step="0.1" value="5.8" aria-label="Trailing 12-Month Revenue in millions">
+          </div>
+          <p class="ctrl-hint">Core operating revenue (excluding pass-through hardware spikes where separable).</p>
+        </div>
+
+        <div class="ctrl-group">
+          <div class="ctrl-top">
+            <label for="in-ebitda">3. Post-Owner Adjusted EBITDA</label>
+            <span class="ctrl-val" id="lbl-ebitda">$1.05M (18.1%)</span>
+          </div>
+          <div class="range-row">
+            <input type="range" id="in-ebitda" min="0.10" max="8.00" step="0.05" value="1.05">
+            <input type="number" id="num-ebitda" class="num-mini" min="0.0" max="30.0" step="0.05" value="1.05" aria-label="Adjusted EBITDA in millions">
+          </div>
+          <p class="ctrl-hint">Normalized 12-month EBITDA after a market-rate replacement salary if the founder steps back.</p>
+        </div>
+
+        <div class="ctrl-group">
+          <div class="ctrl-top">
+            <label for="in-rec">4. Contractually Recurring Revenue Mix</label>
+            <span class="ctrl-val" id="lbl-rec">68%</span>
+          </div>
+          <div class="range-row">
+            <input type="range" id="in-rec" min="10" max="98" step="1" value="68">
+            <input type="number" id="num-rec" class="num-mini" min="0" max="100" step="1" value="68" aria-label="Recurring revenue percentage">
+          </div>
+          <p class="ctrl-hint">Multi-month managed service contracts, support renewals, CSP/SaaS subscriptions, or multi-year task orders.</p>
+        </div>
+
+        <div class="ctrl-group">
+          <div class="ctrl-top">
+            <label>5. Client Concentration (Revenue Share)</label>
+            <span class="ctrl-val" id="lbl-conc">Top 1: 11% &middot; Top 5: 31%</span>
+          </div>
+          <div class="conc-pair">
+            <div>
+              <div class="sub-lab"><label for="in-top1">Largest single client</label><span id="sub-top1">11%</span></div>
+              <input type="range" id="in-top1" min="2" max="55" step="1" value="11">
+            </div>
+            <div>
+              <div class="sub-lab"><label for="in-top5">Top-5 clients combined</label><span id="sub-top5">31%</span></div>
+              <input type="range" id="in-top5" min="8" max="85" step="1" value="31">
+            </div>
+          </div>
+        </div>
+
+        <div class="ctrl-group">
+          <div class="ctrl-top">
+            <label for="in-staff">6. Full-Time Staff &amp; Representation</label>
+            <span class="ctrl-val" id="lbl-staff">34 FT staff</span>
+          </div>
+          <div class="form-row-2" style="align-items:center">
+            <div class="range-row" style="grid-template-columns: minmax(0,1fr) 76px">
+              <input type="range" id="in-staff" min="4" max="200" step="1" value="34">
+              <input type="number" id="num-staff" class="num-mini" min="1" max="1000" step="1" value="34" aria-label="Full-time headcount">
+            </div>
+            <select id="in-broker" class="ctrl-select" aria-label="Representation status">
+              <option value="no">No active sell-side broker</option>
+              <option value="yes">Represented by an M&amp;A advisor</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: LIVE INSTITUTIONAL SCORECARD -->
+      <div class="panel-box" aria-live="polite">
+        <div class="panel-kicker">
+          <span>02 &middot; Live Gate Readout</span>
+          <span id="track-code">TRACK A &middot; PERMANENT-HOLD IT/ERP</span>
+        </div>
+
+        <div class="verdict-banner" id="verdict-box">
+          <span class="verdict-tag" id="verdict-tag">ELIGIBLE &middot; DIRECT FAST-TRACK</span>
+          <div class="verdict-title" id="verdict-title">Clears all six institutional mandate gates</div>
+          <p class="verdict-desc" id="verdict-desc">Matches a contracted permanent-hold US acquirer that keeps the brand, engineering staff, and local leadership intact, with 100% of our finder fee paid by the acquirer at closing.</p>
+        </div>
+
+        <div class="gate-rows" id="gate-rows">
+          <!-- Populated dynamically by pure deterministic JS -->
+        </div>
+
+        <div class="qoe-box">
+          <span class="qoe-title">Pre-Market Diligence &amp; Structure Notes</span>
+          <ul class="qoe-list" id="qoe-list"></ul>
+        </div>
+
+        <div class="no-price-strip">
+          <strong>Strict scope boundary:</strong> This diagnostic verifies buyer mandate box fit and pre-LOI diligence thresholds only. It never outputs valuation multiples, dollar price estimates, or investment advice. Acquirers submit any pricing directly to the owner after Mutual NDA.
+        </div>
+
+        <div class="btn-row" style="margin-top:20px">
+          <a class="btn btn-primary" href="#optin">Request 1-page NDA &amp; buyer name <span class="arr" aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn-ghost" id="direct-mailto" href="mailto:dev@devsathya.com">Open in email app instead</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPT-IN WRITTEN QUALIFICATION DRAWER -->
+    <div class="optin-wrap" id="optin">
+      <div class="panel-box">
+        <div class="optin-grid">
+          <div>
+            <p class="eyebrow">03 &middot; Written Double Opt-In</p>
+            <h2 style="font-size:clamp(26px,3.2vw,40px);margin-bottom:14px">Request the buyer's name and <span class="accent">1-page Mutual NDA</span>.</h2>
+            <p class="muted" style="font-size:15.5px;margin-bottom:18px">Everything runs asynchronously in writing. Nothing about your firm is shared with any acquirer until you have read the buyer's identity and written criteria, signed the 1-page Mutual NDA, and approved a 3-business-day blind conflict check.</p>
+            <ul class="checks" style="margin-top:16px">
+              <li><strong>USD 0 / GBP 0 cost to you.</strong> Under our signed buyer agreements, the acquirer pays our entire fee at closing.</li>
+              <li><strong>Zero calendar friction.</strong> No introductory phone or video calls. Two-line written replies at your pace.</li>
+              <li><strong>Carve-outs supported.</strong> Both standalone company sales and clean asset or subsidiary purchases (such as CPA technology divisions) qualify.</li>
+            </ul>
+          </div>
+
+          <form id="gateForm" novalidate>
+            <div class="hp-trap" aria-hidden="true">
+              <label for="f-honey">Leave blank</label>
+              <input type="text" id="f-honey" name="_honey" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="form-row-2">
+              <div class="f-group">
+                <label for="f-name">Your Name *</label>
+                <input type="text" id="f-name" name="name" class="ctrl-input" required placeholder="Jane Doe">
+              </div>
+              <div class="f-group">
+                <label for="f-email">Work Email *</label>
+                <input type="email" id="f-email" name="email" class="ctrl-input" required placeholder="jane@yourfirm.com">
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="f-group">
+                <label for="f-company">Company or Practice Name *</label>
+                <input type="text" id="f-company" name="company" class="ctrl-input" required placeholder="Acme Managed Services">
+              </div>
+              <div class="f-group">
+                <label for="f-role">Your Role</label>
+                <input type="text" id="f-role" name="role" class="ctrl-input" placeholder="Founder / Managing Partner / CEO">
+              </div>
+            </div>
+
+            <div class="f-group">
+              <label for="f-note">Optional Written Note (Timing, Division Structure, or Questions)</label>
+              <input type="text" id="f-note" name="note" class="ctrl-input" placeholder="Optional: e.g. exploring a 2027 transition or practice carve-out">
+            </div>
+
+            <label class="consent-box" for="f-consent">
+              <input type="checkbox" id="f-consent" name="consent" value="confirmed" required>
+              <span>Send me the matched acquirer profile and 1-page Mutual NDA by email, attaching the six operating figures selected above. I understand there is USD 0 seller fee, no valuation pricing given here, and no phone call to schedule.</span>
+            </label>
+
+            <div class="btn-row">
+              <button type="submit" class="btn btn-primary" id="submitBtn">Send written NDA request <span class="arr" aria-hidden="true">&rarr;</span></button>
+            </div>
+            <div id="formStatus" class="submit-status" hidden></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="/"><span class="brand-name">Dev Sathya</span><span class="brand-sub">M&amp;A Advisory &amp; Origination &middot; US &amp; UK</span></a>
+        <p class="foot-about">Independent M&amp;A advisory and buy-side origination practice for enterprise technology firms in the United States and the United Kingdom, alongside an architecture practice for enterprise platforms.</p>
+        <div class="foot-office">
+          <span class="foot-office-label">Operating footprint</span>
+          <span class="foot-office-addr">India (remote) | US mailing address: 1178 Broadway, 3rd Floor #3433, New York, NY 10001, USA</span>
+        </div>
+      </div>
+      <div class="foot-col"><h4>For Owners</h4><ul><li><a href="/advisory/">Advisory &amp; Fast-Track</a></li><li><a href="/#mandates">Active buyer mandates</a></li><li><a href="/advisory/#process">The process</a></li><li><a href="/advisory/#readiness">Sale readiness</a></li></ul></div>
+      <div class="foot-col"><h4>For Acquirers</h4><ul><li><a href="/acquirers/">Buy-side origination</a></li><li><a href="/acquirers/#criteria">Share your criteria</a></li><li><a href="/advisory/#activity">Market activity</a></li><li><a href="/platforms/">Enterprise platforms</a></li></ul></div>
+      <div class="foot-col"><h4>Contact</h4><ul><li><a class="foot-mail" href="mailto:dev@devsathya.com">dev@devsathya.com</a></li><li><a href="#optin">Request NDA in writing</a></li><li><a href="/about/">About the practice</a></li><li><a href="/disclosures/">Disclosures &amp; privacy</a></li></ul></div>
+    </div>
+    <div class="foot-legal">
+      <div class="foot-legal-top">
+        <p class="foot-copy">&copy; <span id="year">2026</span> Dev Sathya &middot; US &amp; UK</p>
+        <p class="foot-meta">Written-first under NDA &middot; Buyer-paid direct mandates &middot; <a href="/disclosures/">Disclosures &amp; privacy</a></p>
+      </div>
+      <p class="foot-reg">Independent M&amp;A adviser: not a registered broker-dealer and not authorised by the Financial Conduct Authority. Nothing on this site is a valuation, an offer of securities, or investment advice.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/site.js?v=20261016a" defer></script>
+<script>
+(function () {
+  var FORM_ENDPOINT = "https://formsubmit.co/ajax/8e8df4489277e5b9d9febc97b053c806";
+  var FALLBACK_MAIL = "dev@devsathya.com";
+
+  var elProfile = document.getElementById("in-profile");
+  var elRev = document.getElementById("in-rev");
+  var numRev = document.getElementById("num-rev");
+  var elEbitda = document.getElementById("in-ebitda");
+  var numEbitda = document.getElementById("num-ebitda");
+  var elRec = document.getElementById("in-rec");
+  var numRec = document.getElementById("num-rec");
+  var elTop1 = document.getElementById("in-top1");
+  var elTop5 = document.getElementById("in-top5");
+  var elStaff = document.getElementById("in-staff");
+  var numStaff = document.getElementById("num-staff");
+  var elBroker = document.getElementById("in-broker");
+
+  var PRESETS = {
+    msp:   { profile: "msp",   rev: 5.8, ebitda: 1.05, rec: 68, top1: 11, top5: 31, staff: 34, broker: "no" },
+    cpa:   { profile: "cpa",   rev: 4.6, ebitda: 0.85, rec: 62, top1: 9,  top5: 27, staff: 24, broker: "no" },
+    govit: { profile: "govit", rev: 7.4, ebitda: 1.25, rec: 74, top1: 19, top5: 44, staff: 42, broker: "no" },
+    erp:   { profile: "erp",   rev: 5.2, ebitda: 0.90, rec: 58, top1: 14, top5: 36, staff: 28, broker: "no" },
+    saas:  { profile: "saas",  rev: 3.4, ebitda: 0.75, rec: 84, top1: 8,  top5: 24, staff: 18, broker: "no" }
+  };
+
+  function curSym(profile) {
+    return profile === "uk" ? "\u00A3" : "$";
+  }
+
+  function fmtM(v, sym) {
+    return sym + Number(v).toFixed(2).replace(/\.00$/, ".0").replace(/(\.\d)0$/, "$1") + "M";
+  }
+
+  function syncPair(slider, num, isFloat) {
+    slider.addEventListener("input", function () {
+      num.value = slider.value;
+      clearPresetActive();
+      evaluate();
+    });
+    num.addEventListener("input", function () {
+      var v = isFloat ? parseFloat(num.value) : parseInt(num.value, 10);
+      if (!isNaN(v)) {
+        var clamped = Math.max(parseFloat(slider.min), Math.min(parseFloat(slider.max), v));
+        slider.value = clamped;
+        clearPresetActive();
+        evaluate();
+      }
+    });
+  }
+
+  function clearPresetActive() {
+    var btns = document.querySelectorAll(".preset-btn");
+    for (var i = 0; i < btns.length; i++) btns[i].classList.remove("active");
+  }
+
+  syncPair(elRev, numRev, true);
+  syncPair(elEbitda, numEbitda, true);
+  syncPair(elRec, numRec, false);
+  syncPair(elStaff, numStaff, false);
+
+  elTop1.addEventListener("input", function () {
+    if (parseInt(elTop5.value, 10) < parseInt(elTop1.value, 10)) {
+      elTop5.value = elTop1.value;
+    }
+    clearPresetActive();
+    evaluate();
+  });
+  elTop5.addEventListener("input", function () {
+    if (parseInt(elTop5.value, 10) < parseInt(elTop1.value, 10)) {
+      elTop1.value = elTop5.value;
+    }
+    clearPresetActive();
+    evaluate();
+  });
+  elProfile.addEventListener("change", function () { clearPresetActive(); evaluate(); });
+  elBroker.addEventListener("change", function () { clearPresetActive(); evaluate(); });
+
+  var presetBtns = document.querySelectorAll(".preset-btn");
+  for (var i = 0; i < presetBtns.length; i++) {
+    presetBtns[i].addEventListener("click", function () {
+      var key = this.getAttribute("data-preset");
+      var p = PRESETS[key];
+      if (!p) return;
+      clearPresetActive();
+      this.classList.add("active");
+      elProfile.value = p.profile;
+      elRev.value = numRev.value = p.rev;
+      elEbitda.value = numEbitda.value = p.ebitda;
+      elRec.value = numRec.value = p.rec;
+      elTop1.value = p.top1;
+      elTop5.value = p.top5;
+      elStaff.value = numStaff.value = p.staff;
+      elBroker.value = p.broker;
+      evaluate();
+    });
+  }
+
+  var latestSummary = null;
+
+  function evaluate() {
+    var profile = elProfile.value;
+    var sym = curSym(profile);
+    var rev = parseFloat(numRev.value) || 0;
+    var ebitda = parseFloat(numEbitda.value) || 0;
+    var rec = parseInt(numRec.value, 10) || 0;
+    var top1 = parseInt(elTop1.value, 10) || 0;
+    var top5 = parseInt(elTop5.value, 10) || 0;
+    var staff = parseInt(numStaff.value, 10) || 0;
+    var broker = elBroker.value;
+
+    var margin = rev > 0 ? (ebitda / rev) * 100 : 0;
+
+    document.getElementById("lbl-rev").textContent = fmtM(rev, sym);
+    document.getElementById("lbl-ebitda").textContent = fmtM(ebitda, sym) + " (" + margin.toFixed(1) + "%)";
+    document.getElementById("lbl-rec").textContent = rec + "%";
+    document.getElementById("sub-top1").textContent = top1 + "%";
+    document.getElementById("sub-top5").textContent = top5 + "%";
+    document.getElementById("lbl-conc").textContent = "Top 1: " + top1 + "% \u00B7 Top 5: " + top5 + "%";
+    document.getElementById("lbl-staff").textContent = staff + " FT staff";
+
+    var revFloor = profile === "saas" ? 1.5 : (profile === "uk" ? 2.5 : 3.0);
+    var ebFloor = profile === "saas" ? 0.30 : (profile === "uk" ? 0.40 : 0.50);
+    var recFloor = profile === "saas" ? 70 : 50;
+    var staffFloor = profile === "saas" ? 8 : 12;
+
+    var trackLabel = "TRACK A \u00B7 US PERMANENT-HOLD IT & ERP";
+    var profileHint = "Evaluated against contracted US permanent-hold IT services criteria.";
+    if (profile === "cpa") {
+      trackLabel = "TRACK C \u00B7 CPA / ADVISORY DIVISION CARVE-OUT";
+      profileHint = "Evaluated as a standalone asset or subsidiary purchase under AICPA ET 1.295.145 / 1.295.143 independence rules.";
+    } else if (profile === "govit") {
+      trackLabel = "TRACK A-GOV \u00B7 US GOV-IT & CMMC MANDATE";
+      profileHint = "Evaluated against confirmed US federal, state, municipal, and CMMC managed IT scope.";
+    } else if (profile === "erp") {
+      trackLabel = "TRACK A-ERP \u00B7 MICROSOFT / SAGE / NETSUITE / ACUMATICA";
+      profileHint = "Evaluated against contracted four-ecosystem US ERP partner acquisition criteria.";
+    } else if (profile === "saas") {
+      trackLabel = "TRACK B \u00B7 PERMANENT-HOLD VERTICAL SOFTWARE IP";
+      profileHint = "Evaluated against permanent-hold B2B vertical software acquisition gates.";
+    } else if (profile === "uk") {
+      trackLabel = "TRACK D \u00B7 UK ENTERPRISE IT & SOFTWARE MANDATE";
+      profileHint = "Evaluated against active UK managed services, cyber, and software platform criteria.";
+    }
+    document.getElementById("track-code").textContent = trackLabel;
+    document.getElementById("profile-hint").textContent = profileHint;
+
+    var gates = [];
+
+    // Gate 1: Revenue scale
+    var g1 = rev >= revFloor ? "pass" : (rev >= revFloor * 0.8 ? "watch" : "out");
+    gates.push({
+      name: "Trailing 12-Month Scale (" + fmtM(rev, sym) + ")",
+      detail: "Mandate floor: " + sym + revFloor.toFixed(1) + "M+ core operating revenue",
+      state: g1,
+      badge: g1 === "pass" ? "Pass" : (g1 === "watch" ? "Near Floor" : "Below " + sym + revFloor.toFixed(1) + "M")
+    });
+
+    // Gate 2: Post-owner EBITDA
+    var g2 = (ebitda >= ebFloor && margin >= 10) ? "pass" : ((ebitda >= ebFloor * 0.75 && margin >= 8) ? "watch" : "out");
+    gates.push({
+      name: "Post-Owner EBITDA (" + fmtM(ebitda, sym) + " / " + margin.toFixed(1) + "%)",
+      detail: "Mandate floor: " + sym + (ebFloor * 1000).toFixed(0) + "k+ post-owner EBITDA and 10%+ margin",
+      state: g2,
+      badge: g2 === "pass" ? "Pass" : (g2 === "watch" ? "Margin Watch" : "Below Floor")
+    });
+
+    // Gate 3: Recurring mix
+    var g3 = rec >= recFloor ? "pass" : (rec >= recFloor - 8 ? "watch" : "out");
+    gates.push({
+      name: "Contractually Recurring Mix (" + rec + "%)",
+      detail: "Mandate floor: >" + recFloor + "% contracted managed services, support, or subscriptions",
+      state: g3,
+      badge: g3 === "pass" ? "Pass" : (g3 === "watch" ? "Mix Watch" : "Project-Heavy")
+    });
+
+    // Gate 4: Top-1 Concentration
+    var g4 = top1 < 20 ? "pass" : (top1 <= 28 ? "watch" : "out");
+    gates.push({
+      name: "Single-Client Concentration (" + top1 + "%)",
+      detail: "Institutional gate: <20% clean pass; 20%-25% diligence consent watch",
+      state: g4,
+      badge: g4 === "pass" ? "Pass" : (g4 === "watch" ? "QoE Watch" : "High (>28%)")
+    });
+
+    // Gate 5: Top-5 Concentration
+    var g5 = top5 <= 45 ? "pass" : (top5 <= 55 ? "watch" : "out");
+    gates.push({
+      name: "Top-5 Client Concentration (" + top5 + "%)",
+      detail: "Institutional gate: <=45% clean pass; >50% triggers contract tenure review",
+      state: g5,
+      badge: g5 === "pass" ? "Pass" : (g5 === "watch" ? "Tenure Watch" : "Concentrated")
+    });
+
+    // Gate 6: Bench & Team Depth
+    var g6 = staff >= staffFloor ? "pass" : (staff >= staffFloor - 3 ? "watch" : "out");
+    gates.push({
+      name: "Operating Bench Depth (" + staff + " FT)",
+      detail: "Mandate floor: " + staffFloor + "+ full-time engineers, consultants, and delivery staff",
+      state: g6,
+      badge: g6 === "pass" ? "Pass" : (g6 === "watch" ? "Lean Bench" : "Below " + staffFloor + " FT")
+    });
+
+    var rowsEl = document.getElementById("gate-rows");
+    rowsEl.innerHTML = gates.map(function (g) {
+      return '<div class="gate-row"><div><span class="gr-name">' + g.name + '</span><span class="gr-detail">' + g.detail + '</span></div><span class="badge-gate ' + g.state + '">' + g.badge + '</span></div>';
+    }).join("");
+
+    var outs = gates.filter(function (g) { return g.state === "out"; }).length;
+    var watches = gates.filter(function (g) { return g.state === "watch"; }).length;
+
+    var vBox = document.getElementById("verdict-box");
+    var vTag = document.getElementById("verdict-tag");
+    var vTitle = document.getElementById("verdict-title");
+    var vDesc = document.getElementById("verdict-desc");
+
+    if (outs === 0 && watches === 0) {
+      vBox.className = "verdict-banner";
+      vTag.textContent = "ELIGIBLE \u00B7 DIRECT FAST-TRACK";
+      vTitle.textContent = "Clears all six institutional mandate gates";
+      vDesc.textContent = profile === "cpa"
+        ? "Qualifies for a direct asset or subsidiary carve-out with a contracted permanent-hold acquirer, resolving attest independence conflicts at USD 0 seller cost."
+        : "Qualifies for a direct double opt-in introduction to a contracted permanent-hold acquirer (USD 0 / GBP 0 seller fee; brand and team preserved).";
+    } else if (outs === 0 || (outs === 1 && rev >= revFloor && ebitda >= ebFloor)) {
+      vBox.className = "verdict-banner watch";
+      vTag.textContent = "ELIGIBLE WITH DILIGENCE WATCH (" + (watches + outs) + " ITEM" + ((watches + outs) > 1 ? "S" : "") + ")";
+      vTitle.textContent = "Meets core scale gates; pre-LOI structure notes apply";
+      vDesc.textContent = "Clears revenue and earnings floors for buyer review, with specific concentration, recurring mix, or bench items best documented upfront before target clearance.";
+    } else {
+      vBox.className = "verdict-banner hold";
+      vTag.textContent = "OUTSIDE DIRECT FAST-TRACK FLOOR";
+      vTitle.textContent = "Below one or more primary holdco gates today";
+      vDesc.textContent = "Does not clear the primary permanent-hold floor today, though add-on tuck-in buyers or a 12-month pre-sale readiness plan may still fit.";
+    }
+
+    var notes = [];
+    if (profile === "cpa") {
+      notes.push("CPA carve-out fit: Contracted buyer agreement covers both subsidiary stock and clean asset purchases, separating managed IT or ERP hosting from audit clients under AICPA ET 1.295.145 / 1.295.143.");
+    }
+    if (profile === "govit") {
+      notes.push("Government IT diligence: Buyer reviews unrestricted vs set-aside contract mix (13 CFR 124.2 8(a) graduation clocks), FAR 42.1204 novation paths, and CMMC 48 CFR readiness.");
+    }
+    if (profile === "erp") {
+      notes.push("ERP partner diligence: Separating recurring enhancement plans, CSP/SaaS margin, and managed support from one-time implementation milestones protects post-LOI Quality of Earnings.");
+    }
+    if (top1 >= 20 || top5 > 45) {
+      notes.push("Concentration check: With Top-1 at " + top1 + "% / Top-5 at " + top5 + "%, acquirers verify contract renewal dates and change-of-control clauses early in written Q&A.");
+    }
+    if (margin > 32) {
+      notes.push("Owner replacement check: At " + margin.toFixed(1) + "% EBITDA margin, buyers confirm whether a full market-rate replacement salary for any retiring founder is already deducted.");
+    }
+    if (broker === "yes") {
+      notes.push("Advisor representation: Where a sell-side advisor is already appointed, we work directly alongside your advisor under our buyer-paid institutional mandate.");
+    } else {
+      notes.push("Direct unbrokered path: Zero advisory or finder fee on your side; 3-business-day blind conflict check runs only after Mutual NDA and your written go-ahead.");
+    }
+
+    document.getElementById("qoe-list").innerHTML = notes.map(function (n) {
+      return "<li>" + n + "</li>";
+    }).join("");
+
+    latestSummary = {
+      profile: elProfile.options[elProfile.selectedIndex].text,
+      track: trackLabel,
+      revenue: fmtM(rev, sym),
+      ebitda: fmtM(ebitda, sym) + " (" + margin.toFixed(1) + "%)",
+      recurring: rec + "%",
+      concentration: "Top-1: " + top1 + "%, Top-5: " + top5 + "%",
+      staff: staff + " FT",
+      represented: broker === "yes" ? "Yes (advisor appointed)" : "No active sell-side broker",
+      verdict: vTag.textContent
+    };
+
+    var mailSubj = "Private Gate-Check & NDA Request";
+    var mailBody = "Hi Dev,\n\nPlease send the 1-page Mutual NDA and matched acquirer profile by email.\n\nSelf-checked operating profile:\n" +
+      "- Profile: " + latestSummary.profile + "\n" +
+      "- T12M Revenue: " + latestSummary.revenue + "\n" +
+      "- Post-Owner EBITDA: " + latestSummary.ebitda + "\n" +
+      "- Recurring Revenue Mix: " + latestSummary.recurring + "\n" +
+      "- Client Concentration: " + latestSummary.concentration + "\n" +
+      "- Full-Time Staff: " + latestSummary.staff + "\n" +
+      "- Broker Status: " + latestSummary.represented + "\n\n";
+    document.getElementById("direct-mailto").href = "mailto:" + FALLBACK_MAIL + "?subject=" + encodeURIComponent(mailSubj) + "&body=" + encodeURIComponent(mailBody);
+  }
+
+  evaluate();
+
+  // Form submission via verified FormSubmit AJAX endpoint + mailto fallback
+  var form = document.getElementById("gateForm");
+  var statusEl = document.getElementById("formStatus");
+  var submitBtn = document.getElementById("submitBtn");
+
+  function showStatus(kind, html) {
+    statusEl.className = "submit-status " + kind;
+    statusEl.innerHTML = html;
+    statusEl.hidden = false;
+  }
+
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    var honey = document.getElementById("f-honey").value.trim();
+    if (honey) {
+      showStatus("ok", "Thank you. Your written request has been logged.");
+      return;
+    }
+
+    var payload = {
+      name: document.getElementById("f-name").value.trim(),
+      email: document.getElementById("f-email").value.trim(),
+      company: document.getElementById("f-company").value.trim(),
+      role: document.getElementById("f-role").value.trim() || "-",
+      note: document.getElementById("f-note").value.trim() || "-",
+      gate_track: latestSummary.track,
+      gate_verdict: latestSummary.verdict,
+      t12m_revenue: latestSummary.revenue,
+      adjusted_ebitda: latestSummary.ebitda,
+      recurring_mix: latestSummary.recurring,
+      concentration: latestSummary.concentration,
+      ft_staff: latestSummary.staff,
+      broker_status: latestSummary.represented,
+      consent: "Confirmed written NDA + buyer profile request (USD 0 seller fee, zero calls)",
+      _subject: "M-05 Gate-Check NDA Request: " + document.getElementById("f-company").value.trim(),
+      _replyto: document.getElementById("f-email").value.trim()
+    };
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending written request...";
+
+    fetch(FORM_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(payload)
+    })
+      .then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; });
+      })
+      .then(function (res) {
+        var good = res.ok && (res.j.success === true || res.j.success === "true");
+        if (!good) throw new Error("endpoint error");
+        var first = payload.name.split(" ")[0] || "";
+        form.reset();
+        showStatus("ok", "Thank you" + (first ? ", " + first : "") + ". Your operating profile is with Dev Sathya, and the 1-page Mutual NDA and written buyer criteria will arrive by email within one business day.");
+      })
+      .catch(function () {
+        var fb = document.getElementById("direct-mailto").href;
+        showStatus("err", 'Automatic delivery could not complete from this network. Your inputs are still set above - please <a href="' + fb.replace(/"/g, "&quot;") + '">click here to send them directly in your email app</a>.');
+      })
+      .then(function () {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Send written NDA request <span class="arr" aria-hidden="true">&rarr;</span>';
+      });
+  });
+})();
+</script>
+</body>
+</html>
+
