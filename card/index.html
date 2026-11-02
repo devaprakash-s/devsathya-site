@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dev Sathya | Direct Contact Card</title>
+<meta name="description" content="Direct contact card for Dev Sathya, Managing Principal at Dev Sathya Consulting &amp; Ventures.">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="theme-color" content="#01040d">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=DM+Sans:opsz,wght@9..40,400..600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #01040d;
+    --bg-card: rgba(11, 22, 52, 0.78);
+    --line: rgba(143, 192, 255, 0.16);
+    --line-strong: rgba(197, 155, 56, 0.42);
+    --ink: #f2f5ff;
+    --ink-2: #c2cdec;
+    --muted: #8493b8;
+    --gold: #d4a947;
+    --blue: #2f5fe0;
+    --blue-hover: #3c6df0;
+    --glow: #8fc0ff;
+    --display: "Sora", "Segoe UI", system-ui, sans-serif;
+    --sans: "DM Sans", "Segoe UI", system-ui, sans-serif;
+    --mono: "JetBrains Mono", Consolas, monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    min-height: 100%;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(47, 95, 224, 0.22), transparent 58%),
+      radial-gradient(circle at 85% 100%, rgba(197, 155, 56, 0.10), transparent 48%),
+      var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 16px 28px;
+  }
+  .shell {
+    width: 100%;
+    max-width: 440px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--gold);
+    border-radius: 16px;
+    padding: 26px 22px 22px;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 8px rgba(212, 169, 71, 0.7);
+  }
+  h1 {
+    font-family: var(--display);
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+    margin: 0 0 6px;
+    color: var(--ink);
+  }
+  .role {
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--ink-2);
+    margin: 0 0 4px;
+    line-height: 1.4;
+  }
+  .domains {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin: 0 0 20px;
+    line-height: 1.45;
+  }
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .btn-card {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    width: 100%;
+    padding: 13px 15px;
+    border-radius: 11px;
+    text-decoration: none;
+    transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+  }
+  .btn-card:active { transform: scale(0.99); }
+  .btn-primary {
+    background: linear-gradient(135deg, #2451cc, #3668eb);
+    border: 1px solid rgba(143, 192, 255, 0.38);
+    color: #ffffff;
+    box-shadow: 0 10px 26px rgba(36, 81, 204, 0.35);
+  }
+  .btn-primary:hover { background: linear-gradient(135deg, #2d5ce0, #4275f5); }
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--line-strong);
+    color: var(--ink);
+  }
+  .btn-secondary:hover { background: rgba(212, 169, 71, 0.09); }
+  .btn-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.13);
+  }
+  .btn-secondary .btn-icon {
+    background: rgba(212, 169, 71, 0.14);
+    color: var(--gold);
+  }
+  .btn-copy {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    flex: 1;
+  }
+  .btn-title {
+    font-family: var(--display);
+    font-size: 14.5px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+  .btn-sub {
+    font-size: 12px;
+    opacity: 0.84;
+    line-height: 1.35;
+    margin-top: 2px;
+  }
+  .email-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 9px;
+    background: rgba(2, 6, 18, 0.65);
+    border: 1px solid var(--line);
+    margin-bottom: 18px;
+  }
+  .email-addr {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--ink-2);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .copy-btn {
+    appearance: none;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .copy-btn:hover { border-color: var(--glow); }
+  .sec-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 8px;
+  }
+  .links {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px;
+    border-top: 1px solid var(--line);
+  }
+  .links li { border-bottom: 1px solid var(--line); }
+  .links a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 11px 2px;
+    color: var(--ink-2);
+    text-decoration: none;
+    font-size: 13.5px;
+    transition: color 0.15s ease;
+  }
+  .links a:hover { color: #ffffff; }
+  .links .arr { color: var(--gold); font-family: var(--mono); font-size: 13px; }
+  .foot {
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: var(--muted);
+    margin: 0;
+  }
+  .foot strong { color: var(--ink-2); font-weight: 500; }
+</style>
+</head>
+<body>
+<main class="shell" aria-labelledby="card-name">
+  <p class="eyebrow">Dev Sathya Consulting &amp; Ventures</p>
+  <h1 id="card-name">Dev Sathya</h1>
+  <p class="role">Managing Principal</p>
+  <p class="domains">Cross-Border M&amp;A Advisory (US &amp; UK) &middot; Founding India Principal &middot; Enterprise AI Platforms</p>
+
+  <div class="actions">
+    <a class="btn-card btn-primary" href="mailto:dev@devsathya.com?subject=Good%20to%20connect%20-%20Dev%20Sathya&amp;body=Hi%20Dev%2C%0A%0A">
+      <span class="btn-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      </span>
+      <span class="btn-copy">
+        <span class="btn-title">Write by Email</span>
+        <span class="btn-sub">Fastest way to reach me &middot; a two-line note is enough</span>
+      </span>
+    </a>
+
+    <a class="btn-card btn-secondary" href="dev-sathya.vcf" download="Dev_Sathya.vcf">
+      <span class="btn-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+      </span>
+      <span class="btn-copy">
+        <span class="btn-title">Save to Contacts</span>
+        <span class="btn-sub">Adds email, website, and mailing office (.vcf)</span>
+      </span>
+    </a>
+  </div>
+
+  <div class="email-strip">
+    <span class="email-addr" id="email-val">dev@devsathya.com</span>
+    <button class="copy-btn" type="button" id="copy-btn">Copy email</button>
+  </div>
+
+  <p class="sec-label">Practice Areas</p>
+  <ul class="links">
+    <li><a href="/"><span>M&amp;A Advisory &amp; Origination (US &amp; UK)</span><span class="arr" aria-hidden="true">&rarr;</span></a></li>
+    <li><a href="/india/"><span>Founding India Principal</span><span class="arr" aria-hidden="true">&rarr;</span></a></li>
+    <li><a href="/platforms/"><span>Enterprise AI Platforms</span><span class="arr" aria-hidden="true">&rarr;</span></a></li>
+  </ul>
+
+  <p class="foot"><strong>Written-first execution</strong> &middot; India (remote) &middot; US mailing address: 1178 Broadway, 3rd Floor #3433, New York, NY 10001, USA</p>
+</main>
+<script>
+  (function () {
+    var btn = document.getElementById("copy-btn");
+    if (!btn || !navigator.clipboard) return;
+    btn.addEventListener("click", function () {
+      navigator.clipboard.writeText("dev@devsathya.com").then(function () {
+        btn.textContent = "Copied";
+        setTimeout(function () { btn.textContent = "Copy email"; }, 1800);
+      });
+    });
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Sathya;Dev;;;
+FN:Dev Sathya
+ORG:Dev Sathya Consulting & Ventures
+TITLE:Managing Principal
+EMAIL;TYPE=INTERNET,WORK,PREF:dev@devsathya.com
+URL;TYPE=WORK:https://www.devsathya.com/
+ADR;TYPE=WORK,POSTAL:;;1178 Broadway\, 3rd Floor #3433;New York;NY;10001;USA
+NOTE:Cross-Border M&A Advisory (US & UK) | Founding India Principal | Enterprise AI Platforms. Written-first at dev@devsathya.com (India remote | US mailing address in New York).
+END:VCARD
