@@ -56,9 +56,9 @@ h1 strong, h2 strong { font-weight: 600; }
 
 .eyebrow {
   font-family: var(--mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--blue-2); margin: 0 0 24px; display: flex; align-items: center; gap: 14px;
+  color: var(--blue-2); margin: 0 0 24px; display: flex; align-items: center; gap: 10px;
 }
-.eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--blue-2); flex: none; }
+.eyebrow::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--blue-2); box-shadow: 0 0 10px rgba(111, 151, 240, 0.75); flex: none; }
 .eyebrow .n { color: var(--muted); }
 
 .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); position: relative; width: 100%; }
@@ -187,8 +187,8 @@ a.card:hover .card-more .arr { transform: translateX(4px); }
 .figure figcaption { z-index: 1; }
 
 .checks { list-style: none; padding: 0; margin: 26px 0 0; display: grid; gap: 14px; }
-.checks li { padding-left: 30px; position: relative; color: var(--ink-2); }
-.checks li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 14px; height: 1px; background: var(--blue-2); }
+.checks li { padding-left: 22px; position: relative; color: var(--ink-2); }
+.checks li::before { content: ""; position: absolute; left: 0; top: 0.56em; width: 6px; height: 6px; border-radius: 50%; background: var(--blue-2); }
 .checks strong { color: var(--ink); font-weight: 500; }
 
 /* ---------- process ---------- */
