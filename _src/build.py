@@ -99,7 +99,7 @@ BUY_BOXES = [
 
 PRINCIPLES = [
     ("Single-side fee alignment", "The practice is compensated by one side only, never both. On a sell-side mandate the owner pays the success fee; on a buy-side origination mandate the acquiring platform pays the introduction fee at zero cost to the seller."),
-    ("Paid on completion only", "There is no upfront retainer, no monthly maintenance fee, and no charge for an initial valuation or buy-box qualification. Compensation is earned exclusively when a transaction closes."),
+    ("Paid on completion on M&amp;A", "On M&amp;A mandates, there is no upfront retainer, no monthly maintenance fee, and no charge for an initial valuation or buy-box qualification. Transaction fees are earned exclusively at closing."),
     ("100% written-first &amp; confidential", "Every qualification step, conflict check, and NDA runs asynchronously in writing by email, without calendar friction or preliminary phone calls. No target identity is ever disclosed without prior written consent."),
     ("Evidence before narrative", "Every figure in a buyer summary or information memorandum traces to a primary financial or technical record that confirmatory diligence can verify."),
 ]

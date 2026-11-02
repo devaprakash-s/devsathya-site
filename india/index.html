@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Founding India Principal &amp; Cross-Border Practice | Dev Sathya</title>
+<meta name="description" content="Independent Founding India Principal for mid-market software, AI, industrial and fintech leaders setting up captive engineering hubs, subsidiaries, joint ventures or enterprise revenue in India.">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="theme-color" content="#01040d">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;600&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=20261016a">
+<style>
+  .ind-hero {
+    padding: calc(var(--header) + 52px) 0 48px;
+    border-bottom: 1px solid var(--line);
+    background:
+      radial-gradient(920px 440px at 84% 10%, rgba(47, 95, 224, 0.22), transparent 70%),
+      radial-gradient(680px 380px at 12% 28%, rgba(111, 151, 240, 0.12), transparent 72%),
+      var(--bg);
+  }
+  .ind-hero h1 {
+    font-size: clamp(32px, 4.4vw, 56px);
+    max-width: 21ch;
+    margin-bottom: 18px;
+  }
+  .ind-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 26px;
+  }
+  .ind-pill {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--line-2);
+    background: rgba(8, 18, 50, 0.55);
+    color: var(--silver);
+  }
+  .ind-pill.ok {
+    border-color: rgba(56, 211, 153, 0.36);
+    background: rgba(56, 211, 153, 0.10);
+    color: #9de8c8;
+  }
+  .cfg-sec {
+    padding: clamp(44px, 6vw, 76px) 0;
+  }
+  .preset-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: rgba(4, 10, 31, 0.65);
+  }
+  .preset-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-right: 6px;
+  }
+  .preset-btn {
+    background: rgba(12, 26, 70, 0.45);
+    border: 1px solid var(--line-2);
+    color: var(--ink-2);
+    font-family: var(--sans);
+    font-size: 13.5px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+  }
+  .preset-btn:hover, .preset-btn.active {
+    background: rgba(47, 95, 224, 0.28);
+    border-color: rgba(111, 151, 240, 0.65);
+    color: #ffffff;
+  }
+  .cfg-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 26px;
+    align-items: start;
+  }
+  @media (max-width: 940px) {
+    .cfg-grid { grid-template-columns: 1fr; }
+  }
+  .panel-box {
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 26px;
+    background: rgba(5, 12, 34, 0.72);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+  }
+  .panel-kicker {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-bottom: 14px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  .ctrl-group { margin-bottom: 18px; }
+  .ctrl-label {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 7px;
+  }
+  .ctrl-select, .f-input, .f-textarea {
+    width: 100%;
+    background: rgba(2, 6, 20, 0.85);
+    border: 1px solid var(--line-2);
+    border-radius: 10px;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 14.5px;
+    padding: 11px 13px;
+  }
+  .ctrl-select:focus, .f-input:focus, .f-textarea:focus {
+    outline: none;
+    border-color: #6f97f0;
+  }
+  .readout-banner {
+    padding: 18px 20px;
+    border-radius: 13px;
+    border: 1px solid rgba(56, 211, 153, 0.34);
+    background: rgba(56, 211, 153, 0.08);
+    margin-bottom: 18px;
+  }
+  .readout-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #9de8c8;
+    margin-bottom: 6px;
+  }
+  .readout-title {
+    font-family: var(--display);
+    font-size: 20px;
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 6px;
+  }
+  .readout-desc {
+    font-size: 14px;
+    color: var(--ink-2);
+    margin: 0;
+    line-height: 1.55;
+  }
+  .ms-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px 0;
+  }
+  .ms-list li {
+    padding: 11px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .ms-list li strong {
+    color: #ffffff;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    margin-right: 8px;
+  }
+  .shield-strip {
+    padding: 13px 16px;
+    border-radius: 11px;
+    border: 1px solid var(--line-2);
+    background: rgba(12, 26, 70, 0.28);
+    font-size: 13px;
+    color: var(--silver);
+    line-height: 1.5;
+  }
+  .optin-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  @media (max-width: 680px) {
+    .optin-grid { grid-template-columns: 1fr; }
+  }
+  .submit-status {
+    margin-top: 16px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .submit-status.ok {
+    border: 1px solid rgba(56, 211, 153, 0.4);
+    background: rgba(56, 211, 153, 0.10);
+    color: #bff3dc;
+  }
+  .submit-status.err {
+    border: 1px solid rgba(245, 158, 11, 0.45);
+    background: rgba(245, 158, 11, 0.12);
+    color: #fde68a;
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/india/" aria-label="Dev Sathya, Cross-Border &amp; India Principal Practice"><span class="brand-name">Dev Sathya</span><span class="brand-sub">India Principal &amp; Cross-Border Practice &middot; Hyderabad &middot; Bengaluru &middot; Global</span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#lanes">Mandates</a>
+      <a href="#blueprint">90-Day Blueprint</a>
+      <a href="/platforms/">AI Platforms</a>
+      <a href="/about/">Background</a>
+      <a class="btn btn-primary" href="#charter">Request written charter</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="ind-hero" aria-labelledby="hero-title">
+  <div class="wrap">
+    <p class="eyebrow">Founding India Principal &middot; Dev Sathya Consulting &amp; Ventures</p>
+    <h1 id="hero-title">Your senior peer on the ground in <span class="accent">India</span> - before you lock in a country hierarchy.</h1>
+    <p class="lede">Mid-market software, AI, industrial and fintech companies entering or scaling in India face a costly binary trap: passive EOR payroll vendors with zero architectural or commercial judgment, or nine-month executive searches that burn USD 300k+ before Day 1 proof. I sit directly on the CEO and board's side of the table to stand up your hub, subsidiary, joint venture, or enterprise pipeline.</p>
+    <div class="btn-row" style="margin-top:30px">
+      <a class="btn btn-primary" href="#blueprint">Configure a 90-day India charter <span class="arr" aria-hidden="true">&rarr;</span></a>
+      <a class="btn btn-ghost" href="#lanes">Four operating models</a>
+      <a class="btn btn-ghost" href="mailto:dev@devsathya.com?subject=India%20Principal%20Mandate%20-%20Written%20Charter&amp;body=A%20few%20lines%20on%20what%20you%20are%20building%20or%20scaling%20in%20India%20are%20enough.%0A%0A">Write directly by email</a>
+    </div>
+    <div class="ind-pills">
+      <span class="ind-pill ok">Ran Dell's USD 4B UK Business From India</span>
+      <span class="ind-pill">Tata Launch Team - India's First GSM Network</span>
+      <span class="ind-pill">Hyderabad &amp; Bengaluru Ground Roots + Lived in Greensboro, NC</span>
+      <span class="ind-pill">1998 Founder &amp; Principal Enterprise AI Architect</span>
+    </div>
+    <div class="hero-facts" style="margin-top:34px">
+      <div><span class="fact-k">USD 4B P&amp;L Governance</span><span class="fact-v">Ran Dell's USD 4 billion UK consumer business from India - Western board reporting, SLA rigor, and P&amp;L accountability.</span></div>
+      <div><span class="fact-k">Hyderabad &amp; Bengaluru</span><span class="fact-v">Spent most of my life across India's #1 and #2 capability-center capitals, plus years living in Greensboro, North Carolina.</span></div>
+      <div><span class="fact-k">Architect + Operator</span><span class="fact-v">Solo-built 12 production enterprise AI platforms; I personally interview your Founding Principal Engineers and audit code quality.</span></div>
+      <div><span class="fact-k">PE-Safe B2B Mandate</span><span class="fact-v">Non-exclusive advisory structure via Dev Sathya Consulting &amp; Ventures - shields your parent entity from Indian PE tax exposure.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="lanes" aria-labelledby="lanes-title">
+  <div class="wrap">
+    <div class="sec-head split-head reveal">
+      <div>
+        <p class="eyebrow"><span class="n">01</span> Mandate architecture</p>
+        <h2 id="lanes-title">Four ways boards deploy me in <strong>India</strong>.</h2>
+      </div>
+      <p class="lede">Every engagement is structured as a focused 6-to-12 month principal mandate - combining remote asynchronous precision across US, UK, European and APAC hours with hands-on executive presence across Bengaluru, Hyderabad, Mumbai, Pune, Chennai, Delhi NCR, and your global headquarters.</p>
+    </div>
+    <div class="grid-2">
+      <div class="tile reveal">
+        <span class="num">01 &middot; CAPTIVE AI &amp; ENGINEERING HUBS (NANO-GCCs)</span>
+        <h3>Stand up a high-bar 10-to-150 engineer hub that ships core product</h3>
+        <p>Most first-time India hubs slip into a slow ticket-taking culture because HR recruiters and EOR vendors cannot tell a true Principal AI Systems Architect from a resume keyword match.</p>
+        <ul>
+          <li><strong>Execution:</strong> City, workspace and EOR-vs-subsidiary selection across Hyderabad, Bengaluru or Pune; hands-on technical interviewing of your first 10-25 engineers; architectural ownership rules; and hiring your permanent Site Lead.</li>
+          <li><strong>Post-BOT &amp; Outsourcing Transitions:</strong> Independent fiduciary oversight on your side of the table when moving off third-party IT vendors or Build-Operate-Transfer partners.</li>
+        </ul>
+      </div>
+      <div class="tile reveal">
+        <span class="num">02 &middot; SUBSIDIARIES, JOINT VENTURES &amp; POST-FTA ENTRY</span>
+        <h3>Establish your Indian commercial entity or manufacturing JV cleanly</h3>
+        <p>With the UK-India CETA pact live (July 2026) and the India-EFTA TEPA USD 100B framework in force, European, UK, US, Japanese and Australian firms are moving beyond passive third-party distributors.</p>
+        <ul>
+          <li><strong>Execution:</strong> Indian entity governance, post-distributor OEM customer transition, tier-one local supplier qualification, IP boundary protection inside 50:50 or minority JVs, and executive representation with central/state authorities.</li>
+          <li><strong>Board Visibility:</strong> Direct independent reporting to the parent CEO and CFO without local management blind spots.</li>
+        </ul>
+      </div>
+      <div class="tile reveal">
+        <span class="num">03 &middot; ENTERPRISE COMMERCIAL &amp; TIER-1 GSI ALLIANCES</span>
+        <h3>Win six- and seven-figure enterprise, BFSI, telco &amp; GCC accounts</h3>
+        <p>Indian private banks, telcos, conglomerates, utilities and global GCCs buy high-ticket enterprise AI, data and industrial infrastructure - when approached peer-to-peer at the C-suite rather than pitched by junior reps.</p>
+        <ul>
+          <li><strong>Execution:</strong> Direct CXO origination across Mumbai, Bengaluru and Delhi NCR; co-sell practice activation with Tier-1 Indian GSIs (TCS, Infosys, Wipro, TechM, L&amp;T ecosystems); and executive representation at flagship conclaves.</li>
+          <li><strong>Guardrail:</strong> Built exclusively for high-ACV enterprise software, AI/data infrastructure, fintech, telecom and industrial systems.</li>
+        </ul>
+      </div>
+      <div class="tile reveal">
+        <span class="num">04 &middot; BUY-TO-ENTER BOLT-ON ACQUISITIONS</span>
+        <h3>Skip 18 months of zero-to-one hiring by acquiring a proven team</h3>
+        <p>When roadmap speed or specialized certification bench matters more than hiring one engineer a month, acquiring a profitable 20-to-80 person Indian engineering or channel firm compresses two years into one quarter.</p>
+        <ul>
+          <li><strong>Execution:</strong> Proprietary off-market target origination, technical and codebase diligence, normalized EBITDA verification, founder retention structuring, and post-close integration governance.</li>
+          <li><strong>Advantage:</strong> Combines institutional cross-border M&amp;A execution with hands-on platform architecture review.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band cfg-sec" id="blueprint" aria-labelledby="cfg-title">
+  <div class="wrap">
+    <div class="sec-head split-head reveal">
+      <div>
+        <p class="eyebrow"><span class="n">02</span> Interactive mandate diagnostic</p>
+        <h2 id="cfg-title">Configure your <strong>90-day India charter</strong>.</h2>
+      </div>
+      <p class="lede">Select your corridor, objective and hub footprint below to inspect how I structure the first 90 days, prevent the primary failure mode, and protect your parent entity from Permanent Establishment risk.</p>
+    </div>
+
+    <div class="preset-bar" role="group" aria-label="Mandate presets">
+      <span class="preset-label">Presets:</span>
+      <button type="button" class="preset-btn active" data-preset="gcc">US / EU Series B-D AI Hub</button>
+      <button type="button" class="preset-btn" data-preset="ceta">UK CETA / EFTA TEPA Entry</button>
+      <button type="button" class="preset-btn" data-preset="gtm">Enterprise BFSI / Telco / GSI GTM</button>
+      <button type="button" class="preset-btn" data-preset="buy">Buy-to-Enter Bolt-On M&amp;A</button>
+    </div>
+
+    <div class="cfg-grid">
+      <div class="panel-box">
+        <div class="panel-kicker">
+          <span>01 &middot; Operating Parameters</span>
+          <span>Zero Login</span>
+        </div>
+        <div class="ctrl-group">
+          <label class="ctrl-label" for="sel-mode">Primary India Objective</label>
+          <select id="sel-mode" class="ctrl-select">
+            <option value="gcc">Setup Captive AI / Engineering Hub (Nano-GCC)</option>
+            <option value="bot">Transition Off Outsourcing / BOT Fiduciary Oversight</option>
+            <option value="entity">Setup Subsidiary, Manufacturing Plant or JV</option>
+            <option value="gtm">Scale Enterprise &amp; Tier-1 GSI Commercial Pipeline</option>
+            <option value="buy">Buy-to-Enter (Acquire 20-80 Staff Indian Firm)</option>
+          </select>
+        </div>
+        <div class="ctrl-group">
+          <label class="ctrl-label" for="sel-corr">Parent HQ Corridor</label>
+          <select id="sel-corr" class="ctrl-select">
+            <option value="us">United States / Canada</option>
+            <option value="uk">United Kingdom (Post-CETA Corridor)</option>
+            <option value="efta">Switzerland / Norway (EFTA TEPA Corridor)</option>
+            <option value="eu">Germany / France / Netherlands / EU</option>
+            <option value="apac">Australia / Japan / Singapore / Israel</option>
+          </select>
+        </div>
+        <div class="ctrl-group">
+          <label class="ctrl-label" for="sel-city">Target India Footprint</label>
+          <select id="sel-city" class="ctrl-select">
+            <option value="hyd">Hyderabad (HITEC City / Nanakramguda / Gachibowli)</option>
+            <option value="blr">Bengaluru (ORR / Whitefield / Indiranagar)</option>
+            <option value="west">Mumbai / Navi Mumbai / Pune / Thane</option>
+            <option value="north">Delhi NCR / Gurugram / Noida / Chennai</option>
+            <option value="multi">Multi-City (Bengaluru + Mumbai / Delhi NCR)</option>
+          </select>
+        </div>
+        <div class="ctrl-group" style="margin-bottom:0">
+          <label class="ctrl-label" for="sel-scale">12-Month Target Footprint</label>
+          <select id="sel-scale" class="ctrl-select">
+            <option value="pod">Founding Pod (8 to 35 senior specialists)</option>
+            <option value="mid">Mid-Market Hub (35 to 120 specialists)</option>
+            <option value="scale">Scale Center (120 to 350+ seats)</option>
+            <option value="comm">Commercial &amp; Strategic Alliance Desk</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="panel-box" aria-live="polite">
+        <div class="panel-kicker">
+          <span>02 &middot; 90-Day Execution Readout</span>
+          <span id="out-code">MANDATE // GCC-CAPTURE</span>
+        </div>
+        <div class="readout-banner">
+          <span class="readout-tag" id="out-tag">FOUNDING PRINCIPAL TRACK</span>
+          <div class="readout-title" id="out-title">Principal-Led Captive AI &amp; Product Hub</div>
+          <p class="readout-desc" id="out-desc"></p>
+        </div>
+        <ul class="ms-list" id="out-list"></ul>
+        <div class="shield-strip" id="out-shield"></div>
+        <div class="btn-row" style="margin-top:20px">
+          <a class="btn btn-primary" href="#charter">Request tailored 2-page charter <span class="arr" aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn-ghost" id="direct-mailto" href="mailto:dev@devsathya.com">Open in email app</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="charter" aria-labelledby="charter-title">
+  <div class="wrap split" style="align-items:start">
+    <div class="prose reveal">
+      <p class="eyebrow"><span class="n">03</span> Written charter</p>
+      <h2 id="charter-title">Start with a concise written note - zero calendar friction.</h2>
+      <p>Tell me in two or three lines what you are building, transitioning, or commercializing in India. Within 48 hours I will reply in writing with a concrete 2-page 90-day charter tailored to your corridor, city, governance model, and milestone sequence.</p>
+      <p>Once we confirm mandate fit in writing, I meet principals and boards directly in person across Bengaluru, Hyderabad, Mumbai, Pune, Delhi NCR, London, Europe, Singapore, and North America.</p>
+      <p class="muted"><strong>Footprint:</strong> India (remote) | US mailing address: 1178 Broadway, 3rd Floor #3433, New York, NY 10001, USA.</p>
+    </div>
+    <div class="panel-box reveal">
+      <div class="panel-kicker">
+        <span>Confidential Principal Inquiry</span>
+        <span>dev@devsathya.com</span>
+      </div>
+      <form id="charterForm" novalidate>
+        <input type="text" id="f-honey" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="optin-grid">
+          <div class="ctrl-group">
+            <label class="ctrl-label" for="f-name">Your name *</label>
+            <input class="f-input" type="text" id="f-name" required placeholder="Jane Doe">
+          </div>
+          <div class="ctrl-group">
+            <label class="ctrl-label" for="f-email">Work email *</label>
+            <input class="f-input" type="email" id="f-email" required placeholder="jane@company.com">
+          </div>
+        </div>
+        <div class="optin-grid">
+          <div class="ctrl-group">
+            <label class="ctrl-label" for="f-company">Company *</label>
+            <input class="f-input" type="text" id="f-company" required placeholder="Acme Technologies">
+          </div>
+          <div class="ctrl-group">
+            <label class="ctrl-label" for="f-role">Role</label>
+            <input class="f-input" type="text" id="f-role" placeholder="CEO / COO / Operating Partner">
+          </div>
+        </div>
+        <div class="ctrl-group">
+          <label class="ctrl-label" for="f-note">Two lines on your India priority (optional)</label>
+          <textarea class="f-textarea" id="f-note" rows="3" placeholder="e.g. Scaling Pune/Hyderabad AI hub from 10 to 50 engineers, or transitioning from distributor to Indian subsidiary..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" id="submitBtn" style="width:100%;justify-content:center">Request written 90-day charter <span class="arr" aria-hidden="true">&rarr;</span></button>
+        <div id="formStatus" class="submit-status" hidden></div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="/india/"><span class="brand-name">Dev Sathya</span><span class="brand-sub">Dev Sathya Consulting &amp; Ventures</span></a>
+        <p class="foot-about">Independent Founding India Principal, Principal Enterprise AI Platform Architect, and cross-border M&amp;A adviser. In enterprise technology since 1998.</p>
+        <div class="foot-office">
+          <span class="foot-office-label">Footprint</span>
+          <span class="foot-office-addr">India (remote) &middot; US mailing address: 1178 Broadway, 3rd Floor #3433, New York, NY 10001, USA</span>
+        </div>
+      </div>
+      <div class="foot-col"><h4>India Practice</h4><ul><li><a href="#lanes">Four mandate models</a></li><li><a href="#blueprint">90-day configurator</a></li><li><a href="#charter">Request written charter</a></li></ul></div>
+      <div class="foot-col"><h4>Related Practices</h4><ul><li><a href="/platforms/">Enterprise AI platforms</a></li><li><a href="/acquirers/">Buy-side M&amp;A origination</a></li><li><a href="/about/">About Dev Sathya</a></li></ul></div>
+      <div class="foot-col"><h4>Contact</h4><ul><li><a class="foot-mail" href="mailto:dev@devsathya.com">dev@devsathya.com</a></li><li><a href="#charter">Write in confidence</a></li><li><a href="/disclosures/">Disclosures &amp; privacy</a></li></ul></div>
+    </div>
+    <div class="foot-legal">
+      <div class="foot-legal-top">
+        <p class="foot-copy">&copy; <span id="year">2026</span> Dev Sathya Consulting &amp; Ventures</p>
+        <p class="foot-meta">Confidential B2B principal mandates &middot; <a href="/disclosures/">Disclosures &amp; privacy</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/site.js?v=20261016a" defer></script>
+<script>
+(function () {
+  var FORM_ENDPOINT = "https://formsubmit.co/ajax/8e8df4489277e5b9d9febc97b053c806";
+  var FALLBACK_MAIL = "dev@devsathya.com";
+
+  var selMode = document.getElementById("sel-mode");
+  var selCorr = document.getElementById("sel-corr");
+  var selCity = document.getElementById("sel-city");
+  var selScale = document.getElementById("sel-scale");
+
+  var PRESETS = {
+    gcc:  { mode: "gcc",    corr: "us",   city: "hyd",   scale: "mid" },
+    ceta: { mode: "entity", corr: "uk",   city: "west",  scale: "pod" },
+    gtm:  { mode: "gtm",    corr: "us",   city: "multi", scale: "comm" },
+    buy:  { mode: "buy",    corr: "eu",   city: "blr",   scale: "mid" }
+  };
+
+  var CORR_NOTE = {
+    us:   "US-India corridor: structured as a non-exclusive B2B advisory mandate under US-India DTAA Article 5 so HQ retains full IP and contract authority with zero Permanent Establishment leakage.",
+    uk:   "UK-India CETA corridor (in force 15 July 2026): leverages CETA tariff phase-downs, streamlined corporate mobility, and the 60-month Double Contribution Convention social-security exemption.",
+    efta: "EFTA-India TEPA corridor (in force October 2025): aligns subsidiary, R&D or JV localization with the institutional TEPA framework while ring-fencing Swiss/Nordic core IP.",
+    eu:   "European / Mittelstand corridor: de-risks post-distributor OEM customer transitions, Pune/Bengaluru/Maharashtra plant or hub governance, and dual-shore product ownership.",
+    apac: "APAC & Global corridor: bridges Tokyo, Melbourne, Singapore or Tel Aviv product standards with tier-one Indian JV governance, PSU/enterprise compliance, and senior talent retention."
+  };
+
+  var MODE_DATA = {
+    gcc: {
+      code: "MANDATE // NANO-GCC & AI HUB",
+      tag: "LANE 01 · CAPTIVE PRODUCT & AI ENGINEERING",
+      title: "Principal-Led Captive Engineering & AI Hub",
+      desc: "Stand up a high-ownership engineering center where senior architects ship core roadmap modules - avoiding both passive EOR body-shopping and USD 500k+ big-box consultancy overhead.",
+      steps: [
+        ["DAYS 01-30", "Lock EOR-vs-subsidiary structure, micro-market workspace, compensation bands, and architectural bar; personally screen the founding Principal/Staff AI & systems cohort."],
+        ["DAYS 31-60", "Onboard the founding 8-20 engineers into direct US/UK/EU sprint ownership with deterministic code-review and security gates; zero shadow hierarchy."],
+        ["DAYS 61-90", "Recruit, vet and hand off cleanly to a battle-tested permanent India Site Lead / VP Engineering while retaining board-level architectural oversight."]
+      ]
+    },
+    bot: {
+      code: "MANDATE // CAPTIVE TRANSITION & BOT FIDUCIARY",
+      tag: "LANE 01B · OUTSOURCING-TO-CAPTIVE GOVERNANCE",
+      title: "Independent Fiduciary Oversight on Vendor / BOT Transitions",
+      desc: "Sit strictly on the parent CEO and CTO's side of the table while shifting from third-party IT vendors or a Build-Operate-Transfer partner into an owned Global Capability Center.",
+      steps: [
+        ["DAYS 01-30", "Audit incumbent vendor/BOT bench quality, code ownership, and attrition risk; separate true product builders from seat-fillers."],
+        ["DAYS 31-60", "Establish direct product-company engineering rituals, principal architecture standards, and clean IP/repository transfer protocols."],
+        ["DAYS 61-90", "Complete captive leadership installation and SLA cutover without roadmap disruption or vendor holdback."]
+      ]
+    },
+    entity: {
+      code: "MANDATE // MARKET ENTRY, ENTITY & JV",
+      tag: "LANE 02 · SUBSIDIARY & INDUSTRIAL FOOTPRINT",
+      title: "Direct Indian Subsidiary, Plant or Joint-Venture Stewardship",
+      desc: "Represent parent leadership on the ground across entity incorporation, post-distributor OEM handovers, JV milestone governance, and tier-one supplier qualification.",
+      steps: [
+        ["DAYS 01-30", "Map entity, FEMA/regulatory, and JV shareholder controls; audit distributor customer relationships and local supply-chain partners."],
+        ["DAYS 31-60", "Execute direct OEM customer transitions, anchor EPC/manufacturing supplier qualification, and establish parent-controlled financial reporting."],
+        ["DAYS 61-90", "Operationalize commercial run-rate and recruit permanent functional heads only after commercial unit economics are proven."]
+      ]
+    },
+    gtm: {
+      code: "MANDATE // ENTERPRISE & GSI COMMERCIAL",
+      tag: "LANE 03 · HIGH-ACV ENTERPRISE & CHANNEL",
+      title: "C-Suite Commercial Origination & Tier-1 GSI Co-Sell",
+      desc: "Convert open-source traction or global proof points into six- and seven-figure contracts across Indian private banks, telcos, conglomerates, utilities, and global GCCs.",
+      steps: [
+        ["DAYS 01-30", "Sharpen India enterprise packaging, regional reference architecture, and target list of 30 named bank, telco, conglomerate, and GCC buyers."],
+        ["DAYS 31-60", "Open direct CXO commercial evaluations alongside practice-level co-sell alliances inside Tier-1 Indian GSIs and hyperscaler marketplaces."],
+        ["DAYS 61-90", "Close lighthouse reference agreements and transition repeatable pipeline to incoming quota-carrying account executives."]
+      ]
+    },
+    buy: {
+      code: "MANDATE // BUY-TO-ENTER BOLT-ON M&A",
+      tag: "LANE 04 · ACQUIRE-TO-ENTER INDIA",
+      title: "Proprietary Bolt-On Acquisition of an Indian Tech or Channel Firm",
+      desc: "Compress 18-24 months of zero-to-one recruiting or channel building into 90-120 days by acquiring a vetted, profitable 20-to-80 person Indian firm.",
+      steps: [
+        ["DAYS 01-30", "Define technical, certification, and margin buy-box; originate off-market founder-owned Indian engineering or specialist partner targets under NDA."],
+        ["DAYS 31-60", "Run codebase, architectural, customer-retention, and normalized EBITDA diligence firsthand before LOI."],
+        ["DAYS 61-90", "Structure founder earn-out alignment, IP assignment, and Day-1 post-close engineering and commercial integration."]
+      ]
+    }
+  };
+
+  var latest = {};
+
+  function render() {
+    var m = selMode.value;
+    var c = selCorr.value;
+    var cityTxt = selCity.options[selCity.selectedIndex].text;
+    var scaleTxt = selScale.options[selScale.selectedIndex].text;
+    var d = MODE_DATA[m];
+
+    document.getElementById("out-code").textContent = d.code;
+    document.getElementById("out-tag").textContent = d.tag;
+    document.getElementById("out-title").textContent = d.title;
+    document.getElementById("out-desc").textContent = d.desc + " Footprint focus: " + cityTxt + " (" + scaleTxt + ").";
+
+    var ul = document.getElementById("out-list");
+    ul.innerHTML = "";
+    for (var i = 0; i < d.steps.length; i++) {
+      var li = document.createElement("li");
+      li.innerHTML = "<strong>" + d.steps[i][0] + "</strong> " + d.steps[i][1];
+      ul.appendChild(li);
+    }
+    document.getElementById("out-shield").textContent = CORR_NOTE[c];
+
+    latest = {
+      objective: selMode.options[selMode.selectedIndex].text,
+      corridor: selCorr.options[selCorr.selectedIndex].text,
+      city: cityTxt,
+      scale: scaleTxt,
+      track: d.title
+    };
+
+    var subj = "India Principal Charter Request - " + d.title;
+    var body = "Hi Dev,\n\nCould you send over a concise 2-page written 90-day India charter for our review?\n\nParameters:\n" +
+      "- Objective: " + latest.objective + "\n" +
+      "- Corridor: " + latest.corridor + "\n" +
+      "- India Footprint: " + latest.city + "\n" +
+      "- 12-Month Scale: " + latest.scale + "\n\n";
+    document.getElementById("direct-mailto").href = "mailto:" + FALLBACK_MAIL + "?subject=" + encodeURIComponent(subj) + "&body=" + encodeURIComponent(body);
+  }
+
+  var btns = document.querySelectorAll(".preset-btn");
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function () {
+      for (var j = 0; j < btns.length; j++) btns[j].classList.remove("active");
+      this.classList.add("active");
+      var p = PRESETS[this.getAttribute("data-preset")];
+      if (p) {
+        selMode.value = p.mode;
+        selCorr.value = p.corr;
+        selCity.value = p.city;
+        selScale.value = p.scale;
+        render();
+      }
+    });
+  }
+
+  [selMode, selCorr, selCity, selScale].forEach(function (el) {
+    el.addEventListener("change", function () {
+      for (var j = 0; j < btns.length; j++) btns[j].classList.remove("active");
+      render();
+    });
+  });
+
+  render();
+
+  var form = document.getElementById("charterForm");
+  var statusEl = document.getElementById("formStatus");
+  var submitBtn = document.getElementById("submitBtn");
+
+  function showStatus(kind, html) {
+    statusEl.className = "submit-status " + kind;
+    statusEl.innerHTML = html;
+    statusEl.hidden = false;
+  }
+
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    if (document.getElementById("f-honey").value.trim()) {
+      showStatus("ok", "Thank you. Your request has been logged.");
+      return;
+    }
+    var payload = {
+      name: document.getElementById("f-name").value.trim(),
+      email: document.getElementById("f-email").value.trim(),
+      company: document.getElementById("f-company").value.trim(),
+      role: document.getElementById("f-role").value.trim() || "-",
+      note: document.getElementById("f-note").value.trim() || "-",
+      mandate_track: latest.track,
+      objective: latest.objective,
+      corridor: latest.corridor,
+      india_footprint: latest.city,
+      target_scale: latest.scale,
+      _subject: "India Principal Charter Request: " + document.getElementById("f-company").value.trim(),
+      _replyto: document.getElementById("f-email").value.trim()
+    };
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending written request...";
+
+    fetch(FORM_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(payload)
+    })
+      .then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; });
+      })
+      .then(function (res) {
+        if (!(res.ok && (res.j.success === true || res.j.success === "true"))) throw new Error("err");
+        var first = payload.name.split(" ")[0] || "";
+        form.reset();
+        showStatus("ok", "Thank you" + (first ? ", " + first : "") + ". Your parameters are with Dev Sathya, and a tailored 2-page written 90-day charter will arrive by email within 48 hours.");
+      })
+      .catch(function () {
+        var fb = document.getElementById("direct-mailto").href;
+        showStatus("err", 'Automatic delivery could not complete from this network - please <a href="' + fb.replace(/"/g, "&quot;") + '">click here to send directly in your email app</a>.');
+      })
+      .then(function () {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Request written 90-day charter <span class="arr" aria-hidden="true">&rarr;</span>';
+      });
+  });
+})();
+</script>
+</body>
+</html>
