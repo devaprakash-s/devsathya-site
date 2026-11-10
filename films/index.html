@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Hard to explain. Easy to watch. | Dev Sathya</title>
+<meta name="description" content="Short films for companies whose product takes too long to describe. Your first 30 seconds are free.">
+<meta property="og:title" content="Hard to explain. Easy to watch.">
+<meta property="og:description" content="Short films for companies whose product takes too long to describe. Your first 30 seconds are free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://devsathya.com/films/">
+<meta property="og:image" content="https://devsathya.com/films/reel.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Barlow:wght@400;500;600&family=DM+Serif+Display:ital@0;1&family=Barlow+Condensed:wght@500&family=IBM+Plex+Mono:wght@500&family=Lato:wght@900&family=Spectral:ital,wght@0,300;1,500&display=swap">
+<style>
+:root{--bg:#0c0b0a;--ink:#f4eee3;--soft:#a8a093;--line:#2a2723;--amber:#f6b24c}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 18px/1.55 Barlow,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:0 16px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;max-width:1280px;margin:0 auto;padding:20px 16px;font-size:15px}
+.top .mark{letter-spacing:.06em}
+.top a{color:var(--amber);text-underline-offset:4px;text-align:right}
+.hero h1{font:400 clamp(44px,12.2vw,184px)/.98 'DM Serif Display',Georgia,serif;letter-spacing:-.012em;margin:clamp(20px,5vw,64px) 0 0}
+.hero h1 em{color:var(--amber)}
+.hero .sub{font-size:clamp(19px,2vw,26px);line-height:1.35;color:var(--soft);max-width:30em;margin:clamp(18px,2.5vw,32px) 0 clamp(28px,4vw,52px)}
+.reel{display:block;width:100%;aspect-ratio:16/9;background:#000;object-fit:cover}
+.thesis{padding:clamp(72px,11vw,170px) 0}
+.big{font:400 clamp(34px,6vw,88px)/1.08 'DM Serif Display',Georgia,serif;letter-spacing:-.008em;margin:0;max-width:15em}
+.thesis .lede{font-size:clamp(19px,2vw,25px);line-height:1.4;color:var(--soft);margin:clamp(22px,3vw,40px) 0 clamp(40px,6vw,84px);max-width:30em}
+.program{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.program a{display:grid;grid-template-columns:2.1em 1fr auto;gap:2px 12px;align-items:baseline;padding:17px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.program span,.program time,.program i{color:var(--soft);font-style:normal;font-size:16px}
+.program b{font:400 clamp(24px,3.2vw,40px)/1.15 'DM Serif Display',Georgia,serif;transition:color .2s}
+.program i{grid-column:2}
+.program time{grid-column:3;grid-row:1}
+.program a:hover b,.program a:focus-visible b{color:var(--amber)}
+.film{--bg:#111;--ink:#fff;--soft:#bbb;--line:rgba(255,255,255,.2);--acc:#fff;--dark:#111;position:relative;overflow:hidden;background:var(--bg);color:var(--ink);padding:clamp(60px,9vw,140px) 0;scroll-margin-top:0}
+.film .wrap{position:relative}
+.meta{display:flex;justify-content:space-between;gap:16px;font-weight:500;font-size:14px;line-height:1.2;letter-spacing:.09em;text-transform:uppercase;color:var(--soft);padding-bottom:13px;border-bottom:1px solid var(--line);margin-bottom:clamp(22px,3.4vw,44px)}
+.title{margin:0 0 clamp(24px,3.6vw,50px);font-weight:400}
+.player{position:relative;background:#000;box-shadow:0 34px 90px -36px rgba(0,0,0,.75)}
+.player video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000}
+.play{display:none}
+.js .play{display:grid;place-items:center;position:absolute;inset:0;margin:auto;width:clamp(72px,9vw,118px);height:clamp(72px,9vw,118px);border:0;border-radius:50%;background:var(--acc);color:var(--dark);cursor:pointer;transition:transform .2s}
+.js .play:hover{transform:scale(1.08)}
+.js .play:focus-visible{outline:3px solid #fff;outline-offset:4px}
+.play svg{width:36%;height:36%;margin-left:7%}
+.js .player.on .play{display:none}
+.notes{display:grid;gap:18px;margin:clamp(22px,3vw,38px) 0 0}
+.notes dt{font-weight:500;font-size:13.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--soft);margin-bottom:5px}
+.notes dd{margin:0;max-width:30em;font-size:clamp(18px,1.6vw,21px);line-height:1.42}
+.f-wetday{--bg:#0d4c86;--ink:#e6f1fa;--soft:#a9cbe6;--line:rgba(230,241,250,.28);--dark:#0d4c86;padding-top:0}
+.sky{height:clamp(110px,15vw,210px);margin-bottom:clamp(30px,5vw,66px);background:#cdd6dd repeating-linear-gradient(101deg,transparent 0 46px,rgba(112,132,150,.55) 46px 47.5px,transparent 47.5px 93px);position:relative}
+.sky svg{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(26px,4vw,60px);fill:#0d4c86}
+.f-wetday .title{font-family:'Archivo Black',Impact,sans-serif;font-size:clamp(50px,11.6vw,172px);line-height:.98;text-transform:uppercase;letter-spacing:-.01em}
+.f-millrace{--bg:#07080c;--ink:#fff;--soft:#a2a4ab;--line:rgba(242,163,60,.34);--acc:#f2a33c;--dark:#07080c;background-image:radial-gradient(2.5px 7px at 82% 7%,#f2a33c,transparent),radial-gradient(2px 6px at 91% 13%,#ffd08a,transparent),radial-gradient(3px 9px at 72% 15%,#e98a2c,transparent),radial-gradient(2px 5px at 95% 4%,#f2a33c,transparent),radial-gradient(2px 6px at 64% 6%,#ffb969,transparent),radial-gradient(2.5px 8px at 87% 20%,#e98a2c,transparent)}
+.f-millrace .title{font-family:Anton,Impact,sans-serif;font-size:clamp(66px,16.4vw,250px);line-height:1;text-transform:uppercase}
+.f-searoom{--bg:#0d1a28;--ink:#e8ecf0;--soft:#8fa3b6;--line:rgba(143,163,182,.3);--acc:#f0b34a;--dark:#0d1a28}
+.f-searoom .meta{font-family:'IBM Plex Mono',monospace;letter-spacing:.04em;font-size:13.5px}
+.f-searoom .notes dt{font-family:'IBM Plex Mono',monospace;letter-spacing:.04em}
+.f-searoom .title{font-family:'DM Serif Display',Georgia,serif;font-size:clamp(50px,10vw,150px);line-height:1.02;position:relative;max-width:9em}
+.chart{position:absolute;top:0;right:0;width:min(900px,92vw);height:auto;opacity:.75;pointer-events:none}
+.route{fill:none;stroke:#f0b34a;stroke-width:2.5;stroke-dasharray:1;stroke-dashoffset:0}
+.js .route{stroke-dashoffset:1;transition:stroke-dashoffset 2.6s ease-out .2s}
+.js .in .route,.js .chart.in .route{stroke-dashoffset:0}
+.f-whence{--bg:#eef0f3;--ink:#1a1f26;--soft:#5d6672;--line:#c9ced5;--acc:#2f62d9;--dark:#fff;background-image:linear-gradient(#dde0e5 1px,transparent 1px),linear-gradient(90deg,#dde0e5 1px,transparent 1px);background-size:112px 30px}
+.f-whence .meta{background:#fff;border:1px solid var(--line);padding:11px 13px;text-transform:none;letter-spacing:0;font-size:15px;font-family:Lato,sans-serif}
+.f-whence .title{font-family:Lato,Arial,sans-serif;font-weight:900}
+.f-whence .title span{display:inline-block;background:#fff;border:clamp(3px,.45vw,6px) solid #2f62d9;padding:.04em .24em .08em;font-size:clamp(70px,15vw,220px);line-height:1;box-shadow:0 14px 34px -18px rgba(23,48,110,.6)}
+.f-tareline{--bg:#1b2632;--ink:#f2f4f6;--soft:#9daab7;--line:rgba(238,176,76,.3);--acc:#eeb04c;--dark:#1b2632}
+.f-tareline .title{font-family:Barlow,sans-serif;font-weight:600;font-size:clamp(50px,10.4vw,156px);line-height:1;letter-spacing:-.015em;color:#eeb04c;position:relative}
+.forty{position:absolute;right:-.04em;top:-.14em;font:600 clamp(240px,44vw,680px)/1 Barlow,sans-serif;color:#eeb04c;opacity:.09;pointer-events:none}
+.f-aldous{--bg:#f3ead9;--ink:#2f241a;--soft:#7d6a55;--line:#d9c9ad;--acc:#2f241a;--dark:#f3ead9;background-image:linear-gradient(transparent 39px,#e7dcc6 40px);background-size:100% 40px}
+.f-aldous .title{font-family:Spectral,Georgia,serif;font-style:italic;font-size:clamp(52px,10.6vw,160px);line-height:1.02;letter-spacing:-.012em}
+.f-aldous .meta,.f-aldous .notes dt{font-family:Spectral,Georgia,serif;letter-spacing:.12em}
+.f-lamplighter{--bg:#050505;--ink:#f3ece0;--soft:#928a7c;--line:rgba(246,178,76,.24);--acc:#f6b24c;--dark:#050505}
+.f-lamplighter .title{font-family:Spectral,Georgia,serif;font-weight:300;font-size:clamp(52px,10.8vw,164px);line-height:1.02;letter-spacing:-.012em}
+.ember{position:absolute;right:clamp(16px,9vw,150px);top:clamp(-30px,-1vw,0px);width:9px;height:9px;border-radius:50%;background:#f6b24c;box-shadow:0 0 40px 14px rgba(246,178,76,.3)}
+.f-ladderless{--bg:#0a0d11;--ink:#e4e9ee;--soft:#8592a0;--line:rgba(136,190,214,.2);--acc:#e4e9ee;--dark:#0a0d11;background-image:repeating-linear-gradient(90deg,transparent 0 118px,rgba(255,255,255,.028) 118px 120px)}
+.f-ladderless .title{font-family:'Barlow Condensed',Barlow,sans-serif;font-weight:500;font-size:clamp(58px,13.4vw,204px);line-height:1;text-transform:uppercase;letter-spacing:.09em}
+.f-fourstreets{--bg:#f4ede0;--ink:#1c2f52;--soft:#6b6f7c;--line:#d8cfbe;--acc:#1c2f52;--dark:#f4ede0}
+.f-fourstreets .title{font-family:'DM Serif Display',Georgia,serif;font-size:clamp(54px,11vw,168px);line-height:1;letter-spacing:-.012em}
+.maker{padding:clamp(72px,10vw,150px) 0}
+.eyebrow{font-weight:500;font-size:14px;letter-spacing:.09em;text-transform:uppercase;color:var(--soft);margin:0 0 20px}
+.maker .big{font-size:clamp(30px,4.6vw,66px);max-width:19em}
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:34px 22px;margin:clamp(44px,6vw,86px) 0 0;padding:clamp(26px,3vw,38px) 0 0;border-top:1px solid var(--line)}
+.nums div{min-width:0}
+.nums b{display:block;font:400 clamp(38px,5.4vw,76px)/1.05 'DM Serif Display',Georgia,serif;color:var(--amber)}
+.nums span{display:block;color:var(--soft);font-size:16.5px;line-height:1.35;margin-top:9px;max-width:17em}
+.offer{background:var(--amber);color:#14100a;padding:clamp(66px,10vw,150px) 0}
+.offer h2{font:400 clamp(50px,11vw,168px)/.98 'DM Serif Display',Georgia,serif;letter-spacing:-.012em;margin:0;max-width:7.5em}
+.offer .then{font-size:clamp(20px,2.2vw,28px);line-height:1.3;margin:clamp(20px,3vw,36px) 0 clamp(48px,7vw,96px)}
+.deal{display:grid;gap:44px}
+.deal h3{font-weight:600;font-size:14px;letter-spacing:.09em;text-transform:uppercase;margin:0 0 14px}
+.deal ul,.deal ol{list-style:none;margin:0;padding:0}
+.deal li{padding:13px 0;border-top:1px solid rgba(20,16,10,.28);font-size:19px;line-height:1.38}
+.deal ol{counter-reset:s}
+.deal ol li{counter-increment:s;display:grid;grid-template-columns:1.9em 1fr}
+.deal ol li::before{content:counter(s);font:400 22px/1.2 'DM Serif Display',Georgia,serif}
+.price{font:400 clamp(62px,9vw,124px)/1 'DM Serif Display',Georgia,serif;margin:0}
+.price small{font-size:.36em;margin-left:.3em;white-space:nowrap}
+.deal .note{margin:12px 0 0;font-size:19px}
+.ask{margin:clamp(50px,7vw,92px) 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:16px 26px}
+.btn{display:inline-block;background:#14100a;color:var(--amber);font-weight:600;font-size:clamp(19px,2vw,24px);text-decoration:none;padding:20px 34px;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn:focus-visible{outline:3px solid #14100a;outline-offset:3px}
+.ask span{font-size:18px}
+.ask span a{overflow-wrap:anywhere}
+footer{color:var(--soft);font-size:14.5px;padding:34px 0 44px}
+footer p{margin:0 0 8px}
+.js .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.js .reveal.in{opacity:1;transform:none}
+@media(min-width:760px){
+.wrap,.top{padding-left:32px;padding-right:32px}
+.program a{grid-template-columns:3em 1.5fr 1fr auto;gap:0 18px}
+.program i{grid-column:3;grid-row:1}
+.program time{grid-column:4}
+.notes{grid-template-columns:1fr 1fr;gap:32px}
+.nums{grid-template-columns:repeat(4,1fr)}
+.deal{grid-template-columns:1fr 1fr;gap:48px 64px}
+.deal .steps{grid-column:1/-1}
+.deal ol{display:grid;grid-template-columns:repeat(4,1fr);gap:0 28px}
+.deal ol li{display:block}
+.deal ol li::before{display:block;font-size:40px;margin-bottom:10px}
+}
+@media(prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+.js .reveal{opacity:1;transform:none;transition:none}
+.js .route{stroke-dashoffset:0;transition:none}
+}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<header class="top"><span class="mark">Dev Sathya</span><a href="#start">Your first 30 seconds, free</a></header>
+<main>
+<section class="hero">
+<div class="wrap">
+<h1>Hard to explain.<br><em>Easy to watch.</em></h1>
+<p class="sub">Short films for companies whose product takes too long to describe.</p>
+</div>
+<video class="reel" autoplay muted loop playsinline preload="auto" poster="reel.jpg" aria-label="A few seconds from each of the films">
+<source src="reel.mp4" media="(min-width: 900px)"><source src="reel-phone.mp4"></video>
+</section>
+<section class="thesis">
+<div class="wrap">
+<p class="big reveal">Your product takes an hour to explain. Your buyer gives you a minute.</p>
+<p class="lede">Nine concept films, no two alike. Yours gets its own look, pace and voice, chosen with you.</p>
+<ol class="program"><li><a href="#the-small-hours"><span>01</span><b>The small hours</b><i>Freight AI</i><time>1:09</time></a></li><li><a href="#did-it-rain"><span>02</span><b>Did it rain?</b><i>Insurance</i><time>0:43</time></a></li><li><a href="#two-pallets"><span>03</span><b>Two pallets</b><i>Warehouse robotics</i><time>1:10</time></a></li><li><a href="#the-other-two"><span>04</span><b>The other two</b><i>E-commerce returns</i><time>1:03</time></a></li><li><a href="#bring-it-broken"><span>05</span><b>Bring it broken</b><i>Manufacturing</i><time>0:46</time></a></li><li><a href="#the-long-way-round"><span>06</span><b>The long way round</b><i>Shipping</i><time>2:01</time></a></li><li><a href="#j412"><span>07</span><b>J412</b><i>Finance software</i><time>1:10</time></a></li><li><a href="#the-right-forty"><span>08</span><b>The right forty</b><i>Freight software</i><time>0:59</time></a></li><li><a href="#clause-fourteen"><span>09</span><b>Clause fourteen</b><i>Property advice</i><time>1:00</time></a></li></ol>
+</div>
+</section>
+<section class="film f-lamplighter" id="the-small-hours">
+<div class="wrap">
+<div class="ember" aria-hidden="true"></div><div class="meta"><span>01 of 09</span><span>Freight AI</span><span>1:09</span></div>
+<h2 class="title reveal">The small hours</h2>
+<div class="player"><video controls playsinline preload="none" poster="lamplighter-the-small-hours.jpg" src="lamplighter-the-small-hours-phone.mp4" data-full="lamplighter-the-small-hours.mp4" aria-label="The small hours"></video><button class="play" type="button" aria-label="Play The small hours"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 2.5v19L21 12z"/></svg></button></div>
+<dl class="notes"><div><dt>The business</dt><dd>An AI agent that answers a freight broker&#x27;s phone all night.</dd></div><div><dt>The telling</dt><dd>A black screen, one point of light, a real map of the interstates, a low voice that takes its time.</dd></div></dl>
+</div>
+</section>
+<section class="film f-wetday" id="did-it-rain">
+<div class="sky" aria-hidden="true"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0 34C180 8 300 8 480 30S780 56 960 32 1260 6 1440 30V60H0Z"/></svg></div><div class="wrap">
+<div class="meta"><span>02 of 09</span><span>Insurance</span><span>0:43</span></div>
+<h2 class="title reveal">Did it rain?</h2>
+<div class="player"><video controls playsinline preload="none" poster="wetday-did-it-rain.jpg" src="wetday-did-it-rain-phone.mp4" data-full="wetday-did-it-rain.mp4" aria-label="Did it rain?"></video><button class="play" type="button" aria-label="Play Did it rain?"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 2.5v19L21 12z"/></svg></button></div>
+<dl class="notes"><div><dt>The business</dt><dd>Insurance that pays out on the rain gauge, not on a claim form.</dd></div><div><dt>The telling</dt><dd>Giant type, water rising through the words, a quick British voice.</dd></div></dl>
+</div>
+</section>
+<section class="film f-ladderless" id="two-pallets">
+<div class="wrap">
+<div class="meta"><span>03 of 09</span><span>Warehouse robotics</span><span>1:10</span></div>
+<h2 class="title reveal">Two pallets</h2>
+<div class="player"><video controls playsinline preload="none" poster="ladderless-two-pallets.jpg" src="ladderless-two-pallets-phone.mp4" data-full="ladderless-two-pallets.mp4" aria-label="Two pallets"></video><button class="play" type="button" aria-label="Play Two pallets"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 2.5v19L21 12z"/></svg></button></div>
+<dl class="notes"><div><dt>The business</dt><dd>Small drones that count a whole warehouse overnight.</dd></div><div><dt>The telling</dt><dd>Almost nothing for seventeen seconds, then one long aisle, lit by whatever the story switches on.</dd></div></dl>
+</div>
+</section>
+<section class="film f-fourstreets" id="the-other-two">
+<div class="wrap">
+<div class="meta"><span>04 of 09</span><span>E-commerce returns</span><span>1:03</span></div>
+<h2 class="title reveal">The other two</h2>
+<div class="player"><video controls playsinline preload="none" poster="fourstreets-the-other-two.jpg" src="fourstreets-the-other-two-phone.mp4" data-full="fourstreets-the-other-two.mp4" aria-label="The other two"></video><button class="play" type="button" aria-label="Play The other two"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 2.5v19L21 12z"/></svg></button></div>
+<dl class="notes"><div><dt>The business</dt><dd>Returns that go straight to the next buyer, without going home.</dd></div><div><dt>The telling</dt><dd>Cut paper on cream, told twice, a warm voice and no music until the third line.</dd></div></dl>
+</div>
+</section>
+<section class="film f-millrace" id="bring-it-broken">
+<div class="wrap">
+<div class="meta"><span>05 of 09</span><span>Manufacturing</span><span>0:46</span></div>
+<h2 class="title reveal">Bring it broken</h2>
+<div class="player"><video controls playsinline preload="none" poster="millrace-bring-it-broken.jpg" src="millrace-bring-it-broken-phone.mp4" data-full="millrace-bring-it-broken.mp4" aria-label="Bring it broken"></video><button class="play" type="button" aria-label="Play Bring it broken"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 2.5v19L21 12z"/></svg></button></div>
+<dl class="notes"><div><dt>The business</dt><dd>A machine shop that remakes parts nobody sells any more.</dd></div><div><dt>The telling</dt><dd>Hard cuts, heavy type, a plain-spoken American voice.</dd></div></dl>
+</div>
+</section>
+<section class="film f-searoom" id="the-long-way-round">
+<div class="wrap">
+<svg class="chart" viewBox="0 0 1200 420" aria-hidden="true"><g fill="none" stroke="#2b4560"><ellipse cx="760" cy="170" rx="70" ry="40"/><ellipse cx="760" cy="170" rx="130" ry="76"/><ellipse cx="760" cy="170" rx="200" ry="118"/><ellipse cx="760" cy="170" rx="285" ry="166"/><ellipse cx="760" cy="170" rx="380" ry="222"/></g><path class="route" pathLength="1" d="M70 330C300 130 520 90 690 96S1020 230 1130 345"/><circle cx="70" cy="330" r="5" fill="#fff"/><circle cx="1130" cy="345" r="5" fill="#f0b34a"/></svg><div class="meta"><span>06 of 09</span><span>Shipping</span><span>2:01</span></div>
+<h2 class="title reveal">The long way round</h2>
+<div class="player"><video controls playsinline preload="none" poster="searoom-the-long-way-round.jpg" src="searoom-the-long-way-round-phone.mp4" data-full="searoom-the-long-way-round.mp4" aria-label="The long way round"></video><button class="play" type="button" aria-label="Play The long way round"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 2.5v19L21 12z"/></svg></button></div>
+<dl class="notes"><div><dt>The business</dt><dd>Weather routing for cargo ships.</dd></div><div><dt>The telling</dt><dd>Wide screen, slow dissolves, a real chart of the North Pacific, a calm documentary voice.</dd></div></dl>
+</div>
+</section>
+<section class="film f-whence" id="j412">
+<div class="wrap">
+<div class="meta"><span>07 of 09</span><span>Finance software</span><span>1:10</span></div>
+<h2 class="title reveal"><span>J412</span></h2>
+<div class="player"><video controls playsinline preload="none" poster="whence-j412.jpg" src="whence-j412-phone.mp4" data-full="whence-j412.mp4" aria-label="J412"></video><button class="play" type="button" aria-label="Play J412"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 2.5v19L21 12z"/></svg></button></div>
+<dl class="notes"><div><dt>The business</dt><dd>Software that shows where every number in a company&#x27;s accounts came from.</dd></div><div><dt>The telling</dt><dd>Told entirely inside one spreadsheet, a deadpan American voice.</dd></div></dl>
+</div>
+</section>
+<section class="film f-tareline" id="the-right-forty">
+<div class="wrap">
+<div class="forty" aria-hidden="true">40</div><div class="meta"><span>08 of 09</span><span>Freight software</span><span>0:59</span></div>
+<h2 class="title reveal">The right forty</h2>
+<div class="player"><video controls playsinline preload="none" poster="tareline-the-right-forty.jpg" src="tareline-the-right-forty-phone.mp4" data-full="tareline-the-right-forty.mp4" aria-label="The right forty"></video><button class="play" type="button" aria-label="Play The right forty"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 2.5v19L21 12z"/></svg></button></div>
+<dl class="notes"><div><dt>The business</dt><dd>Software that checks every freight invoice against the contract.</dd></div><div><dt>The telling</dt><dd>Office and highway footage, the invoice itself drawn on screen, a steady American voice.</dd></div></dl>
+</div>
+</section>
+<section class="film f-aldous" id="clause-fourteen">
+<div class="wrap">
+<div class="meta"><span>09 of 09</span><span>Property advice</span><span>1:00</span></div>
+<h2 class="title reveal">Clause fourteen</h2>
+<div class="player"><video controls playsinline preload="none" poster="aldous-lane-clause-fourteen.jpg" src="aldous-lane-clause-fourteen-phone.mp4" data-full="aldous-lane-clause-fourteen.mp4" aria-label="Clause fourteen"></video><button class="play" type="button" aria-label="Play Clause fourteen"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 2.5v19L21 12z"/></svg></button></div>
+<dl class="notes"><div><dt>The business</dt><dd>Lease advisers for independent shops in the UK.</dd></div><div><dt>The telling</dt><dd>Bakery and high-street footage, the lease on cream paper, an unhurried British voice.</dd></div></dl>
+</div>
+</section>
+<section class="maker">
+<div class="wrap">
+<p class="eyebrow">Who makes these</p>
+<p class="big reveal">I have been building and selling technology since 1998. So every film starts with how your buyer decides, and only then gets to the pictures.</p>
+<div class="nums"><div><b>1998</b><span>Founded my first technology company</span></div><div><b>17 to 750</b><span>People, helping scale Dell&#x27;s India operations</span></div><div><b>$4 billion</b><span>Dell&#x27;s UK consumer business, whose move from Ireland to Hyderabad I led</span></div><div><b>12</b><span>Production software platforms built in the last 18 months</span></div></div>
+</div>
+</section>
+<section class="offer" id="start">
+<div class="wrap">
+<h2 class="reveal">Your first 30 seconds are free.</h2>
+<p class="then">Nothing to pay until you have seen them.</p>
+<div class="deal">
+<div><h3>What you get</h3><ul><li>A film of up to 2.5 minutes about your business</li><li>30-second and 15-second cuts</li><li>A vertical version for phones</li></ul></div>
+<div><h3>What it costs</h3><p class="price">$4,000<small>or &pound;3,000</small></p><p class="note">Half when you want the rest. Half when you have the finished film.</p></div>
+<div class="steps"><h3>How it works</h3><ol><li><div>Email me a few lines about what you do.</div></li><li><div>I make your first 30 seconds, free.</div></li><li><div>If you want the rest, you pay half. The other half when you have the finished film.</div></li><li><div>Two rounds of changes. Five working days. All by email, no calls.</div></li></ol></div>
+</div>
+<p class="ask"><a class="btn" href="mailto:dev@devsathya.com?subject=A%20short%20film&body=What%20we%20do%2C%20in%20a%20few%20lines%3A%0A%0A">Tell me what you do</a><span>A few lines by email is enough: <a href="mailto:dev@devsathya.com">dev@devsathya.com</a></span></p>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap">
+<p>Narration in these films is an AI voice, directed line by line. Footage and music are licensed.</p>
+<p>Dev Sathya, <a href="mailto:dev@devsathya.com">dev@devsathya.com</a></p>
+<p>India (remote) | US mailing address: 1178 Broadway, 3rd Floor #3433, New York, NY 10001, USA</p>
+</div>
+</footer>
+<script>
+var root = document.documentElement, wide = matchMedia('(min-width: 900px)').matches;
+var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var films = document.querySelectorAll('.player video'), reel = document.querySelector('.reel');
+if (still && reel) { reel.removeAttribute('autoplay'); reel.pause(); }
+films.forEach(function (v) {
+  var box = v.parentNode, go = box.querySelector('.play');
+  if (wide) v.src = v.dataset.full;
+  v.removeAttribute('controls');
+  function start() { v.controls = true; box.classList.add('on'); v.play(); }
+  go.addEventListener('click', start);
+  v.addEventListener('play', function () {
+    box.classList.add('on'); v.controls = true;
+    films.forEach(function (o) { if (o !== v) o.pause(); });
+  });
+});
+if ('IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal, .chart').forEach(function (n) { io.observe(n); });
+} else {
+  document.querySelectorAll('.reveal, .chart').forEach(function (n) { n.classList.add('in'); });
+}
+</script>
+</body>
+</html>
